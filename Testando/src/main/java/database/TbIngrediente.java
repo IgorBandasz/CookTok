@@ -12,13 +12,13 @@ import java.sql.Statement;
 
 public class TbIngrediente {
     public void save(){
-        String sql = "INSERT INTO dbcooktok.tbcomprador (cpfcomp,nomecomp) VALUES ('123.456', 'Igor');";
+        String sql = "INSERT INTO dbcooktok.tbingrediente (pkcodingre,nomeingre) VALUES ('1', 'Igor')";
         Connection conn = ConexaoFactory.getConexao();
         try {
             Statement stat = conn.createStatement();
 
-            System.out.println(stat.executeUpdate(sql));
-            ConexaoFactory.fecharConexao(conn);
+            System.out.println(stat.executeUpdate(sql)); //executeUpdate faz comandos DDL
+            ConexaoFactory.close(conn,stat);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

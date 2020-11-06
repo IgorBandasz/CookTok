@@ -7,6 +7,7 @@ package conexao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class ConexaoFactory {
     public static Connection getConexao(){
@@ -16,15 +17,24 @@ public class ConexaoFactory {
         try {
             return DriverManager.getConnection(url, user, password);
         } catch (SQLException throwables) {
-            throwables.printStackTrace();
         }
         return null;
     }
 
-    public static void fecharConexao(Connection connection){
+    public static void close(Connection connection){
         try {
             if(connection != null)
                 connection.close();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+    
+    public static void close(Connection conn, Statement stat){
+        close(conn);
+        try {
+            if(stat != null)
+                stat.close();
         }catch (SQLException e){
             e.printStackTrace();
         }
