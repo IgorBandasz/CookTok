@@ -1,9 +1,6 @@
-package com.mycompany.testando;
+package com.mycompany.testando.telas;
 
 import java.awt.Color;
-import static java.awt.Color.red;
-import static java.awt.Color.yellow;
-
 
 public class TelaAdicionarReceita extends javax.swing.JFrame {
 
@@ -194,7 +191,7 @@ public class TelaAdicionarReceita extends javax.swing.JFrame {
         
         if (nome_receita == null){
             //Sem nome da receita aparece uma mensagem em vermelho.
-           jAvisoReceita.setFont(new Color(red));
+          
         }
     }//GEN-LAST:event_jButtonContinuarActionPerformed
 
