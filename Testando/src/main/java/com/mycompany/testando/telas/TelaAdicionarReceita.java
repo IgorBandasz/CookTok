@@ -3,7 +3,6 @@ package com.mycompany.testando.telas;
 import java.awt.Color;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
-
 public class TelaAdicionarReceita extends javax.swing.JFrame {
     private  static TelaAdicionarReceita tela = new TelaAdicionarReceita();
     public TelaAdicionarReceita() {
@@ -14,19 +13,20 @@ public class TelaAdicionarReceita extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jTipoUnidade = new javax.swing.JComboBox<>();
-        jLabel5 = new javax.swing.JLabel();
         jButtonContinuar = new javax.swing.JButton();
         jButtonNovosIngredientes = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        descricao_nome_receita = new javax.swing.JLabel();
         txtNomeReceita = new javax.swing.JTextField();
-        jQuanIngre = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jOpcoesincredientes = new javax.swing.JComboBox<>();
         jAvisoReceita = new javax.swing.JLabel();
         jAvisoReceita1 = new javax.swing.JLabel();
+        JPainelIngredientes = new javax.swing.JPanel();
+        jOpcoesincredientes = new javax.swing.JComboBox<>();
+        descricao_ingredientes = new javax.swing.JLabel();
+        descricao_quantidade = new javax.swing.JLabel();
+        jQuanIngre = new javax.swing.JTextField();
+        jTipoUnidade = new javax.swing.JComboBox<>();
+        descricao_unidade_de_medida = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -35,13 +35,6 @@ public class TelaAdicionarReceita extends javax.swing.JFrame {
         setName("Cook Tok"); // NOI18N
 
         jPanel1.setBackground(new java.awt.Color(153, 204, 255));
-
-        jTipoUnidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jLabel5.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel5.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Quant.");
 
         jButtonContinuar.setText("Continuar");
         jButtonContinuar.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
@@ -64,26 +57,9 @@ public class TelaAdicionarReceita extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Cook Tok");
 
-        jLabel2.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Nome da Receita:");
-
-        jLabel3.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Unidade de Medida");
-
-        jQuanIngre.setText("0");
-
-        jLabel4.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Ingredientes:");
-
-        jOpcoesincredientes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Escolha um opção" }));
-        jOpcoesincredientes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jOpcoesincredientesActionPerformed(evt);
-            }
-        });
+        descricao_nome_receita.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        descricao_nome_receita.setForeground(new java.awt.Color(255, 255, 255));
+        descricao_nome_receita.setText("Nome da Receita:");
 
         jAvisoReceita.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
         jAvisoReceita.setForeground(new java.awt.Color(153, 204, 255));
@@ -92,6 +68,73 @@ public class TelaAdicionarReceita extends javax.swing.JFrame {
         jAvisoReceita1.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
         jAvisoReceita1.setForeground(new java.awt.Color(153, 204, 255));
         jAvisoReceita1.setText("Digite o nome da Receita");
+
+        JPainelIngredientes.setBackground(new java.awt.Color(153, 204, 255));
+
+        jOpcoesincredientes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Escolha um opção" }));
+        jOpcoesincredientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jOpcoesincredientesActionPerformed(evt);
+            }
+        });
+
+        descricao_ingredientes.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        descricao_ingredientes.setForeground(new java.awt.Color(255, 255, 255));
+        descricao_ingredientes.setText("Ingredientes:");
+
+        descricao_quantidade.setBackground(new java.awt.Color(255, 255, 255));
+        descricao_quantidade.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        descricao_quantidade.setForeground(new java.awt.Color(255, 255, 255));
+        descricao_quantidade.setText("Quant.");
+
+        jQuanIngre.setText("0");
+
+        jTipoUnidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        descricao_unidade_de_medida.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        descricao_unidade_de_medida.setForeground(new java.awt.Color(255, 255, 255));
+        descricao_unidade_de_medida.setText("Unidade de Medida");
+
+        javax.swing.GroupLayout JPainelIngredientesLayout = new javax.swing.GroupLayout(JPainelIngredientes);
+        JPainelIngredientes.setLayout(JPainelIngredientesLayout);
+        JPainelIngredientesLayout.setHorizontalGroup(
+            JPainelIngredientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JPainelIngredientesLayout.createSequentialGroup()
+                .addGroup(JPainelIngredientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(JPainelIngredientesLayout.createSequentialGroup()
+                        .addComponent(descricao_ingredientes)
+                        .addGap(213, 213, 213))
+                    .addGroup(JPainelIngredientesLayout.createSequentialGroup()
+                        .addComponent(jOpcoesincredientes, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addGroup(JPainelIngredientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(JPainelIngredientesLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                        .addComponent(descricao_quantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
+                        .addComponent(descricao_unidade_de_medida)
+                        .addGap(49, 49, 49))
+                    .addGroup(JPainelIngredientesLayout.createSequentialGroup()
+                        .addGap(54, 54, 54)
+                        .addComponent(jQuanIngre, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(79, 79, 79)
+                        .addComponent(jTipoUnidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        );
+        JPainelIngredientesLayout.setVerticalGroup(
+            JPainelIngredientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JPainelIngredientesLayout.createSequentialGroup()
+                .addGroup(JPainelIngredientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(descricao_ingredientes)
+                    .addComponent(descricao_unidade_de_medida)
+                    .addComponent(descricao_quantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(JPainelIngredientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jOpcoesincredientes, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jQuanIngre, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTipoUnidade, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 29, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -102,38 +145,25 @@ public class TelaAdicionarReceita extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel4))
-                        .addContainerGap())
+                            .addComponent(descricao_nome_receita)
+                            .addComponent(jLabel1))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jOpcoesincredientes, 0, 257, Short.MAX_VALUE)
-                            .addComponent(txtNomeReceita)
-                            .addComponent(jButtonNovosIngredientes, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addGap(26, 26, 26)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(9, 9, 9)
-                                        .addComponent(jQuanIngre, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(51, 51, 51))
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(34, 34, 34)
-                                        .addComponent(jTipoUnidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButtonContinuar, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jAvisoReceita1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(54, 54, 54))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jAvisoReceita, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txtNomeReceita, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButtonNovosIngredientes, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addGap(283, 283, 283)
+                                .addComponent(jAvisoReceita, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(JPainelIngredientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jAvisoReceita1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(345, 345, 345))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(547, 547, 547)
+                .addComponent(jButtonContinuar, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -141,25 +171,19 @@ public class TelaAdicionarReceita extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addComponent(jLabel1)
                 .addGap(43, 43, 43)
-                .addComponent(jLabel2)
+                .addComponent(descricao_nome_receita)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNomeReceita, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jAvisoReceita))
-                .addGap(34, 34, 34)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel3)
-                        .addComponent(jLabel5))
-                    .addComponent(jLabel4))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTipoUnidade)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jOpcoesincredientes, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jQuanIngre, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jAvisoReceita1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(73, 73, 73)
+                        .addComponent(jAvisoReceita1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(JPainelIngredientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addComponent(jButtonNovosIngredientes)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonContinuar)
@@ -171,8 +195,8 @@ public class TelaAdicionarReceita extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 691, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 15, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -189,16 +213,94 @@ public class TelaAdicionarReceita extends javax.swing.JFrame {
     }//GEN-LAST:event_jOpcoesincredientesActionPerformed
 
     private void jButtonContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonContinuarActionPerformed
-       JDialog jdialog = new JDialog(tela, true);
-                jdialog.setSize(200, 200);
-                
-                JLabel palavra = new JLabel(txtNomeReceita.getText());
-                jdialog.add(palavra); 
-                jdialog.setVisible(true);
+        if (txtNomeReceita.getText() == null){
+            JDialog jdialog = new JDialog(tela, true);
+            jdialog.setSize(200, 200);
+            JLabel alerta = new JLabel( );
+            alerta.setText("Digite nome da receita!");
+            jdialog.add(alerta); 
+            jdialog.setVisible(true);
+        } else {
+            JDialog jdialog = new JDialog(tela, true);
+            jdialog.setSize(200, 200);
+            JLabel palavra = new JLabel(txtNomeReceita.getText());
+            jdialog.add(palavra); 
+            jdialog.setVisible(true);
+        }
     }//GEN-LAST:event_jButtonContinuarActionPerformed
-
+    //adionar novos botões de ingredientes.
     private void jButtonNovosIngredientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNovosIngredientesActionPerformed
-        // TODO add your handling code here:
+        //Tenho que trocar o nome dos componentes para que apareça novos e não substitua os mesmo
+        // tenho que arrumar a posição dos intens.
+        JPainelIngredientes = new javax.swing.JPanel();
+        descricao_nome_receita = new javax.swing.JLabel();
+        descricao_unidade_de_medida = new javax.swing.JLabel();
+        txtNomeReceita = new javax.swing.JTextField();
+        jQuanIngre = new javax.swing.JTextField();
+        descricao_ingredientes = new javax.swing.JLabel();
+        jOpcoesincredientes = new javax.swing.JComboBox<>();
+        
+        JPainelIngredientes.setBackground(new java.awt.Color(153, 204, 255));
+        
+        jTipoUnidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+     
+        descricao_quantidade.setBackground(new java.awt.Color(255, 255, 255));
+        descricao_quantidade.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        descricao_quantidade.setForeground(new java.awt.Color(255, 255, 255));
+        descricao_quantidade.setText("Quant.");
+
+        descricao_nome_receita.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        descricao_nome_receita.setForeground(new java.awt.Color(255, 255, 255));
+        descricao_nome_receita.setText("Nome da Receita:");
+
+        descricao_unidade_de_medida.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        descricao_unidade_de_medida.setForeground(new java.awt.Color(255, 255, 255));
+        descricao_unidade_de_medida.setText("Unidade de Medida");
+
+        jQuanIngre.setText("0");
+
+        descricao_ingredientes.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        descricao_ingredientes.setForeground(new java.awt.Color(255, 255, 255));
+        descricao_ingredientes.setText("Ingredientes:");
+
+        jOpcoesincredientes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Escolha um opção" }));
+        jOpcoesincredientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jOpcoesincredientesActionPerformed(evt);
+            }
+        });
+
+        jAvisoReceita.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        jAvisoReceita.setForeground(new java.awt.Color(153, 204, 255));
+        jAvisoReceita.setText("Digite o nome da Receita");
+        JPainelIngredientes.setLocation(600, 600);
+        javax.swing.GroupLayout JPainelIngredientesLayout = new javax.swing.GroupLayout(JPainelIngredientes);
+        JPainelIngredientes.setLayout(JPainelIngredientesLayout);
+        
+            JPainelIngredientesLayout.setHorizontalGroup(
+            JPainelIngredientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(JPainelIngredientesLayout.createSequentialGroup()
+                .addGroup(JPainelIngredientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(JPainelIngredientesLayout.createSequentialGroup()
+                .addComponent(descricao_ingredientes)
+                .addGap(213, 213, 213))
+                .addGroup(JPainelIngredientesLayout.createSequentialGroup()
+                .addComponent(jOpcoesincredientes, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addGroup(JPainelIngredientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(JPainelIngredientesLayout.createSequentialGroup()
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addComponent(descricao_quantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(descricao_unidade_de_medida)
+                .addGap(49, 49, 49))
+                .addGroup(JPainelIngredientesLayout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addComponent(jQuanIngre, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(79, 79, 79)
+                .addComponent(jTipoUnidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        );
     }//GEN-LAST:event_jButtonNovosIngredientesActionPerformed
 
     /**
@@ -239,15 +341,16 @@ public class TelaAdicionarReceita extends javax.swing.JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel JPainelIngredientes;
+    private javax.swing.JLabel descricao_ingredientes;
+    private javax.swing.JLabel descricao_nome_receita;
+    private javax.swing.JLabel descricao_quantidade;
+    private javax.swing.JLabel descricao_unidade_de_medida;
     private javax.swing.JLabel jAvisoReceita;
     private javax.swing.JLabel jAvisoReceita1;
     private javax.swing.JButton jButtonContinuar;
     private javax.swing.JButton jButtonNovosIngredientes;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JComboBox<String> jOpcoesincredientes;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jQuanIngre;
