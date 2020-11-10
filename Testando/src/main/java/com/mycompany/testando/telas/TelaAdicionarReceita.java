@@ -1,9 +1,11 @@
 package com.mycompany.testando.telas;
 
 import java.awt.Color;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
 
 public class TelaAdicionarReceita extends javax.swing.JFrame {
-
+    private  static TelaAdicionarReceita tela = new TelaAdicionarReceita();
     public TelaAdicionarReceita() {
         initComponents();
     }
@@ -187,12 +189,12 @@ public class TelaAdicionarReceita extends javax.swing.JFrame {
     }//GEN-LAST:event_jOpcoesincredientesActionPerformed
 
     private void jButtonContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonContinuarActionPerformed
-        String nome_receita = txtNomeReceita.getText();
-        
-        if (nome_receita == null){
-            //Sem nome da receita aparece uma mensagem em vermelho.
-          
-        }
+       JDialog jdialog = new JDialog(tela, true);
+                jdialog.setSize(200, 200);
+                
+                JLabel palavra = new JLabel(txtNomeReceita.getText());
+                jdialog.add(palavra); 
+                jdialog.setVisible(true);
     }//GEN-LAST:event_jButtonContinuarActionPerformed
 
     private void jButtonNovosIngredientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNovosIngredientesActionPerformed
@@ -230,11 +232,8 @@ public class TelaAdicionarReceita extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                //new TelaAdicionarReceita.getContentPane().setBackground(Color.cyan);
-                TelaAdicionarReceita tela = new TelaAdicionarReceita();
                 tela.getContentPane().setBackground(Color.cyan);
                 tela.setVisible(true);
-                
             }
         });
     }
