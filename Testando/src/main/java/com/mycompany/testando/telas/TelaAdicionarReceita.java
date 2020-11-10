@@ -230,8 +230,10 @@ public class TelaAdicionarReceita extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaAdicionarReceita.getContentPane().setBackground(Color.cyan);
-                new TelaAdicionarReceita().setVisible(true);
+                //new TelaAdicionarReceita.getContentPane().setBackground(Color.cyan);
+                TelaAdicionarReceita tela = new TelaAdicionarReceita();
+                tela.getContentPane().setBackground(Color.cyan);
+                tela.setVisible(true);
                 
             }
         });
