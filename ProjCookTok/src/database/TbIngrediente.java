@@ -5,18 +5,17 @@
  */
 package database;
 import conexao.ConexaoFactory;
-
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 public class TbIngrediente {
     public void save(){
-        String sql = "INSERT INTO dbcooktok.tbingrediente (pkcodingre,nomeingre) VALUES ('1', 'Igor')";
-        Connection conn = ConexaoFactory.getConexao();
+        String sql = "INSERT INTO dbcooktok.tbingrediente (nomeingre) VALUES ('Igorr')";
+        
         try {
+            Connection conn = ConexaoFactory.getConexao();
             Statement stat = conn.createStatement();
-
             System.out.println(stat.executeUpdate(sql)); //executeUpdate faz comandos DDL
             ConexaoFactory.close(conn,stat);
         } catch (SQLException throwables) {
