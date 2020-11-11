@@ -10,11 +10,11 @@ package com.mycompany.testando.classes;
  */
 public class Aplicação {
     public static void main(String[] args) {
-        Ingredientes ingre1 = new Ingredientes("Farinha de Trigo", 001);
-        Ingredientes ingre2 = new Ingredientes("Ovo", 002);
-        Ingredientes ingre3 = new Ingredientes("Leite", 003);
-        Ingredientes ingre4 = new Ingredientes("Manteiga", 004);
-        Ingredientes ingre5 = new Ingredientes("Chocolate", 005);
+        Ingredientes ingre1 = new Ingredientes("Farinha de Trigo");
+        Ingredientes ingre2 = new Ingredientes("Ovo");
+        Ingredientes ingre3 = new Ingredientes("Leite");
+        Ingredientes ingre4 = new Ingredientes("Manteiga");
+        Ingredientes ingre5 = new Ingredientes("Chocolate");
        
         System.out.println(ingre1.toString());
         System.out.println(ingre2.toString());
