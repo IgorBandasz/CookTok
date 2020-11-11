@@ -17,9 +17,9 @@ public class Ingredientes {
     
     }
     
-    public Ingredientes(String nome_Ingred, int cod_Ingred) {
+    public Ingredientes(String nome_Ingred) {
         this.nome_Ingred = nome_Ingred;
-        this.cod_Ingred = cod_Ingred;
+        this.cod_Ingred = 10520;
     }
   
     public String getNome_Ingred() {
