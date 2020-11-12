@@ -3,20 +3,31 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.testando.classes;
+package cookTok;
 
 /**
  *
  * @author ester
  */
 public class Instrucao {
-    private String nome_Instru;
     private int cod_Instru;
-    private int cod_Receita;
+    private String nome_Instru;
     private int tempo_Instru;
-    public Instrucao(String nome_Instru, int cod_Instru, int cod_Receita, int tempo_Instru) {
+    private int cod_Receita;
+   
+    
+    public Instrucao(){}
+    
+    public Instrucao(String nome_Instru, int tempo_Instru, int cod_Receita) {
+        this.cod_Instru = -1;
         this.nome_Instru = nome_Instru;
+        this.cod_Receita = cod_Receita;
+        this.tempo_Instru = tempo_Instru;
+    }
+    
+    public Instrucao(int cod_Instru, String nome_Instru, int tempo_Instru, int cod_Receita) {
         this.cod_Instru = cod_Instru;
+        this.nome_Instru = nome_Instru;
         this.cod_Receita = cod_Receita;
         this.tempo_Instru = tempo_Instru;
     }

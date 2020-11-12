@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.testando.classes;
+package cookTok;
 /**
  *
  * @author ester
  */
 public class Aplicação {
     public static void main(String[] args) {
-        Ingredientes ingre1 = new Ingredientes("Farinha de Trigo");
-        Ingredientes ingre2 = new Ingredientes("Ovo");
-        Ingredientes ingre3 = new Ingredientes("Leite");
-        Ingredientes ingre4 = new Ingredientes("Manteiga");
-        Ingredientes ingre5 = new Ingredientes("Chocolate");
+        Ingrediente ingre1 = new Ingrediente("Farinha de Trigo");
+        Ingrediente ingre2 = new Ingrediente("Ovo");
+        Ingrediente ingre3 = new Ingrediente("Leite");
+        Ingrediente ingre4 = new Ingrediente("Manteiga");
+        Ingrediente ingre5 = new Ingrediente("Chocolate");
        
         System.out.println(ingre1.toString());
         System.out.println(ingre2.toString());

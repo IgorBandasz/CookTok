@@ -3,15 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.testando;
+package testando;
 
-import conexao.ConexaoFactory;
-import database.TbIngrediente;
-import java.sql.Connection;
+import cookTok.Ingrediente;
+import db.TbIngrediente;
 
 public class TesteConexao {
     public static void main(String[] args) {
-        TbIngrediente ingre = new TbIngrediente();
-        ingre.save();
+        TbIngrediente ingrediente = new TbIngrediente();
+        Ingrediente arroz = new Ingrediente("arroz");
+        arroz.setCod_Ingred(5);
+        ingrediente.update(arroz,"batata");
     }
 }

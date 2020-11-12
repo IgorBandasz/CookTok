@@ -3,11 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.testando.telas;
+package telas;
 
-import com.mycompany.testando.classes.Ingredientes;
+import cookTok.Ingrediente;
 import javax.swing.JDialog;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 /**
@@ -340,7 +339,7 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
  
     private void Button_ContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_ContinuarActionPerformed
-   Ingredientes ingrediente= new Ingredientes ();
+   Ingrediente ingrediente= new Ingrediente ();
     if (txtNome_Receita.getText().isEmpty()) {
         Poupop.setSize(400, 200);
         mensagem_de_alerta.setText("Digite nome da receita!");
