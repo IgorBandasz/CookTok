@@ -181,7 +181,7 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
         jComboBox1.setBackground(new java.awt.Color(204, 204, 255));
         jComboBox1.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
         jComboBox1.setForeground(new java.awt.Color(255, 255, 255));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ml", "kg" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "kg", "g", "ml ", "l" }));
 
         Button_Adicionar_Ingrediente.setBackground(new java.awt.Color(204, 204, 255));
         Button_Adicionar_Ingrediente.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
@@ -379,9 +379,7 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
         Ingrediente ingre6 = new Ingrediente("Oleo");
         Ingrediente ingre7 = new Ingrediente("Granulado");
         Ingrediente ingre8 = new Ingrediente("Creme de Leite");
-       // UNIDADE DE MEDIDA
-       Unidade_de_medida unidade_de_medida = new Unidade_de_Medida;
-               
+
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
