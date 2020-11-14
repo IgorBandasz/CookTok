@@ -181,7 +181,6 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
         jComboBox1.setBackground(new java.awt.Color(204, 204, 255));
         jComboBox1.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
         jComboBox1.setForeground(new java.awt.Color(255, 255, 255));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ml", "kg" }));
 
         Button_Adicionar_Ingrediente.setBackground(new java.awt.Color(204, 204, 255));
         Button_Adicionar_Ingrediente.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
@@ -340,13 +339,13 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
  
     private void Button_ContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_ContinuarActionPerformed
    Ingrediente ingrediente= new Ingrediente ();
+   String ingre;
     if (txtNome_Receita.getText().isEmpty()) {
         Poupop.setSize(400, 200);
         mensagem_de_alerta.setText("Digite nome da receita!");
         Poupop.add(mensagem_de_alerta); 
         Poupop.setVisible(true);
-        Poupop.setVisible(true);
-        
+        Poupop.setVisible(true);       
     } //else if (tabela_de_ingredientes.getValueAt(1,1).toString().isEmpty()){
 //        Poupop.setSize(400, 200);
 //        mensagem_de_alerta.setText("Digite um ingrediente!");
@@ -370,6 +369,7 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
     
     public static void main(String args[]) {
         //MASSA PARA TESTES 
+       //Unidade de Medida
         //INGREDIENTES
         Ingrediente ingre1 = new Ingrediente("Leite Condensado");
         Ingrediente ingre2 = new Ingrediente("Farinha de Trigo");
@@ -378,10 +378,8 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
         Ingrediente ingre5 = new Ingrediente("Manteiga");
         Ingrediente ingre6 = new Ingrediente("Oleo");
         Ingrediente ingre7 = new Ingrediente("Granulado");
-        Ingrediente ingre8 = new Ingrediente("Creme de Leite");
-       // UNIDADE DE MEDIDA
-       Unidade_de_medida unidade_de_medida = new Unidade_de_Medida;
-               
+        Ingrediente ingre8 = new Ingrediente("Creme de Leite");    
+       
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
