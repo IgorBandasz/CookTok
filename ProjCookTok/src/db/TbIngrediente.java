@@ -9,9 +9,10 @@ import cookTok.Ingrediente;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.ResultSet;
 
 public class TbIngrediente {
-    public void save(Ingrediente ingre){
+    public static void save(Ingrediente ingre){
         String sql = "INSERT INTO dbcooktok.tbingrediente (nomeingre) VALUES ('"+ingre.getNome_Ingred()+"')";     
         try {
             Connection conn = ConexaoFactory.getConexao();
@@ -23,7 +24,7 @@ public class TbIngrediente {
             System.out.println("Erro ao inserir Ingrediente");
         }
     }
-    public void update(Ingrediente ingre, String alteracao){
+    public static void update(Ingrediente ingre, String alteracao){
         if(ingre == null || ingre.getCod_Ingred() == -1){
             System.out.println("Não foi possível alterar o ingrediente");
             return;
@@ -54,5 +55,21 @@ public class TbIngrediente {
         } catch (SQLException throwables) {
             System.out.println("Erro ao deletar Ingrediente");
         }
+    }
+    public static void selectAll(){
+        String sql = "SELECT * from dbcooktok.tbingrediente";
+        try {
+            Connection conn = ConexaoFactory.getConexao();
+            Statement stat = conn.createStatement();
+            
+            ResultSet result = stat.executeQuery(sql);
+            while(result.next()){
+                
+            }
+            ConexaoFactory.close(conn,stat);
+            System.out.println("Ingrediente deletado com sucesso");
+        } catch (SQLException throwables) {
+            System.out.println("Erro ao deletar Ingrediente");
+        } 
     }
 }
