@@ -121,7 +121,8 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
         cabecalho_Nome.setText("Cook Tok");
 
         cbCodIngrediente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "x", "x" }));
-        cbCodIngrediente.setName("cbCodIngrediente"); // NOI18N
+        cbCodIngrediente.setName("cbCodIngrediente");
+        cbCodIngrediente.setVisible(false);
 
         javax.swing.GroupLayout PainelCabecalhoLayout = new javax.swing.GroupLayout(PainelCabecalho);
         PainelCabecalho.setLayout(PainelCabecalhoLayout);
