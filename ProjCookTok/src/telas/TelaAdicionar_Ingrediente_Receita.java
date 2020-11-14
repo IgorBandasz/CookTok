@@ -6,8 +6,6 @@
 package telas;
 
 import cookTok.Ingrediente;
-import javax.swing.JDialog;
-import javax.swing.JLabel;
 
 /**
  *
@@ -187,6 +185,11 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
         Button_Adicionar_Ingrediente.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
         Button_Adicionar_Ingrediente.setForeground(new java.awt.Color(255, 255, 255));
         Button_Adicionar_Ingrediente.setText("Adicionar");
+        Button_Adicionar_Ingrediente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Button_Adicionar_IngredienteActionPerformed(evt);
+            }
+        });
 
         tabela_de_ingredientes.setBackground(new java.awt.Color(204, 204, 255));
         tabela_de_ingredientes.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
@@ -337,36 +340,42 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
- 
-    private void Button_ContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_ContinuarActionPerformed
-   Ingrediente ingrediente= new Ingrediente ();
-    if (txtNome_Receita.getText().isEmpty()) {
-        Poupop.setSize(400, 200);
-        mensagem_de_alerta.setText("Digite nome da receita!");
-        Poupop.add(mensagem_de_alerta); 
-        Poupop.setVisible(true);
-        Poupop.setVisible(true);
-        
-    } //else if (tabela_de_ingredientes.getValueAt(1,1).toString().isEmpty()){
-//        Poupop.setSize(400, 200);
-//        mensagem_de_alerta.setText("Digite um ingrediente!");
-//        Poupop.add(mensagem_de_alerta); 
-//        Poupop.setVisible(true);
-//        Poupop.setVisible(true);
-        
- //   }
-    else {
-        Poupop.setSize(400, 200);
-        ingrediente.setNome_Ingred((txtNome_Receita.getText()));
-        mensagem_de_alerta.setText(ingrediente.getNome_Ingred());
-        Poupop.add(mensagem_de_alerta); 
-        Poupop.setVisible(true);
-    }//GEN-LAST:event_Button_ContinuarActionPerformed
 
-}
-    /**
-     * @param args the command line arguments
-     */
+   
+    private void Button_ContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_ContinuarActionPerformed
+        Ingrediente ingrediente= new Ingrediente ();
+        if (txtNome_Receita.getText().isEmpty()) {
+            Poupop.setSize(400, 200);
+            mensagem_de_alerta.setText("Digite nome da receita!");
+            Poupop.add(mensagem_de_alerta); 
+            Poupop.setVisible(true);
+            Poupop.setVisible(true);
+        } 
+        /*else if (tabela_de_ingredientes.getValueAt(1,1).toString().isEmpty()){
+            Poupop.setSize(400, 200);
+            mensagem_de_alerta.setText("Digite um ingrediente!");
+            Poupop.add(mensagem_de_alerta); 
+            Poupop.setVisible(true);
+            Poupop.setVisible(true);
+        */
+    
+        else {
+            Poupop.setSize(400, 200);
+            ingrediente.setNome_Ingred((txtNome_Receita.getText()));
+            mensagem_de_alerta.setText(ingrediente.getNome_Ingred());
+            Poupop.add(mensagem_de_alerta);
+            Poupop.setVisible(true);
+    }//GEN-LAST:event_Button_ContinuarActionPerformed
+    }
+    private void Button_Adicionar_IngredienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_Adicionar_IngredienteActionPerformed
+        String palavra =(String) txtCombo_Box_ingredientes.getSelectedItem();
+        Poupop.setSize(400, 200);
+        mensagem_de_alerta.setText(palavra);
+        Poupop.add(mensagem_de_alerta);
+        Poupop.setVisible(true);
+    }//GEN-LAST:event_Button_Adicionar_IngredienteActionPerformed
+
+
     
     public static void main(String args[]) {
         //MASSA PARA TESTES 
