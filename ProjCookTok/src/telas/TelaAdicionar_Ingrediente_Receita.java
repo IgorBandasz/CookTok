@@ -5,7 +5,12 @@
  */
 package telas;
 
+import conexao.ConexaoFactory;
 import cookTok.Ingrediente;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -38,6 +43,7 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
         PainelFundo = new javax.swing.JPanel();
         PainelCabecalho = new javax.swing.JPanel();
         cabecalho_Nome = new javax.swing.JLabel();
+        cbCodIngrediente = new javax.swing.JComboBox<>();
         PainelNomeReceita = new javax.swing.JPanel();
         txtNome_Receita = new javax.swing.JTextField();
         descricao_nome_receita = new javax.swing.JLabel();
@@ -99,6 +105,11 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         PainelFundo.setBackground(new java.awt.Color(204, 204, 255));
 
@@ -109,6 +120,9 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
         cabecalho_Nome.setForeground(new java.awt.Color(255, 255, 255));
         cabecalho_Nome.setText("Cook Tok");
 
+        cbCodIngrediente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "x", "x" }));
+        cbCodIngrediente.setName("cbCodIngrediente"); // NOI18N
+
         javax.swing.GroupLayout PainelCabecalhoLayout = new javax.swing.GroupLayout(PainelCabecalho);
         PainelCabecalho.setLayout(PainelCabecalhoLayout);
         PainelCabecalhoLayout.setHorizontalGroup(
@@ -116,13 +130,17 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
             .addGroup(PainelCabecalhoLayout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addComponent(cabecalho_Nome, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(cbCodIngrediente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(151, 151, 151))
         );
         PainelCabecalhoLayout.setVerticalGroup(
             PainelCabecalhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PainelCabecalhoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(cabecalho_Nome, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
+                .addGroup(PainelCabecalhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cabecalho_Nome, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
+                    .addComponent(cbCodIngrediente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -170,7 +188,12 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
         txtCombo_Box_ingredientes.setBackground(new java.awt.Color(204, 204, 255));
         txtCombo_Box_ingredientes.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
         txtCombo_Box_ingredientes.setForeground(new java.awt.Color(255, 255, 255));
-        txtCombo_Box_ingredientes.setModel(new javax.swing.DefaultComboBoxModel<>(listaIngrediente[]));
+        txtCombo_Box_ingredientes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Adicionar novo" }));
+        txtCombo_Box_ingredientes.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtCombo_Box_ingredientesFocusLost(evt);
+            }
+        });
 
         txtIngrediente_Quantidade.setBackground(new java.awt.Color(204, 204, 255));
         txtIngrediente_Quantidade.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
@@ -209,6 +232,11 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
         Button_Excluir_Ingrediente_Tabela.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
         Button_Excluir_Ingrediente_Tabela.setForeground(new java.awt.Color(255, 255, 255));
         Button_Excluir_Ingrediente_Tabela.setText("Excluir");
+        Button_Excluir_Ingrediente_Tabela.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Button_Excluir_Ingrediente_TabelaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout PainelIngredientesLayout = new javax.swing.GroupLayout(PainelIngredientes);
         PainelIngredientes.setLayout(PainelIngredientesLayout);
@@ -364,34 +392,75 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
     }//GEN-LAST:event_Button_ContinuarActionPerformed
     }
     private void Button_Adicionar_IngredienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_Adicionar_IngredienteActionPerformed
-        String palavra = (String) txtCombo_Box_ingredientes.getSelectedItem();
+        String ingre = (String) txtCombo_Box_ingredientes.getSelectedItem();
         int quantidade = Integer.parseInt(txtIngrediente_Quantidade.getText());
         String unidade = (String) jComboBox1.getSelectedItem();
-        String msg_Default  = "Escolha uma opção";
-        String msg_Default2  = "Unidade";
-        if (palavra.equals(msg_Default)) {
+        
+        if (ingre.equals("Selecione")) {
             Poupop.setSize(400, 200);
             mensagem_de_alerta.setText("Selecione algum ingrediente!");
             Poupop.add(mensagem_de_alerta);
             Poupop.setVisible(true);
-        } else if (quantidade == 0) {
+        } else if (ingre.equals("Adicionar novo")) {
+            adicionarNovoIngrediente();
+        } else if (quantidade == 0){
             Poupop.setSize(400, 200);
             mensagem_de_alerta.setText("Digite um valor para a quantidade!");
             Poupop.add(mensagem_de_alerta);
             Poupop.setVisible(true);
-        } else if (unidade.equals(msg_Default2)){
+        } else if (unidade.equals("Unidade")){
             Poupop.setSize(400, 200);
             mensagem_de_alerta.setText("Selecione alguma unidade de medida!");
             Poupop.add(mensagem_de_alerta);
             Poupop.setVisible(true);
-        } else {
+        }else{   
             //tabela_de_ingredientes
             DefaultTableModel model = (DefaultTableModel) tabela_de_ingredientes.getModel();
-            Object[] linha = {palavra, quantidade, unidade};
+            Object[] linha = {ingre, quantidade, unidade};
             model.addRow(linha);
         }
     }//GEN-LAST:event_Button_Adicionar_IngredienteActionPerformed
 
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        carregaIngredientes();
+    }//GEN-LAST:event_formWindowOpened
+
+    private void txtCombo_Box_ingredientesFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCombo_Box_ingredientesFocusLost
+        cbCodIngrediente.setSelectedIndex(txtCombo_Box_ingredientes.getSelectedIndex());
+    }//GEN-LAST:event_txtCombo_Box_ingredientesFocusLost
+
+    private void Button_Excluir_Ingrediente_TabelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_Excluir_Ingrediente_TabelaActionPerformed
+        if(tabela_de_ingredientes.getSelectedRow() != -1){
+            int linha = tabela_de_ingredientes.getSelectedRow();
+            DefaultTableModel model = (DefaultTableModel) tabela_de_ingredientes.getModel();
+            model.removeRow(linha);}
+    }//GEN-LAST:event_Button_Excluir_Ingrediente_TabelaActionPerformed
+
+    public void carregaIngredientes(){
+        String sql = "SELECT * from dbcooktok.tbingrediente";
+        try {
+            Connection conn = ConexaoFactory.getConexao();
+            Statement stat = conn.createStatement();
+            
+            ResultSet result = stat.executeQuery(sql);
+            while(result.next()){
+                cbCodIngrediente.addItem(Integer.toString(result.getInt("pkcodingre"))) ;
+                txtCombo_Box_ingredientes.addItem(result.getString("nomeingre"));
+            }
+            ConexaoFactory.close(conn,stat);
+            System.out.println("Ingrediente deletado com sucesso");
+        } catch (SQLException throwables) {
+            System.out.println("Erro ao deletar Ingrediente");
+        } 
+    }    
+    
+    public void adicionarNovoIngrediente(){
+        Poupop.setSize(400, 200);
+        mensagem_de_alerta.setText("Ainda NÃO foi programado, chame o Igor");
+        Poupop.add(mensagem_de_alerta);
+        Poupop.setVisible(true);
+    }
+    
     public static void main(String args[]) {
         //MASSA PARA TESTES 
         //INGREDIENTES
@@ -404,7 +473,7 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
         Ingrediente ingre7 = new Ingrediente("Granulado");
         Ingrediente ingre8 = new Ingrediente("Creme de Leite");
 
-        String listaIngrediente[] = {ingre1.getNome_Ingred() , ingre2.getNome_Ingred(), ingre, ingre4, ingre5, ingre6, ingre7, ingre8};
+        //String listaIngrediente[] = {ingre1.getNome_Ingred() , ingre2.getNome_Ingred(), ingre, ingre4, ingre5, ingre6, ingre7, ingre8};
         
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -448,6 +517,7 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
     private javax.swing.JPanel PainelRodapé;
     private javax.swing.JDialog Poupop;
     private javax.swing.JLabel cabecalho_Nome;
+    private javax.swing.JComboBox<String> cbCodIngrediente;
     private javax.swing.JLabel descricao_indgredientes;
     private javax.swing.JLabel descricao_ingredientes_quantidade;
     private javax.swing.JLabel descricao_ingredientes_unidadedemedida;

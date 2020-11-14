@@ -64,7 +64,8 @@ public class TbIngrediente {
             
             ResultSet result = stat.executeQuery(sql);
             while(result.next()){
-                
+                result.getInt("pkcodingre");
+                result.getString("nomeingre");
             }
             ConexaoFactory.close(conn,stat);
             System.out.println("Ingrediente deletado com sucesso");

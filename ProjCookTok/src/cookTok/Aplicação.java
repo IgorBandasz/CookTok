@@ -4,13 +4,16 @@
  * and open the template in the editor.
  */
 package cookTok;
+
+import telas.TelaAdicionar_Ingrediente_Receita;
+
 /**
  *
  * @author ester
  */
 public class Aplicação {
     public static void main(String[] args) {
-        Ingrediente ingre1 = new Ingrediente("Farinha de Trigo");
+        /*Ingrediente ingre1 = new Ingrediente("Farinha de Trigo");
         Ingrediente ingre2 = new Ingrediente("Ovo");
         Ingrediente ingre3 = new Ingrediente("Leite");
         Ingrediente ingre4 = new Ingrediente("Manteiga");
@@ -21,7 +24,8 @@ public class Aplicação {
         System.out.println(ingre3.toString());
         System.out.println(ingre4.toString());
         System.out.println(ingre5.toString()); 
-        
-        
+        */
+        //TelaAdicionar_Ingrediente_Receita tela = new TelaAdicionar_Ingrediente_Receita();
+        new TelaAdicionar_Ingrediente_Receita().setVisible(true);
     }
 }
