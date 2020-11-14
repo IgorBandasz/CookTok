@@ -6,12 +6,14 @@
 package telas;
 
 import cookTok.Ingrediente;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author ester
  */
 public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
+
     /**
      * Creates new form TelaAdicionar_Ingrediente_Receita
      */
@@ -168,7 +170,7 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
         txtCombo_Box_ingredientes.setBackground(new java.awt.Color(204, 204, 255));
         txtCombo_Box_ingredientes.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
         txtCombo_Box_ingredientes.setForeground(new java.awt.Color(255, 255, 255));
-        txtCombo_Box_ingredientes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Escolha uma opção", "Item 2", "Item 3", "Item 4" }));
+        txtCombo_Box_ingredientes.setModel(new javax.swing.DefaultComboBoxModel<>(listaIngrediente[]));
 
         txtIngrediente_Quantidade.setBackground(new java.awt.Color(204, 204, 255));
         txtIngrediente_Quantidade.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
@@ -179,7 +181,7 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
         jComboBox1.setBackground(new java.awt.Color(204, 204, 255));
         jComboBox1.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
         jComboBox1.setForeground(new java.awt.Color(255, 255, 255));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "kg", "g", "ml ", "l" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Unidade", "kg", "g", "ml ", "l" }));
 
         Button_Adicionar_Ingrediente.setBackground(new java.awt.Color(204, 204, 255));
         Button_Adicionar_Ingrediente.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
@@ -195,10 +197,7 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
         tabela_de_ingredientes.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
         tabela_de_ingredientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "Ingredientes", "Quntidade", "Unidade de Medida"
@@ -341,25 +340,22 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-   
+
     private void Button_ContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_ContinuarActionPerformed
-        Ingrediente ingrediente= new Ingrediente ();
+        Ingrediente ingrediente = new Ingrediente();
         if (txtNome_Receita.getText().isEmpty()) {
             Poupop.setSize(400, 200);
             mensagem_de_alerta.setText("Digite nome da receita!");
-            Poupop.add(mensagem_de_alerta); 
+            Poupop.add(mensagem_de_alerta);
             Poupop.setVisible(true);
             Poupop.setVisible(true);
-        } 
-        /*else if (tabela_de_ingredientes.getValueAt(1,1).toString().isEmpty()){
+        } /*else if (tabela_de_ingredientes.getValueAt(1,1).toString().isEmpty()){
             Poupop.setSize(400, 200);
             mensagem_de_alerta.setText("Digite um ingrediente!");
             Poupop.add(mensagem_de_alerta); 
             Poupop.setVisible(true);
             Poupop.setVisible(true);
-        */
-    
-        else {
+         */ else {
             Poupop.setSize(400, 200);
             ingrediente.setNome_Ingred((txtNome_Receita.getText()));
             mensagem_de_alerta.setText(ingrediente.getNome_Ingred());
@@ -368,15 +364,34 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
     }//GEN-LAST:event_Button_ContinuarActionPerformed
     }
     private void Button_Adicionar_IngredienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_Adicionar_IngredienteActionPerformed
-        String palavra =(String) txtCombo_Box_ingredientes.getSelectedItem();
-        Poupop.setSize(400, 200);
-        mensagem_de_alerta.setText(palavra);
-        Poupop.add(mensagem_de_alerta);
-        Poupop.setVisible(true);
+        String palavra = (String) txtCombo_Box_ingredientes.getSelectedItem();
+        int quantidade = Integer.parseInt(txtIngrediente_Quantidade.getText());
+        String unidade = (String) jComboBox1.getSelectedItem();
+        String msg_Default  = "Escolha uma opção";
+        String msg_Default2  = "Unidade";
+        if (palavra.equals(msg_Default)) {
+            Poupop.setSize(400, 200);
+            mensagem_de_alerta.setText("Selecione algum ingrediente!");
+            Poupop.add(mensagem_de_alerta);
+            Poupop.setVisible(true);
+        } else if (quantidade == 0) {
+            Poupop.setSize(400, 200);
+            mensagem_de_alerta.setText("Digite um valor para a quantidade!");
+            Poupop.add(mensagem_de_alerta);
+            Poupop.setVisible(true);
+        } else if (unidade.equals(msg_Default2)){
+            Poupop.setSize(400, 200);
+            mensagem_de_alerta.setText("Selecione alguma unidade de medida!");
+            Poupop.add(mensagem_de_alerta);
+            Poupop.setVisible(true);
+        } else {
+            //tabela_de_ingredientes
+            DefaultTableModel model = (DefaultTableModel) tabela_de_ingredientes.getModel();
+            Object[] linha = {palavra, quantidade, unidade};
+            model.addRow(linha);
+        }
     }//GEN-LAST:event_Button_Adicionar_IngredienteActionPerformed
 
-
-    
     public static void main(String args[]) {
         //MASSA PARA TESTES 
         //INGREDIENTES
@@ -389,6 +404,8 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
         Ingrediente ingre7 = new Ingrediente("Granulado");
         Ingrediente ingre8 = new Ingrediente("Creme de Leite");
 
+        String listaIngrediente[] = {ingre1.getNome_Ingred() , ingre2.getNome_Ingred(), ingre, ingre4, ingre5, ingre6, ingre7, ingre8};
+        
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -412,7 +429,6 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-       
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

@@ -363,13 +363,8 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="4">
-                    <StringItem index="0" value="Escolha uma op&#xe7;&#xe3;o"/>
-                    <StringItem index="1" value="Item 2"/>
-                    <StringItem index="2" value="Item 3"/>
-                    <StringItem index="3" value="Item 4"/>
-                  </StringArray>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(listaIngrediente[])" type="code"/>
                 </Property>
               </Properties>
               <AuxValues>
@@ -403,11 +398,12 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="4">
-                    <StringItem index="0" value="kg"/>
-                    <StringItem index="1" value="g"/>
-                    <StringItem index="2" value="ml "/>
-                    <StringItem index="3" value="l"/>
+                  <StringArray count="5">
+                    <StringItem index="0" value="Unidade"/>
+                    <StringItem index="1" value="kg"/>
+                    <StringItem index="2" value="g"/>
+                    <StringItem index="3" value="ml "/>
+                    <StringItem index="4" value="l"/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -448,7 +444,7 @@
                       <Font name="Comic Sans MS" size="12" style="0"/>
                     </Property>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="3" rowCount="4">
+                      <Table columnCount="3" rowCount="0">
                         <Column editable="true" title="Ingredientes" type="java.lang.Object"/>
                         <Column editable="true" title="Quntidade" type="java.lang.Object"/>
                         <Column editable="true" title="Unidade de Medida" type="java.lang.Object"/>
