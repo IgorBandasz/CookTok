@@ -62,14 +62,14 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
         Button_Continuar = new javax.swing.JButton();
         PainelInstrucoes = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txtNomeInstru = new javax.swing.JTextArea();
         lbInstrucao = new javax.swing.JLabel();
         lbTempo = new javax.swing.JLabel();
         txtTempoInstru = new javax.swing.JTextField();
         btAdicionarInstrucao = new javax.swing.JButton();
         btExcluirInstrucao = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tabela_de_instrucoes = new javax.swing.JTable();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -237,6 +237,9 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
                 "Ingredientes", "Quantidade", "Unidade de Medida"
             }
         ));
+        tabela_de_ingredientes.setCellSelectionEnabled(true);
+        tabela_de_ingredientes.setEditingRow(0);
+        tabela_de_ingredientes.setEnabled(false);
         jScrollPane2.setViewportView(tabela_de_ingredientes);
 
         btExcluirIngrediente.setBackground(new java.awt.Color(204, 204, 255));
@@ -336,9 +339,9 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane3.setViewportView(jTextArea1);
+        txtNomeInstru.setColumns(20);
+        txtNomeInstru.setRows(5);
+        jScrollPane3.setViewportView(txtNomeInstru);
 
         lbInstrucao.setText("Instrução:");
 
@@ -347,12 +350,17 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
         txtTempoInstru.setText("0");
 
         btAdicionarInstrucao.setText("Adicionar");
+        btAdicionarInstrucao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAdicionarInstrucaoActionPerformed(evt);
+            }
+        });
 
         btExcluirInstrucao.setText("Excluir");
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tabela_de_instrucoes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"dvsfbdf", null}
+
             },
             new String [] {
                 "Instrução", "Tempo(min)"
@@ -366,7 +374,9 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jScrollPane4.setViewportView(jTable2);
+        tabela_de_instrucoes.setCellSelectionEnabled(true);
+        tabela_de_instrucoes.setEnabled(false);
+        jScrollPane4.setViewportView(tabela_de_instrucoes);
 
         javax.swing.GroupLayout PainelInstrucoesLayout = new javax.swing.GroupLayout(PainelInstrucoes);
         PainelInstrucoes.setLayout(PainelInstrucoesLayout);
@@ -385,13 +395,9 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
                                 .addComponent(lbTempo))
                             .addGroup(PainelInstrucoesLayout.createSequentialGroup()
                                 .addGap(75, 75, 75)
-                                .addComponent(txtTempoInstru, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGap(156, 156, 156))
-                    .addGroup(PainelInstrucoesLayout.createSequentialGroup()
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 523, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtTempoInstru, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 523, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
                 .addGroup(PainelInstrucoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btAdicionarInstrucao, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btExcluirInstrucao, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -536,6 +542,28 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
             model.removeRow(linha);}
     }//GEN-LAST:event_btExcluirIngredienteActionPerformed
 
+    private void btAdicionarInstrucaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdicionarInstrucaoActionPerformed
+        String instru = txtNomeInstru.getText();
+        int tempo = Integer.parseInt(txtTempoInstru.getText());
+        
+        if (instru.equals("")) {
+            Poupop.setSize(400, 200);
+            mensagem_de_alerta.setText("Digite a Instrução!");
+            Poupop.add(mensagem_de_alerta);
+            Poupop.setVisible(true);
+        } else if (tempo == 0){
+            Poupop.setSize(400, 200);
+            mensagem_de_alerta.setText("Digite um valor para o tempo em minutos!");
+            Poupop.add(mensagem_de_alerta);
+            Poupop.setVisible(true);
+        }else{   
+            //tabela_de_ingredientes
+            DefaultTableModel model = (DefaultTableModel) tabela_de_instrucoes.getModel();
+            Object[] linha = {instru, tempo};
+            model.addRow(linha);
+        }
+    }//GEN-LAST:event_btAdicionarInstrucaoActionPerformed
+
     public void carregaIngredientes(){
         String sql = "SELECT * from dbcooktok.tbingrediente";
         try {
@@ -631,14 +659,14 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel lbInstrucao;
     private javax.swing.JLabel lbTempo;
     private javax.swing.JLabel mensagem_de_alerta;
     private javax.swing.JTable tabela_de_ingredientes;
+    private javax.swing.JTable tabela_de_instrucoes;
     private javax.swing.JComboBox<String> txtCombo_Box_ingredientes;
     private javax.swing.JTextField txtIngrediente_Quantidade;
+    private javax.swing.JTextArea txtNomeInstru;
     private javax.swing.JTextField txtNome_Receita;
     private javax.swing.JTextField txtTempoInstru;
     // End of variables declaration//GEN-END:variables
