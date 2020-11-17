@@ -121,13 +121,14 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
             }
         });
 
-        PainelFundo.setBackground(new java.awt.Color(204, 204, 255));
+        PainelFundo.setBackground(new java.awt.Color(8, 151, 157));
 
-        PainelCabecalho.setBackground(new java.awt.Color(204, 204, 255));
+        PainelCabecalho.setBackground(new java.awt.Color(204, 255, 255));
         PainelCabecalho.setForeground(new java.awt.Color(204, 204, 255));
 
+        cabecalho_Nome.setBackground(new java.awt.Color(25, 236, 243));
         cabecalho_Nome.setFont(new java.awt.Font("Comic Sans MS", 1, 48)); // NOI18N
-        cabecalho_Nome.setForeground(new java.awt.Color(255, 255, 255));
+        cabecalho_Nome.setForeground(new java.awt.Color(5, 91, 92));
         cabecalho_Nome.setText("Cook Tok");
 
         cbCodIngrediente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "x", "x" }));
@@ -155,10 +156,10 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        PainelNomeReceita.setBackground(new java.awt.Color(204, 204, 255));
+        PainelNomeReceita.setBackground(new java.awt.Color(204, 171, 216));
 
         descricao_nome_receita.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        descricao_nome_receita.setForeground(new java.awt.Color(255, 255, 255));
+        descricao_nome_receita.setForeground(new java.awt.Color(5, 91, 92));
         descricao_nome_receita.setText("Nome da Receita:");
 
         javax.swing.GroupLayout PainelNomeReceitaLayout = new javax.swing.GroupLayout(PainelNomeReceita);
@@ -182,7 +183,7 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
                 .addGap(19, 19, 19))
         );
 
-        PainelIngredientes.setBackground(new java.awt.Color(204, 204, 255));
+        PainelIngredientes.setBackground(new java.awt.Color(110, 198, 202));
 
         descricao_indgredientes.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
         descricao_indgredientes.setForeground(new java.awt.Color(255, 255, 255));
@@ -206,7 +207,7 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
             }
         });
 
-        txtIngrediente_Quantidade.setBackground(new java.awt.Color(204, 204, 255));
+        txtIngrediente_Quantidade.setBackground(new java.awt.Color(110, 198, 202));
         txtIngrediente_Quantidade.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
         txtIngrediente_Quantidade.setForeground(new java.awt.Color(255, 255, 255));
         txtIngrediente_Quantidade.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -217,7 +218,7 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
         jComboBox1.setForeground(new java.awt.Color(255, 255, 255));
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Unidade", "kg", "g", "ml ", "l" }));
 
-        btAdicionarIngrediente.setBackground(new java.awt.Color(204, 204, 255));
+        btAdicionarIngrediente.setBackground(new java.awt.Color(204, 171, 216));
         btAdicionarIngrediente.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
         btAdicionarIngrediente.setForeground(new java.awt.Color(255, 255, 255));
         btAdicionarIngrediente.setText("Adicionar");
@@ -260,6 +261,17 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addGroup(PainelIngredientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PainelIngredientesLayout.createSequentialGroup()
+                        .addGroup(PainelIngredientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(PainelIngredientesLayout.createSequentialGroup()
+                                .addGap(418, 418, 418)
+                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(PainelIngredientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btExcluirIngrediente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btAdicionarIngrediente, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE))
+                        .addGap(70, 70, 70))
+                    .addGroup(PainelIngredientesLayout.createSequentialGroup()
                         .addGroup(PainelIngredientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(descricao_indgredientes)
                             .addComponent(txtCombo_Box_ingredientes, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -270,21 +282,8 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
                                 .addGap(10, 10, 10)
                                 .addComponent(txtIngrediente_Quantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(28, 28, 28)
-                        .addGroup(PainelIngredientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(PainelIngredientesLayout.createSequentialGroup()
-                                .addComponent(descricao_ingredientes_unidadedemedida)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelIngredientesLayout.createSequentialGroup()
-                                .addGap(29, 29, 29)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
-                                .addGroup(PainelIngredientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(btExcluirIngrediente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btAdicionarIngrediente, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE))
-                                .addGap(70, 70, 70))))
-                    .addGroup(PainelIngredientesLayout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addComponent(descricao_ingredientes_unidadedemedida)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         PainelIngredientesLayout.setVerticalGroup(
             PainelIngredientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -300,16 +299,17 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
                     .addComponent(txtIngrediente_Quantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBox1)
                     .addComponent(btAdicionarIngrediente, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
                 .addGroup(PainelIngredientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(PainelIngredientesLayout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(btExcluirIngrediente)))
-                .addGap(67, 67, 67))
+                        .addGap(44, 44, 44)
+                        .addComponent(btExcluirIngrediente))
+                    .addGroup(PainelIngredientesLayout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
 
-        PainelRodapé.setBackground(new java.awt.Color(204, 204, 255));
+        PainelRodapé.setBackground(new java.awt.Color(110, 198, 202));
 
         Button_Continuar.setBackground(new java.awt.Color(204, 204, 255));
         Button_Continuar.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
@@ -336,8 +336,10 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
             .addGroup(PainelRodapéLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(Button_Continuar)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
+
+        PainelInstrucoes.setBackground(new java.awt.Color(204, 171, 216));
 
         txtNomeInstru.setColumns(20);
         txtNomeInstru.setRows(5);
@@ -400,8 +402,8 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
                             .addGroup(PainelInstrucoesLayout.createSequentialGroup()
                                 .addGap(75, 75, 75)
                                 .addComponent(txtTempoInstru, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 523, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 482, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 238, Short.MAX_VALUE)
                 .addGroup(PainelInstrucoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btAdicionarInstrucao, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btExcluirInstrucao, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -422,8 +424,8 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtTempoInstru, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(12, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelInstrucoesLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btAdicionarInstrucao)
@@ -436,14 +438,14 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
         PainelFundo.setLayout(PainelFundoLayout);
         PainelFundoLayout.setHorizontalGroup(
             PainelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PainelFundoLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelFundoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(PainelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(PainelNomeReceita, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(PainelIngredientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(PainelCabecalho, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(PainelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(PainelRodapé, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(PainelInstrucoes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(PainelInstrucoes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(PainelIngredientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(PainelNomeReceita, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(PainelCabecalho, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         PainelFundoLayout.setVerticalGroup(
@@ -453,13 +455,13 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
                 .addComponent(PainelCabecalho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(PainelNomeReceita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(PainelIngredientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(PainelInstrucoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(PainelRodapé, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -472,7 +474,9 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PainelFundo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(PainelFundo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 8, Short.MAX_VALUE))
         );
 
         pack();
