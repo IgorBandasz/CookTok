@@ -357,6 +357,11 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
         });
 
         btExcluirInstrucao.setText("Excluir");
+        btExcluirInstrucao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btExcluirInstrucaoActionPerformed(evt);
+            }
+        });
 
         tabela_de_instrucoes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -374,8 +379,7 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        tabela_de_instrucoes.setCellSelectionEnabled(true);
-        tabela_de_instrucoes.setEnabled(false);
+        tabela_de_instrucoes.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane4.setViewportView(tabela_de_instrucoes);
 
         javax.swing.GroupLayout PainelInstrucoesLayout = new javax.swing.GroupLayout(PainelInstrucoes);
@@ -563,6 +567,13 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
             model.addRow(linha);
         }
     }//GEN-LAST:event_btAdicionarInstrucaoActionPerformed
+
+    private void btExcluirInstrucaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirInstrucaoActionPerformed
+        if(tabela_de_instrucoes.getSelectedRow() != -1){
+            int linha = tabela_de_instrucoes.getSelectedRow();
+            DefaultTableModel model = (DefaultTableModel) tabela_de_instrucoes.getModel();
+            model.removeRow(linha);}
+    }//GEN-LAST:event_btExcluirInstrucaoActionPerformed
 
     public void carregaIngredientes(){
         String sql = "SELECT * from dbcooktok.tbingrediente";
