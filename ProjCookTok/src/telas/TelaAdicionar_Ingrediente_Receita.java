@@ -159,7 +159,6 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
         PainelNomeReceita.setBackground(new java.awt.Color(204, 171, 216));
 
         descricao_nome_receita.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        descricao_nome_receita.setForeground(new java.awt.Color(5, 91, 92));
         descricao_nome_receita.setText("Nome da Receita:");
 
         javax.swing.GroupLayout PainelNomeReceitaLayout = new javax.swing.GroupLayout(PainelNomeReceita);
@@ -186,20 +185,16 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
         PainelIngredientes.setBackground(new java.awt.Color(110, 198, 202));
 
         descricao_indgredientes.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        descricao_indgredientes.setForeground(new java.awt.Color(255, 255, 255));
         descricao_indgredientes.setText("Ingrediente:");
 
         descricao_ingredientes_quantidade.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        descricao_ingredientes_quantidade.setForeground(new java.awt.Color(255, 255, 255));
         descricao_ingredientes_quantidade.setText("Quantidade");
 
         descricao_ingredientes_unidadedemedida.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        descricao_ingredientes_unidadedemedida.setForeground(new java.awt.Color(255, 255, 255));
         descricao_ingredientes_unidadedemedida.setText("Unidade de Medida");
 
         txtCombo_Box_ingredientes.setBackground(new java.awt.Color(204, 204, 255));
         txtCombo_Box_ingredientes.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
-        txtCombo_Box_ingredientes.setForeground(new java.awt.Color(255, 255, 255));
         txtCombo_Box_ingredientes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Adicionar novo" }));
         txtCombo_Box_ingredientes.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -207,20 +202,16 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
             }
         });
 
-        txtIngrediente_Quantidade.setBackground(new java.awt.Color(110, 198, 202));
         txtIngrediente_Quantidade.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        txtIngrediente_Quantidade.setForeground(new java.awt.Color(255, 255, 255));
         txtIngrediente_Quantidade.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtIngrediente_Quantidade.setText("0");
 
         jComboBox1.setBackground(new java.awt.Color(204, 204, 255));
         jComboBox1.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
-        jComboBox1.setForeground(new java.awt.Color(255, 255, 255));
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Unidade", "kg", "g", "ml ", "l" }));
 
         btAdicionarIngrediente.setBackground(new java.awt.Color(204, 171, 216));
         btAdicionarIngrediente.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
-        btAdicionarIngrediente.setForeground(new java.awt.Color(255, 255, 255));
         btAdicionarIngrediente.setText("Adicionar");
         btAdicionarIngrediente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -245,7 +236,6 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
 
         btExcluirIngrediente.setBackground(new java.awt.Color(204, 204, 255));
         btExcluirIngrediente.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
-        btExcluirIngrediente.setForeground(new java.awt.Color(255, 255, 255));
         btExcluirIngrediente.setText("Excluir");
         btExcluirIngrediente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -266,7 +256,7 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
                                 .addGap(418, 418, 418)
                                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 218, Short.MAX_VALUE)
                         .addGroup(PainelIngredientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btExcluirIngrediente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btAdicionarIngrediente, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE))
@@ -313,7 +303,6 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
 
         Button_Continuar.setBackground(new java.awt.Color(204, 204, 255));
         Button_Continuar.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
-        Button_Continuar.setForeground(new java.awt.Color(255, 255, 255));
         Button_Continuar.setText("Continuar");
         Button_Continuar.setToolTipText("");
         Button_Continuar.addActionListener(new java.awt.event.ActionListener() {
@@ -403,10 +392,10 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
                                 .addGap(75, 75, 75)
                                 .addComponent(txtTempoInstru, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 482, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 238, Short.MAX_VALUE)
-                .addGroup(PainelInstrucoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btAdicionarInstrucao, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btExcluirInstrucao, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(PainelInstrucoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btExcluirInstrucao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btAdicionarInstrucao, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE))
                 .addGap(73, 73, 73))
         );
         PainelInstrucoesLayout.setVerticalGroup(
