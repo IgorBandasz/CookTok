@@ -622,9 +622,7 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
     }//GEN-LAST:event_btExcluirInstrucaoActionPerformed
 
     private void OKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OKActionPerformed
-       Poupop.setVisible(false);
-//       Poupop.setDefaultCloseOperation(JDialog.EXIT_ON_CLOSE);
-       
+       Poupop.setVisible(false);      
     }//GEN-LAST:event_OKActionPerformed
 
     public void carregaIngredientes(){
