@@ -208,7 +208,7 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
 
         jComboBox1.setBackground(new java.awt.Color(204, 204, 255));
         jComboBox1.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Unidade", "kg", "g", "ml ", "l" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Unidade", "kg", "g", "ml ", "l", "uni." }));
 
         btAdicionarIngrediente.setBackground(new java.awt.Color(204, 171, 216));
         btAdicionarIngrediente.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
@@ -251,12 +251,12 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addGroup(PainelIngredientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PainelIngredientesLayout.createSequentialGroup()
-                        .addGroup(PainelIngredientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(PainelIngredientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(PainelIngredientesLayout.createSequentialGroup()
                                 .addGap(418, 418, 418)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 218, Short.MAX_VALUE)
+                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 208, Short.MAX_VALUE)
                         .addGroup(PainelIngredientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btExcluirIngrediente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btAdicionarIngrediente, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE))
@@ -287,7 +287,7 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
                 .addGroup(PainelIngredientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtCombo_Box_ingredientes, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtIngrediente_Quantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btAdicionarIngrediente, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(PainelIngredientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PainelIngredientesLayout.createSequentialGroup()
@@ -549,12 +549,12 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
         String instru = txtNomeInstru.getText();
         int tempo = Integer.parseInt(txtTempoInstru.getText());
         
-        if (instru.equals("")) {
+        if (txtNomeInstru.getText().length()==0) { 
             Poupop.setSize(400, 200);
             mensagem_de_alerta.setText("Digite a Instrução!");
             Poupop.add(mensagem_de_alerta);
             Poupop.setVisible(true);
-        } else if (tempo == 0){
+        } else if (tempo <= 0){
             Poupop.setSize(400, 200);
             mensagem_de_alerta.setText("Digite um valor para o tempo em minutos!");
             Poupop.add(mensagem_de_alerta);
@@ -563,7 +563,7 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
             //tabela_de_ingredientes
             DefaultTableModel model = (DefaultTableModel) tabela_de_instrucoes.getModel();
             Object[] linha = {instru, tempo};
-            model.addRow(linha);
+            model.addRow(linha);    
         }
     }//GEN-LAST:event_btAdicionarInstrucaoActionPerformed
 
