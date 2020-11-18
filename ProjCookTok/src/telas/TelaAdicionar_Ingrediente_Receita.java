@@ -564,7 +564,31 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
             Connection conn = ConexaoFactory.getConexao();
             Statement stat = conn.createStatement();
             
-            stat.execute(sql);
+           stat.execute(sql);
+                int codigo = 1;
+                sql = "SELECT max(pkcodreceita) as maior from dbcooktok.tbreceita";
+                System.out.println(sql);
+                ResultSet resultado = stat.executeQuery(sql);
+                while(resultado.next()){
+                    codigo = resultado.getInt("maior");
+                
+                /*      PRECISA MUDAR A TABELA
+                for(int linha=0; linha<tabela_de_ingredientes.getRowCount();linha++){
+                    sql = "INSERT INTO dbcooktok.tbrelingrerec (fkcodreceita, fkcodingre, )"
+                    + "VALUES ('"+tabela_de_instrucoes.getModel().getValueAt(linha, 0)
+                    +"',"+tabela_de_instrucoes.getModel().getValueAt(linha, 1)
+                    +","+codigo+")";
+                    
+                }*/
+                
+                for(int linha=0; linha<tabela_de_instrucoes.getRowCount();linha++){
+                    sql = "INSERT INTO dbcooktok.tbintrucoes (nomeinstru, tempoinstru, fkcodreceita)"
+                    + "VALUES ('"+tabela_de_instrucoes.getModel().getValueAt(linha, 0)
+                    +"',"+tabela_de_instrucoes.getModel().getValueAt(linha, 1)
+                    +","+codigo+")";
+                    stat.execute(sql);
+                }
+            }
             
             ConexaoFactory.close(conn,stat);
         } catch (SQLException throwables) {
