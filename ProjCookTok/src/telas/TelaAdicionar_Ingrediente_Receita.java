@@ -549,8 +549,30 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
             mensagem_de_alerta.setText(ingrediente.getNome_Ingred());
             Poupop.add(mensagem_de_alerta);
             Poupop.setVisible(true);
+        }
+        
+        int tempo = 0;
+        for(int linha=0; linha<tabela_de_instrucoes.getRowCount();linha++){
+            tempo = tempo + (Integer)tabela_de_instrucoes.getModel().getValueAt(linha, 1);
+        }
+        
+        String sql = "INSERT INTO dbcooktok.tbreceita (nomereceita, tempo)"
+                + "VALUES ('"+txtNome_Receita.getText()
+                +"',"+tempo+")";
+        System.out.println(sql);
+        try {
+            Connection conn = ConexaoFactory.getConexao();
+            Statement stat = conn.createStatement();
+            
+            stat.execute(sql);
+            
+            ConexaoFactory.close(conn,stat);
+        } catch (SQLException throwables) {
+            System.out.println("Erro ao inserir Receita");
+        } 
     }//GEN-LAST:event_Button_SalvarActionPerformed
-    }
+    
+ 
     private void btAdicionarIngredienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdicionarIngredienteActionPerformed
         String ingre = (String) txtCombo_Box_ingredientes.getSelectedItem();
         int quantidade = Integer.parseInt(txtIngrediente_Quantidade.getText());
