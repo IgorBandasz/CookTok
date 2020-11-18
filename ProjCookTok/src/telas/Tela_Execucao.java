@@ -5,6 +5,8 @@
  */
 package telas;
 
+import javax.swing.JLabel;
+
 /**
  *
  * @author ester
@@ -27,21 +29,342 @@ public class Tela_Execucao extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel13 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel_cabecalho = new javax.swing.JPanel();
+        titulo = new javax.swing.JLabel();
+        jPanel_Menu = new javax.swing.JPanel();
+        txt_jComboBox_filtro = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        detalhes_pesquisar = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        Receita3 = new javax.swing.JLabel();
+        Receita4 = new javax.swing.JLabel();
+        Receita5 = new javax.swing.JLabel();
+        Receita7 = new javax.swing.JLabel();
+        Receita8 = new javax.swing.JLabel();
+        Receita9 = new javax.swing.JLabel();
+        ButtonMaisReceitas = new javax.swing.JLabel();
+        Receita2 = new javax.swing.JLabel();
+        Receita1 = new javax.swing.JLabel();
+        Receita6 = new javax.swing.JLabel();
+        canvas1 = new java.awt.Canvas();
+
+        jLabel13.setBackground(new java.awt.Color(110, 198, 202));
+        jLabel13.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel13.setText("Receita 1");
+        jLabel13.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(8, 151, 157)));
+        jLabel13.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLabel13.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(8, 151, 157));
+
+        jPanel_cabecalho.setBackground(new java.awt.Color(8, 151, 157));
+        jPanel_cabecalho.setForeground(new java.awt.Color(8, 151, 157));
+
+        titulo.setBackground(new java.awt.Color(255, 255, 255));
+        titulo.setFont(new java.awt.Font("Comic Sans MS", 1, 48)); // NOI18N
+        titulo.setForeground(new java.awt.Color(255, 255, 255));
+        titulo.setText("Cook Tok");
+
+        jPanel_Menu.setBackground(new java.awt.Color(204, 171, 216));
+        jPanel_Menu.setForeground(new java.awt.Color(204, 171, 216));
+
+        txt_jComboBox_filtro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jButton1.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
+        jButton1.setText("Adicionar \nReceitas");
+        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton1.setInheritsPopupMenu(true);
+        jButton1.setMargin(new java.awt.Insets(2, 2, 2, 2));
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        detalhes_pesquisar.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        detalhes_pesquisar.setForeground(new java.awt.Color(255, 255, 255));
+        detalhes_pesquisar.setText("Pesquisar");
+
+        javax.swing.GroupLayout jPanel_MenuLayout = new javax.swing.GroupLayout(jPanel_Menu);
+        jPanel_Menu.setLayout(jPanel_MenuLayout);
+        jPanel_MenuLayout.setHorizontalGroup(
+            jPanel_MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_MenuLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addGroup(jPanel_MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel_MenuLayout.createSequentialGroup()
+                        .addComponent(detalhes_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel_MenuLayout.createSequentialGroup()
+                        .addComponent(txt_jComboBox_filtro, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28))))
+        );
+        jPanel_MenuLayout.setVerticalGroup(
+            jPanel_MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_MenuLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(detalhes_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel_MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_jComboBox_filtro, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
+                .addContainerGap())
+        );
+
+        jPanel3.setBackground(new java.awt.Color(204, 171, 216));
+        jPanel3.setForeground(new java.awt.Color(204, 171, 216));
+
+        jPanel6.setBackground(new java.awt.Color(110, 198, 202));
+
+        Receita3.setBackground(new java.awt.Color(110, 198, 202));
+        Receita3.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
+        Receita3.setForeground(new java.awt.Color(255, 255, 255));
+        Receita3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Receita3.setText("Receita 1");
+        Receita3.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(8, 151, 157)));
+        Receita3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Receita3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        Receita4.setBackground(new java.awt.Color(110, 198, 202));
+        Receita4.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
+        Receita4.setForeground(new java.awt.Color(255, 255, 255));
+        Receita4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Receita4.setText("Receita 1");
+        Receita4.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(8, 151, 157)));
+        Receita4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Receita4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        Receita5.setBackground(new java.awt.Color(110, 198, 202));
+        Receita5.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
+        Receita5.setForeground(new java.awt.Color(255, 255, 255));
+        Receita5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Receita5.setText("Receita 1");
+        Receita5.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(8, 151, 157)));
+        Receita5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Receita5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        Receita7.setBackground(new java.awt.Color(110, 198, 202));
+        Receita7.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
+        Receita7.setForeground(new java.awt.Color(255, 255, 255));
+        Receita7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Receita7.setText("Receita 1");
+        Receita7.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(8, 151, 157)));
+        Receita7.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Receita7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        Receita8.setBackground(new java.awt.Color(110, 198, 202));
+        Receita8.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
+        Receita8.setForeground(new java.awt.Color(255, 255, 255));
+        Receita8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Receita8.setText("Receita 1");
+        Receita8.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(8, 151, 157)));
+        Receita8.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Receita8.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        Receita9.setBackground(new java.awt.Color(110, 198, 202));
+        Receita9.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
+        Receita9.setForeground(new java.awt.Color(255, 255, 255));
+        Receita9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Receita9.setText("Receita 1");
+        Receita9.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(8, 151, 157)));
+        Receita9.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Receita9.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        ButtonMaisReceitas.setBackground(new java.awt.Color(110, 198, 202));
+        ButtonMaisReceitas.setFont(new java.awt.Font("Comic Sans MS", 1, 48)); // NOI18N
+        ButtonMaisReceitas.setForeground(new java.awt.Color(255, 255, 255));
+        ButtonMaisReceitas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ButtonMaisReceitas.setText("+");
+        ButtonMaisReceitas.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(8, 151, 157)));
+        ButtonMaisReceitas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        ButtonMaisReceitas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        Receita2.setBackground(new java.awt.Color(110, 198, 202));
+        Receita2.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
+        Receita2.setForeground(new java.awt.Color(255, 255, 255));
+        Receita2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Receita2.setText("Receita 2");
+        Receita2.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(8, 151, 157)));
+        Receita2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Receita2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        Receita1.setBackground(new java.awt.Color(110, 198, 202));
+        Receita1.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
+        Receita1.setForeground(new java.awt.Color(255, 255, 255));
+        Receita1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Receita1.setText("Receita 1");
+        Receita1.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(8, 151, 157)));
+        Receita1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Receita1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Receita1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                Receita1MouseEntered(evt);
+            }
+        });
+
+        Receita6.setBackground(new java.awt.Color(110, 198, 202));
+        Receita6.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
+        Receita6.setForeground(new java.awt.Color(255, 255, 255));
+        Receita6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Receita6.setText("Receita 1");
+        Receita6.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(8, 151, 157)));
+        Receita6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Receita6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(Receita1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Receita6, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(50, 50, 50)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Receita2, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Receita7, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Receita3, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Receita8, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(54, 54, 54)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Receita4, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Receita9, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(56, 56, 56)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Receita5, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ButtonMaisReceitas, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Receita4, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Receita5, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Receita9, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ButtonMaisReceitas, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel6Layout.createSequentialGroup()
+                            .addComponent(Receita3, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(Receita8, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addComponent(Receita2, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(Receita7, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addComponent(Receita1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(Receita6, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(33, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout jPanel_cabecalhoLayout = new javax.swing.GroupLayout(jPanel_cabecalho);
+        jPanel_cabecalho.setLayout(jPanel_cabecalhoLayout);
+        jPanel_cabecalhoLayout.setHorizontalGroup(
+            jPanel_cabecalhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_cabecalhoLayout.createSequentialGroup()
+                .addGroup(jPanel_cabecalhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel_cabecalhoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel_Menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel_cabecalhoLayout.createSequentialGroup()
+                        .addGap(61, 61, 61)
+                        .addComponent(titulo)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel_cabecalhoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel_cabecalhoLayout.setVerticalGroup(
+            jPanel_cabecalhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_cabecalhoLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(titulo)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel_Menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17)
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(181, 181, 181))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jPanel_cabecalho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 6, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jPanel_cabecalho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(132, 132, 132)
+                .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 593, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 24, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void Receita1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Receita1MouseEntered
+       setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(8, 151, 157)));
+    }//GEN-LAST:event_Receita1MouseEntered
 
     /**
      * @param args the command line arguments
@@ -80,5 +403,27 @@ public class Tela_Execucao extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel ButtonMaisReceitas;
+    private javax.swing.JLabel Receita1;
+    private javax.swing.JLabel Receita2;
+    private javax.swing.JLabel Receita3;
+    private javax.swing.JLabel Receita4;
+    private javax.swing.JLabel Receita5;
+    private javax.swing.JLabel Receita6;
+    private javax.swing.JLabel Receita7;
+    private javax.swing.JLabel Receita8;
+    private javax.swing.JLabel Receita9;
+    private java.awt.Canvas canvas1;
+    private javax.swing.JLabel detalhes_pesquisar;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel_Menu;
+    private javax.swing.JPanel jPanel_cabecalho;
+    private javax.swing.JLabel titulo;
+    private javax.swing.JComboBox<String> txt_jComboBox_filtro;
     // End of variables declaration//GEN-END:variables
 }
