@@ -59,7 +59,7 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
         tabela_de_ingredientes = new javax.swing.JTable();
         btExcluirIngrediente = new javax.swing.JButton();
         PainelRodapé = new javax.swing.JPanel();
-        Button_Continuar = new javax.swing.JButton();
+        Button_Salvar = new javax.swing.JButton();
         PainelInstrucoes = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         txtNomeInstru = new javax.swing.JTextArea();
@@ -301,13 +301,13 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
 
         PainelRodapé.setBackground(new java.awt.Color(110, 198, 202));
 
-        Button_Continuar.setBackground(new java.awt.Color(204, 204, 255));
-        Button_Continuar.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
-        Button_Continuar.setText("Continuar");
-        Button_Continuar.setToolTipText("");
-        Button_Continuar.addActionListener(new java.awt.event.ActionListener() {
+        Button_Salvar.setBackground(new java.awt.Color(204, 204, 255));
+        Button_Salvar.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
+        Button_Salvar.setText("Salvar");
+        Button_Salvar.setToolTipText("");
+        Button_Salvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Button_ContinuarActionPerformed(evt);
+                Button_SalvarActionPerformed(evt);
             }
         });
 
@@ -317,14 +317,14 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
             PainelRodapéLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelRodapéLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Button_Continuar, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Button_Salvar, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(68, 68, 68))
         );
         PainelRodapéLayout.setVerticalGroup(
             PainelRodapéLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PainelRodapéLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(Button_Continuar)
+                .addComponent(Button_Salvar)
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
@@ -472,7 +472,7 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
 
-    private void Button_ContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_ContinuarActionPerformed
+    private void Button_SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_SalvarActionPerformed
         Ingrediente ingrediente = new Ingrediente();
         if (txtNome_Receita.getText().isEmpty()) {
             Poupop.setSize(400, 200);
@@ -480,19 +480,25 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
             Poupop.add(mensagem_de_alerta);
             Poupop.setVisible(true);
             Poupop.setVisible(true);
-        } /*else if (tabela_de_ingredientes.getValueAt(1,1).toString().isEmpty()){
+        } else if (tabela_de_ingredientes.getRowCount()==0){
             Poupop.setSize(400, 200);
-            mensagem_de_alerta.setText("Digite um ingrediente!");
+            mensagem_de_alerta.setText("Adicione uma ingrediente!");
             Poupop.add(mensagem_de_alerta); 
             Poupop.setVisible(true);
             Poupop.setVisible(true);
-         */ else {
+        } else if (tabela_de_instrucoes.getRowCount()==0){
+            Poupop.setSize(400, 200);
+            mensagem_de_alerta.setText("Adicione uma instrução!");
+            Poupop.add(mensagem_de_alerta); 
+            Poupop.setVisible(true);
+            Poupop.setVisible(true);
+        }else {
             Poupop.setSize(400, 200);
             ingrediente.setNome_Ingred((txtNome_Receita.getText()));
             mensagem_de_alerta.setText(ingrediente.getNome_Ingred());
             Poupop.add(mensagem_de_alerta);
             Poupop.setVisible(true);
-    }//GEN-LAST:event_Button_ContinuarActionPerformed
+    }//GEN-LAST:event_Button_SalvarActionPerformed
     }
     private void btAdicionarIngredienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdicionarIngredienteActionPerformed
         String ingre = (String) txtCombo_Box_ingredientes.getSelectedItem();
@@ -638,7 +644,7 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Button_Continuar;
+    private javax.swing.JButton Button_Salvar;
     private javax.swing.JPanel PainelCabecalho;
     private javax.swing.JPanel PainelFundo;
     private javax.swing.JPanel PainelIngredientes;
