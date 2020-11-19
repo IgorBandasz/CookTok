@@ -11,8 +11,6 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import javax.swing.JDialog;
-import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -563,26 +561,24 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
         try {
             Connection conn = ConexaoFactory.getConexao();
             Statement stat = conn.createStatement();
-            
-           stat.execute(sql);
-                int codigo = 1;
-                sql = "SELECT max(pkcodreceita) as maior from dbcooktok.tbreceita";
-                System.out.println(sql);
-                ResultSet resultado = stat.executeQuery(sql);
-                while(resultado.next()){
-                    codigo = resultado.getInt("maior");
-                
-                /*      PRECISA MUDAR A TABELA
+            stat.execute(sql);
+            int codigo = 1;
+            sql = "SELECT max(pkcodreceita) as maior from dbcooktok.tbreceita";
+            ResultSet resultado = stat.executeQuery(sql);
+            while(resultado.next()){
+                codigo = resultado.getInt("maior");
+                          
                 for(int linha=0; linha<tabela_de_ingredientes.getRowCount();linha++){
-                    sql = "INSERT INTO dbcooktok.tbrelingrerec (fkcodreceita, fkcodingre, )"
-                    + "VALUES ('"+tabela_de_instrucoes.getModel().getValueAt(linha, 0)
-                    +"',"+tabela_de_instrucoes.getModel().getValueAt(linha, 1)
-                    +","+codigo+")";
-                    
-                }*/
+                    sql = "INSERT INTO dbcooktok.tbrelingrerec (fkcodreceita, fkcodingre, quantidade, medida)"
+                    + "VALUES ('"+codigo 
+                    +"',"+cbCodIngrediente.getSelectedItem()
+                    +","+tabela_de_instrucoes.getModel().getValueAt(linha, 1)
+                    +",'"+tabela_de_instrucoes.getModel().getValueAt(linha, 2)+"')";
+                    stat.execute(sql);
+                }
                 
                 for(int linha=0; linha<tabela_de_instrucoes.getRowCount();linha++){
-                    sql = "INSERT INTO dbcooktok.tbintrucoes (nomeinstru, tempoinstru, fkcodreceita)"
+                    sql = "INSERT INTO dbcooktok.tbinstrucao (nomeinstru, tempoinstru, fkcodreceita)"
                     + "VALUES ('"+tabela_de_instrucoes.getModel().getValueAt(linha, 0)
                     +"',"+tabela_de_instrucoes.getModel().getValueAt(linha, 1)
                     +","+codigo+")";
