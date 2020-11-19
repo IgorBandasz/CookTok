@@ -34,10 +34,10 @@ public class Tela_Execucao extends javax.swing.JFrame {
         jPanel_cabecalho = new javax.swing.JPanel();
         titulo = new javax.swing.JLabel();
         jPanel_Menu = new javax.swing.JPanel();
-        txt_jComboBox_filtro = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
         jComboBox2 = new javax.swing.JComboBox<>();
         detalhes_pesquisar = new javax.swing.JLabel();
+        txtPesquisar = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         Receita3 = new javax.swing.JLabel();
@@ -50,6 +50,7 @@ public class Tela_Execucao extends javax.swing.JFrame {
         Receita2 = new javax.swing.JLabel();
         Receita1 = new javax.swing.JLabel();
         Receita6 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         canvas1 = new java.awt.Canvas();
 
         jLabel13.setBackground(new java.awt.Color(110, 198, 202));
@@ -76,49 +77,47 @@ public class Tela_Execucao extends javax.swing.JFrame {
         jPanel_Menu.setBackground(new java.awt.Color(204, 171, 216));
         jPanel_Menu.setForeground(new java.awt.Color(204, 171, 216));
 
-        txt_jComboBox_filtro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jButton1.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
-        jButton1.setText("Adicionar \nReceitas");
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton1.setInheritsPopupMenu(true);
-        jButton1.setMargin(new java.awt.Insets(2, 2, 2, 2));
-
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Filtro", "Ingrediente", "Nome", "Tempo" }));
 
         detalhes_pesquisar.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
         detalhes_pesquisar.setForeground(new java.awt.Color(255, 255, 255));
         detalhes_pesquisar.setText("Pesquisar");
+
+        jButton2.setText("Pesquisar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel_MenuLayout = new javax.swing.GroupLayout(jPanel_Menu);
         jPanel_Menu.setLayout(jPanel_MenuLayout);
         jPanel_MenuLayout.setHorizontalGroup(
             jPanel_MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel_MenuLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
+                .addGap(55, 55, 55)
                 .addGroup(jPanel_MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel_MenuLayout.createSequentialGroup()
                         .addComponent(detalhes_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel_MenuLayout.createSequentialGroup()
-                        .addComponent(txt_jComboBox_filtro, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(103, 103, 103)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(100, 100, 100))
         );
         jPanel_MenuLayout.setVerticalGroup(
             jPanel_MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_MenuLayout.createSequentialGroup()
+            .addGroup(jPanel_MenuLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(detalhes_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel_MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_jComboBox_filtro, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addContainerGap())
+                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(13, 13, 13))
         );
 
         jPanel3.setBackground(new java.awt.Color(204, 171, 216));
@@ -295,6 +294,12 @@ public class Tela_Execucao extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jButton1.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
+        jButton1.setText("Adicionar \nReceitas");
+        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton1.setInheritsPopupMenu(true);
+        jButton1.setMargin(new java.awt.Insets(2, 2, 2, 2));
+
         javax.swing.GroupLayout jPanel_cabecalhoLayout = new javax.swing.GroupLayout(jPanel_cabecalho);
         jPanel_cabecalho.setLayout(jPanel_cabecalhoLayout);
         jPanel_cabecalhoLayout.setHorizontalGroup(
@@ -302,22 +307,26 @@ public class Tela_Execucao extends javax.swing.JFrame {
             .addGroup(jPanel_cabecalhoLayout.createSequentialGroup()
                 .addGroup(jPanel_cabecalhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel_cabecalhoLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel_Menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel_cabecalhoLayout.createSequentialGroup()
                         .addGap(61, 61, 61)
                         .addComponent(titulo)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(24, 24, 24))
                     .addGroup(jPanel_cabecalhoLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel_cabecalhoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel_Menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel_cabecalhoLayout.setVerticalGroup(
             jPanel_cabecalhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel_cabecalhoLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(titulo)
+                .addGroup(jPanel_cabecalhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(titulo)
+                    .addComponent(jButton1))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel_Menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(17, 17, 17)
@@ -363,8 +372,12 @@ public class Tela_Execucao extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Receita1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Receita1MouseEntered
-       setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(8, 151, 157)));
+       
     }//GEN-LAST:event_Receita1MouseEntered
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+  
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -416,6 +429,7 @@ public class Tela_Execucao extends javax.swing.JFrame {
     private java.awt.Canvas canvas1;
     private javax.swing.JLabel detalhes_pesquisar;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JPanel jPanel1;
@@ -424,6 +438,6 @@ public class Tela_Execucao extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel_Menu;
     private javax.swing.JPanel jPanel_cabecalho;
     private javax.swing.JLabel titulo;
-    private javax.swing.JComboBox<String> txt_jComboBox_filtro;
+    private javax.swing.JTextField txtPesquisar;
     // End of variables declaration//GEN-END:variables
 }

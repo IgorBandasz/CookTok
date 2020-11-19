@@ -595,7 +595,7 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
             System.out.println("Erro ao inserir Receita");
         } 
     }//GEN-LAST:event_Button_SalvarActionPerformed
-    
+
  
     private void btAdicionarIngredienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdicionarIngredienteActionPerformed
         String ingre = (String) txtCombo_Box_ingredientes.getSelectedItem();
@@ -695,19 +695,7 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
     }
     
     public static void main(String args[]) {
-        //MASSA PARA TESTES 
-        //INGREDIENTES
-        Ingrediente ingre1 = new Ingrediente("Leite Condensado");
-        Ingrediente ingre2 = new Ingrediente("Farinha de Trigo");
-        Ingrediente ingre3 = new Ingrediente("Leite");
-        Ingrediente ingre4 = new Ingrediente("Ovo");
-        Ingrediente ingre5 = new Ingrediente("Manteiga");
-        Ingrediente ingre6 = new Ingrediente("Oleo");
-        Ingrediente ingre7 = new Ingrediente("Granulado");
-        Ingrediente ingre8 = new Ingrediente("Creme de Leite");
 
-        //String listaIngrediente[] = {ingre1.getNome_Ingred() , ingre2.getNome_Ingred(), ingre, ingre4, ingre5, ingre6, ingre7, ingre8};
-        
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
