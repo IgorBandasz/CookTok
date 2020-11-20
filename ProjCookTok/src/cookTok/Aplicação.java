@@ -6,6 +6,7 @@
 package cookTok;
 
 import telas.TelaAdicionar_Ingrediente_Receita;
+import telas.Tela_Inicio;
 
 /**
  *
@@ -13,19 +14,6 @@ import telas.TelaAdicionar_Ingrediente_Receita;
  */
 public class Aplicação {
     public static void main(String[] args) {
-        /*Ingrediente ingre1 = new Ingrediente("Farinha de Trigo");
-        Ingrediente ingre2 = new Ingrediente("Ovo");
-        Ingrediente ingre3 = new Ingrediente("Leite");
-        Ingrediente ingre4 = new Ingrediente("Manteiga");
-        Ingrediente ingre5 = new Ingrediente("Chocolate");
-       
-        System.out.println(ingre1.toString());
-        System.out.println(ingre2.toString());
-        System.out.println(ingre3.toString());
-        System.out.println(ingre4.toString());
-        System.out.println(ingre5.toString()); 
-        */
-        //TelaAdicionar_Ingrediente_Receita tela = new TelaAdicionar_Ingrediente_Receita();
-        new TelaAdicionar_Ingrediente_Receita().setVisible(true);
+        new Tela_Inicio().setVisible(true);
     }
 }
