@@ -567,13 +567,14 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
             ResultSet resultado = stat.executeQuery(sql);
             while(resultado.next()){
                 codigo = resultado.getInt("maior");
-                          
+                           
                 for(int linha=0; linha<tabela_de_ingredientes.getRowCount();linha++){
                     sql = "INSERT INTO dbcooktok.tbrelingrerec (fkcodreceita, fkcodingre, quantidade, medida)"
                     + "VALUES ('"+codigo 
                     +"',"+cbCodIngrediente.getSelectedItem()
-                    +","+tabela_de_instrucoes.getModel().getValueAt(linha, 1)
-                    +",'"+tabela_de_instrucoes.getModel().getValueAt(linha, 2)+"')";
+                    +","+tabela_de_ingredientes.getModel().getValueAt(linha, 1)
+                    +",'"+tabela_de_ingredientes.getModel().getValueAt(linha, 2)+"')";
+                    System.out.println(sql);
                     stat.execute(sql);
                 }
                 
