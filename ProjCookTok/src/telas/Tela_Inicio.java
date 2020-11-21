@@ -20,7 +20,7 @@ import javax.swing.JLabel;
 public class Tela_Inicio extends javax.swing.JFrame {
     private String[] vetorNome = new String[10];
     private String[] vetorCodigo = new String[10];
-    private String inicio;
+    private String inicio = "0";
     private String fim;
     
     /**
@@ -379,6 +379,11 @@ public class Tela_Inicio extends javax.swing.JFrame {
 
         btVoltar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btVoltar.setText("<");
+        btVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btVoltarActionPerformed(evt);
+            }
+        });
 
         btAvancar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btAvancar.setText(">");
@@ -456,20 +461,26 @@ public class Tela_Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_lbReceita0MouseClicked
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        carregaReceita("0");
+        carregaReceita("0",">");
     }//GEN-LAST:event_formWindowActivated
 
     private void btAvancarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAvancarActionPerformed
-        carregaReceita(vetorCodigo[9]);
+        inicio = vetorCodigo[0];
+        carregaReceita(fim,">");
     }//GEN-LAST:event_btAvancarActionPerformed
+
+    private void btVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoltarActionPerformed
+        System.out.println(inicio);
+        carregaReceita(inicio,"<");
+    }//GEN-LAST:event_btVoltarActionPerformed
     
-    public void carregaReceita(String inicio){
+    public void carregaReceita(String partida,String posicao){
         
         for(int i = 0; i<10; i++){
             vetorNome[i]="";
             vetorCodigo[i]="";
         }
-        String sql = "SELECT * from dbcooktok.tbreceita where pkcodreceita >"+inicio+" limit 10";
+        String sql = "SELECT * from dbcooktok.tbreceita where pkcodreceita"+posicao+partida+" limit 10";
         try {
             Connection conn = ConexaoFactory.getConexao();
             Statement stat = conn.createStatement();
