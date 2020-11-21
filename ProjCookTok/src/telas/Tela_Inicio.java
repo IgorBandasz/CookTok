@@ -5,6 +5,12 @@
  */
 package telas;
 
+import conexao.ConexaoFactory;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
 
 /**
@@ -12,7 +18,11 @@ import javax.swing.JLabel;
  * @author ester
  */
 public class Tela_Inicio extends javax.swing.JFrame {
-
+    private String[] vetorNome = new String[10];
+    private String[] vetorCodigo = new String[10];
+    private String inicio;
+    private String fim;
+    
     /**
      * Creates new form Tela_Ececucao
      */
@@ -30,6 +40,8 @@ public class Tela_Inicio extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel13 = new javax.swing.JLabel();
+        popup = new javax.swing.JDialog();
+        mensagem = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jPanel_cabecalho = new javax.swing.JPanel();
         titulo = new javax.swing.JLabel();
@@ -40,18 +52,20 @@ public class Tela_Inicio extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
-        Receita3 = new javax.swing.JLabel();
-        Receita4 = new javax.swing.JLabel();
-        Receita5 = new javax.swing.JLabel();
-        Receita7 = new javax.swing.JLabel();
-        Receita8 = new javax.swing.JLabel();
-        Receita9 = new javax.swing.JLabel();
-        ButtonMaisReceitas = new javax.swing.JLabel();
-        Receita2 = new javax.swing.JLabel();
-        Receita1 = new javax.swing.JLabel();
-        Receita6 = new javax.swing.JLabel();
+        lbReceita2 = new javax.swing.JLabel();
+        lbReceita3 = new javax.swing.JLabel();
+        lbReceita4 = new javax.swing.JLabel();
+        lbReceita6 = new javax.swing.JLabel();
+        lbReceita7 = new javax.swing.JLabel();
+        lbReceita8 = new javax.swing.JLabel();
+        lbReceita9 = new javax.swing.JLabel();
+        lbReceita1 = new javax.swing.JLabel();
+        lbReceita0 = new javax.swing.JLabel();
+        lbReceita5 = new javax.swing.JLabel();
         btAdicionarReceita = new javax.swing.JButton();
         canvas1 = new java.awt.Canvas();
+        btVoltar = new javax.swing.JButton();
+        btAvancar = new javax.swing.JButton();
 
         jLabel13.setBackground(new java.awt.Color(110, 198, 202));
         jLabel13.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
@@ -62,7 +76,29 @@ public class Tela_Inicio extends javax.swing.JFrame {
         jLabel13.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel13.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
+        javax.swing.GroupLayout popupLayout = new javax.swing.GroupLayout(popup.getContentPane());
+        popup.getContentPane().setLayout(popupLayout);
+        popupLayout.setHorizontalGroup(
+            popupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(popupLayout.createSequentialGroup()
+                .addGap(123, 123, 123)
+                .addComponent(mensagem, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(104, Short.MAX_VALUE))
+        );
+        popupLayout.setVerticalGroup(
+            popupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(popupLayout.createSequentialGroup()
+                .addGap(123, 123, 123)
+                .addComponent(mensagem, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(149, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(8, 151, 157));
 
@@ -77,7 +113,7 @@ public class Tela_Inicio extends javax.swing.JFrame {
         jPanel_Menu.setBackground(new java.awt.Color(204, 171, 216));
         jPanel_Menu.setForeground(new java.awt.Color(204, 171, 216));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Filtro", "Ingrediente", "Nome", "Tempo" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Ingrediente", "Nome", "Tempo" }));
 
         detalhes_pesquisar.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
         detalhes_pesquisar.setForeground(new java.awt.Color(255, 255, 255));
@@ -94,28 +130,29 @@ public class Tela_Inicio extends javax.swing.JFrame {
         jPanel_Menu.setLayout(jPanel_MenuLayout);
         jPanel_MenuLayout.setHorizontalGroup(
             jPanel_MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel_MenuLayout.createSequentialGroup()
-                .addGap(55, 55, 55)
-                .addGroup(jPanel_MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(detalhes_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_MenuLayout.createSequentialGroup()
+                .addGap(110, 110, 110)
                 .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(103, 103, 103)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(100, 100, 100))
+                .addGap(78, 78, 78)
+                .addGroup(jPanel_MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel_MenuLayout.createSequentialGroup()
+                        .addComponent(txtPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(77, 77, 77)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(detalhes_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel_MenuLayout.setVerticalGroup(
             jPanel_MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel_MenuLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addComponent(detalhes_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel_MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(13, 13, 13))
+                .addGap(21, 21, 21))
         );
 
         jPanel3.setBackground(new java.awt.Color(204, 171, 216));
@@ -123,100 +160,103 @@ public class Tela_Inicio extends javax.swing.JFrame {
 
         jPanel6.setBackground(new java.awt.Color(110, 198, 202));
 
-        Receita3.setBackground(new java.awt.Color(110, 198, 202));
-        Receita3.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
-        Receita3.setForeground(new java.awt.Color(255, 255, 255));
-        Receita3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Receita3.setText("Receita 1");
-        Receita3.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(8, 151, 157)));
-        Receita3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        Receita3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lbReceita2.setBackground(new java.awt.Color(110, 198, 202));
+        lbReceita2.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
+        lbReceita2.setForeground(new java.awt.Color(255, 255, 255));
+        lbReceita2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbReceita2.setText("Receita 1");
+        lbReceita2.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(8, 151, 157)));
+        lbReceita2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        lbReceita2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        Receita4.setBackground(new java.awt.Color(110, 198, 202));
-        Receita4.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
-        Receita4.setForeground(new java.awt.Color(255, 255, 255));
-        Receita4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Receita4.setText("Receita 1");
-        Receita4.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(8, 151, 157)));
-        Receita4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        Receita4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lbReceita3.setBackground(new java.awt.Color(110, 198, 202));
+        lbReceita3.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
+        lbReceita3.setForeground(new java.awt.Color(255, 255, 255));
+        lbReceita3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbReceita3.setText("Receita 1");
+        lbReceita3.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(8, 151, 157)));
+        lbReceita3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        lbReceita3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        Receita5.setBackground(new java.awt.Color(110, 198, 202));
-        Receita5.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
-        Receita5.setForeground(new java.awt.Color(255, 255, 255));
-        Receita5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Receita5.setText("Receita 1");
-        Receita5.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(8, 151, 157)));
-        Receita5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        Receita5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lbReceita4.setBackground(new java.awt.Color(110, 198, 202));
+        lbReceita4.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
+        lbReceita4.setForeground(new java.awt.Color(255, 255, 255));
+        lbReceita4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbReceita4.setText("Receita 1");
+        lbReceita4.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(8, 151, 157)));
+        lbReceita4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        lbReceita4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        Receita7.setBackground(new java.awt.Color(110, 198, 202));
-        Receita7.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
-        Receita7.setForeground(new java.awt.Color(255, 255, 255));
-        Receita7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Receita7.setText("Receita 1");
-        Receita7.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(8, 151, 157)));
-        Receita7.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        Receita7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lbReceita6.setBackground(new java.awt.Color(110, 198, 202));
+        lbReceita6.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
+        lbReceita6.setForeground(new java.awt.Color(255, 255, 255));
+        lbReceita6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbReceita6.setText("Receita 1");
+        lbReceita6.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(8, 151, 157)));
+        lbReceita6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        lbReceita6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        Receita8.setBackground(new java.awt.Color(110, 198, 202));
-        Receita8.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
-        Receita8.setForeground(new java.awt.Color(255, 255, 255));
-        Receita8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Receita8.setText("Receita 1");
-        Receita8.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(8, 151, 157)));
-        Receita8.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        Receita8.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lbReceita7.setBackground(new java.awt.Color(110, 198, 202));
+        lbReceita7.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
+        lbReceita7.setForeground(new java.awt.Color(255, 255, 255));
+        lbReceita7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbReceita7.setText("Receita 1");
+        lbReceita7.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(8, 151, 157)));
+        lbReceita7.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        lbReceita7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        Receita9.setBackground(new java.awt.Color(110, 198, 202));
-        Receita9.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
-        Receita9.setForeground(new java.awt.Color(255, 255, 255));
-        Receita9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Receita9.setText("Receita 1");
-        Receita9.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(8, 151, 157)));
-        Receita9.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        Receita9.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lbReceita8.setBackground(new java.awt.Color(110, 198, 202));
+        lbReceita8.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
+        lbReceita8.setForeground(new java.awt.Color(255, 255, 255));
+        lbReceita8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbReceita8.setText("Receita 1");
+        lbReceita8.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(8, 151, 157)));
+        lbReceita8.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        lbReceita8.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        ButtonMaisReceitas.setBackground(new java.awt.Color(110, 198, 202));
-        ButtonMaisReceitas.setFont(new java.awt.Font("Comic Sans MS", 1, 48)); // NOI18N
-        ButtonMaisReceitas.setForeground(new java.awt.Color(255, 255, 255));
-        ButtonMaisReceitas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        ButtonMaisReceitas.setText("+");
-        ButtonMaisReceitas.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(8, 151, 157)));
-        ButtonMaisReceitas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        ButtonMaisReceitas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lbReceita9.setBackground(new java.awt.Color(110, 198, 202));
+        lbReceita9.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
+        lbReceita9.setForeground(new java.awt.Color(255, 255, 255));
+        lbReceita9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbReceita9.setText("+");
+        lbReceita9.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(8, 151, 157)));
+        lbReceita9.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        lbReceita9.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        Receita2.setBackground(new java.awt.Color(110, 198, 202));
-        Receita2.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
-        Receita2.setForeground(new java.awt.Color(255, 255, 255));
-        Receita2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Receita2.setText("Receita 2");
-        Receita2.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(8, 151, 157)));
-        Receita2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        Receita2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lbReceita1.setBackground(new java.awt.Color(110, 198, 202));
+        lbReceita1.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
+        lbReceita1.setForeground(new java.awt.Color(255, 255, 255));
+        lbReceita1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbReceita1.setText("Receita 2");
+        lbReceita1.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(8, 151, 157)));
+        lbReceita1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        lbReceita1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        Receita1.setBackground(new java.awt.Color(110, 198, 202));
-        Receita1.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
-        Receita1.setForeground(new java.awt.Color(255, 255, 255));
-        Receita1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Receita1.setText("Receita 1");
-        Receita1.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(8, 151, 157)));
-        Receita1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        Receita1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Receita1.addMouseListener(new java.awt.event.MouseAdapter() {
+        lbReceita0.setBackground(new java.awt.Color(110, 198, 202));
+        lbReceita0.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
+        lbReceita0.setForeground(new java.awt.Color(255, 255, 255));
+        lbReceita0.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbReceita0.setText("Receita 1");
+        lbReceita0.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(8, 151, 157)));
+        lbReceita0.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        lbReceita0.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lbReceita0.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbReceita0MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                Receita1MouseEntered(evt);
+                lbReceita0MouseEntered(evt);
             }
         });
 
-        Receita6.setBackground(new java.awt.Color(110, 198, 202));
-        Receita6.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
-        Receita6.setForeground(new java.awt.Color(255, 255, 255));
-        Receita6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Receita6.setText("Receita 1");
-        Receita6.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(8, 151, 157)));
-        Receita6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        Receita6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lbReceita5.setBackground(new java.awt.Color(110, 198, 202));
+        lbReceita5.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
+        lbReceita5.setForeground(new java.awt.Color(255, 255, 255));
+        lbReceita5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbReceita5.setText("Receita 1");
+        lbReceita5.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(8, 151, 157)));
+        lbReceita5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        lbReceita5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -225,24 +265,24 @@ public class Tela_Inicio extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(Receita1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Receita6, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lbReceita0, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbReceita5, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(50, 50, 50)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Receita7, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Receita2, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lbReceita6, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbReceita1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Receita3, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Receita8, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lbReceita2, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbReceita7, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(54, 54, 54)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Receita4, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Receita9, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lbReceita3, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbReceita8, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(56, 56, 56)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Receita5, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ButtonMaisReceitas, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lbReceita4, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbReceita9, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25))
         );
         jPanel6Layout.setVerticalGroup(
@@ -252,27 +292,27 @@ public class Tela_Inicio extends javax.swing.JFrame {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Receita4, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Receita5, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lbReceita3, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbReceita4, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Receita9, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ButtonMaisReceitas, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(lbReceita8, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbReceita9, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(jPanel6Layout.createSequentialGroup()
-                            .addComponent(Receita3, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbReceita2, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(Receita8, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lbReceita7, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel6Layout.createSequentialGroup()
                                 .addGap(163, 163, 163)
-                                .addComponent(Receita7, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(lbReceita6, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel6Layout.createSequentialGroup()
                                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(Receita1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Receita2, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(lbReceita0, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lbReceita1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(Receita6, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(lbReceita5, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
 
@@ -283,7 +323,7 @@ public class Tela_Inicio extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -318,10 +358,10 @@ public class Tela_Inicio extends javax.swing.JFrame {
                         .addGap(24, 24, 24))
                     .addGroup(jPanel_cabecalhoLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel_cabecalhoLayout.createSequentialGroup()
-                        .addContainerGap()
                         .addComponent(jPanel_Menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(26, 26, 26))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_cabecalhoLayout.createSequentialGroup()
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel_cabecalhoLayout.setVerticalGroup(
@@ -337,23 +377,45 @@ public class Tela_Inicio extends javax.swing.JFrame {
                 .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        btVoltar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btVoltar.setText("<");
+
+        btAvancar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btAvancar.setText(">");
+        btAvancar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAvancarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(181, 181, 181))
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel_cabecalho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 6, Short.MAX_VALUE))
+                .addGap(0, 43, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(181, 181, 181))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(btVoltar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btAvancar)
+                        .addGap(86, 86, 86))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel_cabecalho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(132, 132, 132)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btAvancar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(68, 68, 68)
                 .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -361,23 +423,21 @@ public class Tela_Inicio extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 593, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 24, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 672, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void Receita1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Receita1MouseEntered
+    private void lbReceita0MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbReceita0MouseEntered
        
-    }//GEN-LAST:event_Receita1MouseEntered
+    }//GEN-LAST:event_lbReceita0MouseEntered
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
   
@@ -388,6 +448,59 @@ public class Tela_Inicio extends javax.swing.JFrame {
         new TelaAdicionar_Ingrediente_Receita().setVisible(true);
     }//GEN-LAST:event_btAdicionarReceitaActionPerformed
 
+    private void lbReceita0MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbReceita0MouseClicked
+        
+        popup.setSize(400, 200);
+        mensagem.setText("Passei aqui");
+        popup.setVisible(true);
+    }//GEN-LAST:event_lbReceita0MouseClicked
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        carregaReceita("0");
+    }//GEN-LAST:event_formWindowActivated
+
+    private void btAvancarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAvancarActionPerformed
+        carregaReceita(vetorCodigo[9]);
+    }//GEN-LAST:event_btAvancarActionPerformed
+    
+    public void carregaReceita(String inicio){
+        
+        for(int i = 0; i<10; i++){
+            vetorNome[i]="";
+            vetorCodigo[i]="";
+        }
+        String sql = "SELECT * from dbcooktok.tbreceita where pkcodreceita >"+inicio+" limit 10";
+        try {
+            Connection conn = ConexaoFactory.getConexao();
+            Statement stat = conn.createStatement();
+            
+            ResultSet result = stat.executeQuery(sql);
+            
+            int i=0;
+            while(result.next()){
+                vetorNome[i] = result.getString("nomereceita") ;
+                vetorCodigo[i] = result.getString("pkcodreceita");
+                i++;
+            }
+            inicio = vetorCodigo[0];
+            fim = vetorCodigo[9];
+            lbReceita0.setText(vetorNome[0]);
+            lbReceita1.setText(vetorNome[1]);
+            lbReceita2.setText(vetorNome[2]);
+            lbReceita3.setText(vetorNome[3]);
+            lbReceita4.setText(vetorNome[4]);
+            lbReceita5.setText(vetorNome[5]);
+            lbReceita6.setText(vetorNome[6]);
+            lbReceita7.setText(vetorNome[7]);
+            lbReceita8.setText(vetorNome[8]);
+            lbReceita9.setText(vetorNome[9]);
+            
+            ConexaoFactory.close(conn,stat);
+        } catch (SQLException throwables) {
+            System.out.println("Erro ao exibir Ingrediente");
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -427,17 +540,9 @@ public class Tela_Inicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel ButtonMaisReceitas;
-    private javax.swing.JLabel Receita1;
-    private javax.swing.JLabel Receita2;
-    private javax.swing.JLabel Receita3;
-    private javax.swing.JLabel Receita4;
-    private javax.swing.JLabel Receita5;
-    private javax.swing.JLabel Receita6;
-    private javax.swing.JLabel Receita7;
-    private javax.swing.JLabel Receita8;
-    private javax.swing.JLabel Receita9;
     private javax.swing.JButton btAdicionarReceita;
+    private javax.swing.JButton btAvancar;
+    private javax.swing.JButton btVoltar;
     private java.awt.Canvas canvas1;
     private javax.swing.JLabel detalhes_pesquisar;
     private javax.swing.JButton jButton2;
@@ -448,6 +553,18 @@ public class Tela_Inicio extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel_Menu;
     private javax.swing.JPanel jPanel_cabecalho;
+    private javax.swing.JLabel lbReceita0;
+    private javax.swing.JLabel lbReceita1;
+    private javax.swing.JLabel lbReceita2;
+    private javax.swing.JLabel lbReceita3;
+    private javax.swing.JLabel lbReceita4;
+    private javax.swing.JLabel lbReceita5;
+    private javax.swing.JLabel lbReceita6;
+    private javax.swing.JLabel lbReceita7;
+    private javax.swing.JLabel lbReceita8;
+    private javax.swing.JLabel lbReceita9;
+    private javax.swing.JLabel mensagem;
+    private javax.swing.JDialog popup;
     private javax.swing.JLabel titulo;
     private javax.swing.JTextField txtPesquisar;
     // End of variables declaration//GEN-END:variables
