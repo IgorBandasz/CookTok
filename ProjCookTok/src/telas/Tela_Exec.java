@@ -5,14 +5,19 @@
  */
 package telas;
 
+import conexao.ConexaoFactory;
 import cookTok.Cronometro;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  *
  * @author ester
  */
 public class Tela_Exec extends javax.swing.JFrame {
-
+    public int tempo;
     /**
      * Creates new form Tela_Inicio
      */
@@ -381,6 +386,22 @@ public class Tela_Exec extends javax.swing.JFrame {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
        Cronometro tok = new Cronometro();
+       
+       String sql = "SELECT tempo from dbcooktok.tbreceita where pkcodreceita = 1";
+        try {
+            Connection conn = ConexaoFactory.getConexao();
+            Statement stat = conn.createStatement();
+            
+            ResultSet result = stat.executeQuery(sql);
+            while(result.next()){
+                tempo = result.getInt("tempo") ;
+            }
+            ConexaoFactory.close(conn,stat);
+        } catch (SQLException throwables) {
+            System.out.println("Erro ao trazer receita");
+        } 
+        
+        Cronometro.segundos =tempo;
     }//GEN-LAST:event_formWindowActivated
 
     /**

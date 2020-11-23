@@ -556,7 +556,7 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
         
         String sql = "INSERT INTO dbcooktok.tbreceita (nomereceita, tempo)"
                 + "VALUES ('"+txtNome_Receita.getText()
-                +"',"+tempo+")";
+                +"',"+tempo*60+")";
         System.out.println(sql);
         try {
             Connection conn = ConexaoFactory.getConexao();
@@ -579,11 +579,14 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
                 }
                 
                 for(int linha=0; linha<tabela_de_instrucoes.getRowCount();linha++){
+                 
                     sql = "INSERT INTO dbcooktok.tbinstrucao (nomeinstru, tempoinstru, fkcodreceita)"
                     + "VALUES ('"+tabela_de_instrucoes.getModel().getValueAt(linha, 0)
-                    +"',"+tabela_de_instrucoes.getModel().getValueAt(linha, 1)
+                    +"',"+60 * (Integer)tabela_de_instrucoes.getModel().getValueAt(linha, 1) 
                     +","+codigo+")";
+                    
                     stat.execute(sql);
+                    System.out.println(sql);
                 }
             }
             

@@ -6,7 +6,7 @@ import telas.Tela_Exec;
 
 public class Cronometro {
 
-	public int segundos;
+	public static int segundos;
 	private AtualizaLabel myThread;
 	private Thread thread;
 
@@ -86,7 +86,7 @@ public class Cronometro {
 					e.printStackTrace();
 				}
 			}
-			segundos =80;
+			segundos =0;
 		}
 	}
         
@@ -95,7 +95,7 @@ public class Cronometro {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			if (thread == null) {
-                                 segundos = 60;
+                                 //segundos = 60;
 				 Tela_Exec.lbTempo.setText("00:00:00");
 				myThread = new AtualizaLabel();
 				thread = new Thread(myThread);
