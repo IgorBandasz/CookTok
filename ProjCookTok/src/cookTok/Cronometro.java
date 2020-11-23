@@ -1,27 +1,12 @@
 package cookTok;
 
-import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
-import javax.swing.border.EtchedBorder;
+import telas.Tela_Exec;
 
-public class Cronometro extends JFrame {
+public class Cronometro {
 
-	private static final long serialVersionUID = 1L;
-	private JLabel tempo;
-	private JButton btnStart;
-	private JButton btnPause;
-	private JButton btnStop;
-	private JPanel pnlButtons;
-	private JPanel pnlPrincipal;
-	private int segundos;
+	public int segundos;
 	private AtualizaLabel myThread;
 	private Thread thread;
 
@@ -30,34 +15,11 @@ public class Cronometro extends JFrame {
 	}
 
 	private void initComponents() {
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setTitle("Cronometro by d3z@0");
-		setSize(270, 120);
-		setResizable(false);
-		setLocationRelativeTo(null);
 		
-		setIconImage(new ImageIcon("image/clock.png").getImage());
-		pnlPrincipal = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		pnlPrincipal.setBounds(30, 30, 30, 30);
-		pnlPrincipal.setBorder(BorderFactory.createEtchedBorder());
-		tempo = new JLabel("00:00:00");
-		tempo.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
-		btnStart = new JButton("Start");
-		btnStart.addActionListener(new StartListener());
-		btnPause = new JButton("Pause");
-		btnPause.addActionListener(new PauseListener());
-		btnStop = new JButton("Stop");
-		btnStop.addActionListener(new StopListener());
-
-		pnlButtons = new JPanel(new FlowLayout(FlowLayout.LEFT));
-		pnlButtons.setBorder(BorderFactory.createEtchedBorder());
-		pnlButtons.add(btnStart);
-		pnlButtons.add(btnPause);
-		pnlButtons.add(btnStop);
-
-		pnlPrincipal.add(tempo);
-		pnlPrincipal.add(pnlButtons);
-		getContentPane().add(pnlPrincipal);
+                Tela_Exec.lbTempo.setText("00:00:00");
+		Tela_Exec.btStart.addActionListener(new StartListener());
+		Tela_Exec.btPause.addActionListener(new PauseListener());
+		Tela_Exec.btStop.addActionListener(new StopListener());
 	}
 
 	private void segundos() {
@@ -112,7 +74,7 @@ public class Cronometro extends JFrame {
 			while (!isStopThread()) {
 				if (!isPausedThread()) {
 					if (!isBeginThread()) {
-						tempo.setText(tempoFormatado());
+						 Tela_Exec.lbTempo.setText(tempoFormatado());
 					} else {
 						beginThread(false);
 					}
@@ -123,34 +85,31 @@ public class Cronometro extends JFrame {
 					e.printStackTrace();
 				}
 			}
-			segundos = 0;
+			segundos = 50;
 		}
 	}
-
+        
 	private class StartListener implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			if (thread == null) {
-				tempo.setText("00:00:00");
+				 Tela_Exec.lbTempo.setText("00:00:00");
 				myThread = new AtualizaLabel();
 				thread = new Thread(myThread);
 				thread.start();
 			}
-			btnStart.setText("Start");
+			Tela_Exec.btStart.setText("Start");
 			myThread.pausedThread(false);
-			setIconImage(new ImageIcon("image/clock_play.png").getImage());
 		}
 	}
-
+        
 	private class PauseListener implements ActionListener {
-
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			myThread.pausedThread(true);
 			if (!myThread.isStopThread()) {
-				btnStart.setText("Restart");
-				setIconImage(new ImageIcon("image/clock_pause.png").getImage());
+				Tela_Exec.btStart.setText("Restart");
 			}
 		}
 	}
@@ -164,12 +123,9 @@ public class Cronometro extends JFrame {
 				myThread.stopThread(true);
 			}
 			myThread.beginThread(true);
-			btnStart.setText("Start");
-			setIconImage(new ImageIcon("image/clock_stop.png").getImage());
+			Tela_Exec.btStart.setText("Start");
 		}
 	}
 
-	public static void main(String[] args) {
-		new Cronometro().setVisible(true);
-	}
+
 }
