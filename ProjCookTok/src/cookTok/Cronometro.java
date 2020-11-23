@@ -23,10 +23,11 @@ public class Cronometro {
 	}
 
 	private void segundos() {
-		segundos++;
+		segundos--;
 	}
 
 	private String tempoFormatado() {
+            
 		segundos();
 		int segundo = (segundos % 60);
 		int minuto = ((segundos % 3600) / 60);
@@ -85,7 +86,7 @@ public class Cronometro {
 					e.printStackTrace();
 				}
 			}
-			segundos = 50;
+			segundos =80;
 		}
 	}
         
@@ -94,6 +95,7 @@ public class Cronometro {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			if (thread == null) {
+                                 segundos = 60;
 				 Tela_Exec.lbTempo.setText("00:00:00");
 				myThread = new AtualizaLabel();
 				thread = new Thread(myThread);
