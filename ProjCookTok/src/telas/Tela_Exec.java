@@ -17,11 +17,15 @@ import java.sql.Statement;
  */
 public class Tela_Exec extends javax.swing.JFrame {
     public static int tempo;
+    private String codReceita;
     /**
      * Creates new form Tela_Inicio
      */
     public Tela_Exec() {
         initComponents();
+    }
+    public void setCodReceita(String cod){
+        codReceita = cod;
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -403,7 +407,7 @@ public class Tela_Exec extends javax.swing.JFrame {
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
        Cronometro tok = new Cronometro();
        
-       String sql = "SELECT tempo from dbcooktok.tbreceita where pkcodreceita = 1";
+       String sql = "SELECT tempo from dbcooktok.tbreceita where pkcodreceita = "+codReceita;
         try {
             Connection conn = ConexaoFactory.getConexao();
             Statement stat = conn.createStatement();
@@ -416,7 +420,7 @@ public class Tela_Exec extends javax.swing.JFrame {
         } catch (SQLException throwables) {
             System.out.println("Erro ao trazer receita");
         } 
-        tempo = 100;
+        //tempo = 100;
         Cronometro.segundos =tempo;
         //Cronometro.segundos =100;
     }//GEN-LAST:event_formWindowActivated

@@ -20,9 +20,8 @@ import javax.swing.JLabel;
 public class Tela_Inicio extends javax.swing.JFrame {
     private String[] vetorNome = new String[10];
     private String[] vetorCodigo = new String[10];
-    private String inicio = "0";
     private String fim;
-    
+    private Tela_Exec telaExec = new Tela_Exec();
     /**
      * Creates new form Tela_Ececucao
      */
@@ -64,7 +63,6 @@ public class Tela_Inicio extends javax.swing.JFrame {
         lbReceita5 = new javax.swing.JLabel();
         btAdicionarReceita = new javax.swing.JButton();
         canvas1 = new java.awt.Canvas();
-        btVoltar = new javax.swing.JButton();
         btAvancar = new javax.swing.JButton();
 
         jLabel13.setBackground(new java.awt.Color(110, 198, 202));
@@ -168,6 +166,11 @@ public class Tela_Inicio extends javax.swing.JFrame {
         lbReceita2.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(8, 151, 157)));
         lbReceita2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lbReceita2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lbReceita2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbReceita2MouseClicked(evt);
+            }
+        });
 
         lbReceita3.setBackground(new java.awt.Color(110, 198, 202));
         lbReceita3.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
@@ -177,6 +180,11 @@ public class Tela_Inicio extends javax.swing.JFrame {
         lbReceita3.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(8, 151, 157)));
         lbReceita3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lbReceita3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lbReceita3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbReceita3MouseClicked(evt);
+            }
+        });
 
         lbReceita4.setBackground(new java.awt.Color(110, 198, 202));
         lbReceita4.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
@@ -186,6 +194,11 @@ public class Tela_Inicio extends javax.swing.JFrame {
         lbReceita4.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(8, 151, 157)));
         lbReceita4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lbReceita4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lbReceita4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbReceita4MouseClicked(evt);
+            }
+        });
 
         lbReceita6.setBackground(new java.awt.Color(110, 198, 202));
         lbReceita6.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
@@ -195,6 +208,11 @@ public class Tela_Inicio extends javax.swing.JFrame {
         lbReceita6.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(8, 151, 157)));
         lbReceita6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lbReceita6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lbReceita6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbReceita6MouseClicked(evt);
+            }
+        });
 
         lbReceita7.setBackground(new java.awt.Color(110, 198, 202));
         lbReceita7.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
@@ -204,6 +222,11 @@ public class Tela_Inicio extends javax.swing.JFrame {
         lbReceita7.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(8, 151, 157)));
         lbReceita7.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lbReceita7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lbReceita7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbReceita7MouseClicked(evt);
+            }
+        });
 
         lbReceita8.setBackground(new java.awt.Color(110, 198, 202));
         lbReceita8.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
@@ -213,6 +236,11 @@ public class Tela_Inicio extends javax.swing.JFrame {
         lbReceita8.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(8, 151, 157)));
         lbReceita8.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lbReceita8.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lbReceita8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbReceita8MouseClicked(evt);
+            }
+        });
 
         lbReceita9.setBackground(new java.awt.Color(110, 198, 202));
         lbReceita9.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
@@ -222,6 +250,11 @@ public class Tela_Inicio extends javax.swing.JFrame {
         lbReceita9.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(8, 151, 157)));
         lbReceita9.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lbReceita9.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lbReceita9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbReceita9MouseClicked(evt);
+            }
+        });
 
         lbReceita1.setBackground(new java.awt.Color(110, 198, 202));
         lbReceita1.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
@@ -231,6 +264,11 @@ public class Tela_Inicio extends javax.swing.JFrame {
         lbReceita1.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(8, 151, 157)));
         lbReceita1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lbReceita1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lbReceita1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbReceita1MouseClicked(evt);
+            }
+        });
 
         lbReceita0.setBackground(new java.awt.Color(110, 198, 202));
         lbReceita0.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
@@ -257,6 +295,11 @@ public class Tela_Inicio extends javax.swing.JFrame {
         lbReceita5.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(8, 151, 157)));
         lbReceita5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lbReceita5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lbReceita5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbReceita5MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -378,14 +421,6 @@ public class Tela_Inicio extends javax.swing.JFrame {
                 .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        btVoltar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        btVoltar.setText("<");
-        btVoltar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btVoltarActionPerformed(evt);
-            }
-        });
-
         btAvancar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btAvancar.setText(">");
         btAvancar.addActionListener(new java.awt.event.ActionListener() {
@@ -402,14 +437,12 @@ public class Tela_Inicio extends javax.swing.JFrame {
                 .addComponent(jPanel_cabecalho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 43, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(728, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(181, 181, 181))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(btVoltar)
-                        .addGap(18, 18, 18)
                         .addComponent(btAvancar)
                         .addGap(86, 86, 86))))
         );
@@ -418,10 +451,8 @@ public class Tela_Inicio extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel_cabecalho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btAvancar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(68, 68, 68)
+                .addComponent(btAvancar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(69, 69, 69)
                 .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -455,33 +486,90 @@ public class Tela_Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_btAdicionarReceitaActionPerformed
 
     private void lbReceita0MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbReceita0MouseClicked
-        
-        popup.setSize(400, 200);
-        mensagem.setText("Passei aqui");
-        popup.setVisible(true);
+        if (vetorCodigo[0] != ""){
+            telaExec.setCodReceita(vetorCodigo[0]);
+            telaExec.setVisible(true);
+        }
     }//GEN-LAST:event_lbReceita0MouseClicked
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        carregaReceita("0",">");
+        carregaReceita("0");
     }//GEN-LAST:event_formWindowActivated
 
     private void btAvancarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAvancarActionPerformed
-        inicio = vetorCodigo[0];
-        carregaReceita(fim,">");
+        carregaReceita(fim);
     }//GEN-LAST:event_btAvancarActionPerformed
 
-    private void btVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoltarActionPerformed
-        System.out.println(inicio);
-        carregaReceita(inicio,"<");
-    }//GEN-LAST:event_btVoltarActionPerformed
+    private void lbReceita1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbReceita1MouseClicked
+        if (vetorCodigo[1] != ""){
+            telaExec.setCodReceita(vetorCodigo[1]);
+            telaExec.setVisible(true);
+        }
+    }//GEN-LAST:event_lbReceita1MouseClicked
+
+    private void lbReceita2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbReceita2MouseClicked
+        if (vetorCodigo[2] != ""){
+            telaExec.setCodReceita(vetorCodigo[2]);
+            telaExec.setVisible(true);
+        }
+    }//GEN-LAST:event_lbReceita2MouseClicked
+
+    private void lbReceita3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbReceita3MouseClicked
+        if (vetorCodigo[3] != ""){
+            telaExec.setCodReceita(vetorCodigo[3]);
+            telaExec.setVisible(true);
+        }
+    }//GEN-LAST:event_lbReceita3MouseClicked
+
+    private void lbReceita4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbReceita4MouseClicked
+        if (vetorCodigo[4] != ""){
+            telaExec.setCodReceita(vetorCodigo[4]);
+            telaExec.setVisible(true);
+        }
+    }//GEN-LAST:event_lbReceita4MouseClicked
+
+    private void lbReceita5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbReceita5MouseClicked
+        if (vetorCodigo[5] != ""){
+            telaExec.setCodReceita(vetorCodigo[5]);
+            telaExec.setVisible(true);
+        }
+    }//GEN-LAST:event_lbReceita5MouseClicked
+
+    private void lbReceita6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbReceita6MouseClicked
+        if (vetorCodigo[6] != ""){
+            telaExec.setCodReceita(vetorCodigo[6]);
+            telaExec.setVisible(true);
+        }
+    }//GEN-LAST:event_lbReceita6MouseClicked
+
+    private void lbReceita7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbReceita7MouseClicked
+        if (vetorCodigo[7] != ""){
+            telaExec.setCodReceita(vetorCodigo[7]);
+            telaExec.setVisible(true);
+        }
+    }//GEN-LAST:event_lbReceita7MouseClicked
+
+    private void lbReceita8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbReceita8MouseClicked
+        if (vetorCodigo[8] != ""){
+            telaExec.setCodReceita(vetorCodigo[8]);
+            telaExec.setVisible(true);
+        }
+    }//GEN-LAST:event_lbReceita8MouseClicked
+
+    private void lbReceita9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbReceita9MouseClicked
+        if (vetorCodigo[9] != ""){
+            telaExec.setCodReceita(vetorCodigo[9]);
+            telaExec.setVisible(true);
+        }
+    }//GEN-LAST:event_lbReceita9MouseClicked
     
-    public void carregaReceita(String partida,String posicao){
+    public void carregaReceita(String começo){
         
         for(int i = 0; i<10; i++){
             vetorNome[i]="";
             vetorCodigo[i]="";
         }
-        String sql = "SELECT * from dbcooktok.tbreceita where pkcodreceita"+posicao+partida+" limit 10";
+        String sql = "SELECT * from dbcooktok.tbreceita where pkcodreceita >"+começo+" limit 10";
         try {
             Connection conn = ConexaoFactory.getConexao();
             Statement stat = conn.createStatement();
@@ -494,8 +582,12 @@ public class Tela_Inicio extends javax.swing.JFrame {
                 vetorCodigo[i] = result.getString("pkcodreceita");
                 i++;
             }
-            inicio = vetorCodigo[0];
-            fim = vetorCodigo[9];
+            
+            if (vetorCodigo[9] != ""){
+                fim = vetorCodigo[9];
+            }else{
+                fim = "0";
+            }
             lbReceita0.setText(vetorNome[0]);
             lbReceita1.setText(vetorNome[1]);
             lbReceita2.setText(vetorNome[2]);
@@ -509,7 +601,7 @@ public class Tela_Inicio extends javax.swing.JFrame {
             
             ConexaoFactory.close(conn,stat);
         } catch (SQLException throwables) {
-            System.out.println("Erro ao exibir Ingrediente");
+            System.out.println("Erro ao exibir Receitas");
         }
     }
     
@@ -554,7 +646,6 @@ public class Tela_Inicio extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAdicionarReceita;
     private javax.swing.JButton btAvancar;
-    private javax.swing.JButton btVoltar;
     private java.awt.Canvas canvas1;
     private javax.swing.JComboBox<String> cbFiltro;
     private javax.swing.JLabel detalhes_pesquisar;
