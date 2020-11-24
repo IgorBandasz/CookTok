@@ -46,7 +46,7 @@ public class Tela_Inicio extends javax.swing.JFrame {
         jPanel_cabecalho = new javax.swing.JPanel();
         titulo = new javax.swing.JLabel();
         jPanel_Menu = new javax.swing.JPanel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        cbFiltro = new javax.swing.JComboBox<>();
         detalhes_pesquisar = new javax.swing.JLabel();
         txtPesquisar = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
@@ -113,7 +113,7 @@ public class Tela_Inicio extends javax.swing.JFrame {
         jPanel_Menu.setBackground(new java.awt.Color(204, 171, 216));
         jPanel_Menu.setForeground(new java.awt.Color(204, 171, 216));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Ingrediente", "Nome", "Tempo" }));
+        cbFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Ingrediente", "Nome", "Tempo" }));
 
         detalhes_pesquisar.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
         detalhes_pesquisar.setForeground(new java.awt.Color(255, 255, 255));
@@ -132,7 +132,7 @@ public class Tela_Inicio extends javax.swing.JFrame {
             jPanel_MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_MenuLayout.createSequentialGroup()
                 .addGap(110, 110, 110)
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cbFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(78, 78, 78)
                 .addGroup(jPanel_MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel_MenuLayout.createSequentialGroup()
@@ -150,7 +150,7 @@ public class Tela_Inicio extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel_MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21))
         );
@@ -446,7 +446,7 @@ public class Tela_Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_lbReceita0MouseEntered
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-  
+       
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void btAdicionarReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdicionarReceitaActionPerformed
@@ -556,9 +556,9 @@ public class Tela_Inicio extends javax.swing.JFrame {
     private javax.swing.JButton btAvancar;
     private javax.swing.JButton btVoltar;
     private java.awt.Canvas canvas1;
+    private javax.swing.JComboBox<String> cbFiltro;
     private javax.swing.JLabel detalhes_pesquisar;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
