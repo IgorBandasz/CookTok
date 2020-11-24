@@ -276,10 +276,9 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
         ));
         tabela_de_ingredientes.setCellSelectionEnabled(true);
         tabela_de_ingredientes.setEditingRow(0);
-        tabela_de_ingredientes.setEnabled(false);
         jScrollPane2.setViewportView(tabela_de_ingredientes);
 
-        btExcluirIngrediente.setBackground(new java.awt.Color(204, 204, 255));
+        btExcluirIngrediente.setBackground(new java.awt.Color(204, 171, 216));
         btExcluirIngrediente.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
         btExcluirIngrediente.setText("Excluir");
         btExcluirIngrediente.addActionListener(new java.awt.event.ActionListener() {
@@ -301,7 +300,7 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
                             .addGroup(PainelIngredientesLayout.createSequentialGroup()
                                 .addGap(418, 418, 418)
                                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 208, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 162, Short.MAX_VALUE)
                         .addGroup(PainelIngredientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btExcluirIngrediente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btAdicionarIngrediente, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE))
@@ -346,7 +345,7 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
 
         PainelRodapé.setBackground(new java.awt.Color(110, 198, 202));
 
-        Button_Salvar.setBackground(new java.awt.Color(204, 204, 255));
+        Button_Salvar.setBackground(new java.awt.Color(204, 171, 216));
         Button_Salvar.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
         Button_Salvar.setText("Salvar");
         Button_Salvar.setToolTipText("");
@@ -438,16 +437,16 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
                     .addGroup(PainelInstrucoesLayout.createSequentialGroup()
                         .addGroup(PainelInstrucoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbInstrucao)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(PainelInstrucoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(PainelInstrucoesLayout.createSequentialGroup()
-                                .addGap(48, 48, 48)
+                                .addGap(20, 20, 20)
                                 .addComponent(lbTempo))
                             .addGroup(PainelInstrucoesLayout.createSequentialGroup()
-                                .addGap(78, 78, 78)
+                                .addGap(50, 50, 50)
                                 .addComponent(txtTempoInstru, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 482, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 174, Short.MAX_VALUE)
                 .addGroup(PainelInstrucoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btExcluirInstrucao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btAdicionarInstrucao, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE))
