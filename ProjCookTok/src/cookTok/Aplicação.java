@@ -14,6 +14,7 @@ import telas.Tela_Inicio;
  */
 public class Aplicação {
     public static void main(String[] args) {
-        new Tela_Inicio().setVisible(true);
+        Tela_Inicio inicio = new Tela_Inicio();
+        inicio.setVisible(true);
     }
 }

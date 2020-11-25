@@ -42,6 +42,15 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         OK = new javax.swing.JButton();
         mensagem_de_alerta = new javax.swing.JLabel();
+        PoupopIngrediente = new javax.swing.JDialog();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        nomeIngred = new javax.swing.JTextField();
+        salvarPoupop = new javax.swing.JButton();
+        cancelarPoupop = new javax.swing.JButton();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        avisoSemNome = new javax.swing.JLabel();
         PainelFundo = new javax.swing.JPanel();
         PainelCabecalho = new javax.swing.JPanel();
         cabecalho_Nome = new javax.swing.JLabel();
@@ -155,6 +164,117 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jPanel6.setBackground(new java.awt.Color(110, 198, 202));
+
+        jLabel3.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Nome do Ingrediente:");
+
+        salvarPoupop.setText("Salvar");
+        salvarPoupop.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salvarPoupopActionPerformed(evt);
+            }
+        });
+
+        cancelarPoupop.setText("Cancelar");
+        cancelarPoupop.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelarPoupopActionPerformed(evt);
+            }
+        });
+
+        jPanel7.setBackground(new java.awt.Color(204, 171, 216));
+
+        jLabel4.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Adicionar Ingrediente ");
+        jLabel4.setToolTipText("");
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        avisoSemNome.setForeground(new java.awt.Color(255, 51, 51));
+        avisoSemNome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        avisoSemNome.setText("Digite o nome do Ingrediente*");
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel6Layout.createSequentialGroup()
+                                    .addComponent(cancelarPoupop)
+                                    .addGap(111, 111, 111)
+                                    .addComponent(salvarPoupop, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel6Layout.createSequentialGroup()
+                                    .addGap(57, 57, 57)
+                                    .addComponent(avisoSemNome, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(nomeIngred, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 52, Short.MAX_VALUE))))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(120, 120, 120)
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(nomeIngred, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(avisoSemNome, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cancelarPoupop)
+                    .addComponent(salvarPoupop))
+                .addContainerGap(14, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout PoupopIngredienteLayout = new javax.swing.GroupLayout(PoupopIngrediente.getContentPane());
+        PoupopIngrediente.getContentPane().setLayout(PoupopIngredienteLayout);
+        PoupopIngredienteLayout.setHorizontalGroup(
+            PoupopIngredienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PoupopIngredienteLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        PoupopIngredienteLayout.setVerticalGroup(
+            PoupopIngredienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PoupopIngredienteLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
@@ -241,9 +361,19 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
         txtCombo_Box_ingredientes.setBackground(new java.awt.Color(204, 204, 255));
         txtCombo_Box_ingredientes.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
         txtCombo_Box_ingredientes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Adicionar novo" }));
+        txtCombo_Box_ingredientes.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                txtCombo_Box_ingredientesItemStateChanged(evt);
+            }
+        });
         txtCombo_Box_ingredientes.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtCombo_Box_ingredientesFocusLost(evt);
+            }
+        });
+        txtCombo_Box_ingredientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCombo_Box_ingredientesActionPerformed(evt);
             }
         });
 
@@ -300,7 +430,7 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
                             .addGroup(PainelIngredientesLayout.createSequentialGroup()
                                 .addGap(418, 418, 418)
                                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 162, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 165, Short.MAX_VALUE)
                         .addGroup(PainelIngredientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btExcluirIngrediente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btAdicionarIngrediente, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE))
@@ -446,7 +576,7 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
                                 .addGap(50, 50, 50)
                                 .addComponent(txtTempoInstru, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 482, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 174, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 177, Short.MAX_VALUE)
                 .addGroup(PainelInstrucoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btExcluirInstrucao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btAdicionarInstrucao, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE))
@@ -670,6 +800,34 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
        Poupop.setVisible(false);      
     }//GEN-LAST:event_OKActionPerformed
 
+    private void txtCombo_Box_ingredientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCombo_Box_ingredientesActionPerformed
+     
+    }//GEN-LAST:event_txtCombo_Box_ingredientesActionPerformed
+
+    private void txtCombo_Box_ingredientesItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_txtCombo_Box_ingredientesItemStateChanged
+       String palavra = "Adicionar novo";
+       if (txtCombo_Box_ingredientes.getSelectedItem().toString().equals(palavra)){     
+           PoupopIngrediente.setSize(400, 300);
+           avisoSemNome.setVisible(false);
+           PoupopIngrediente.setVisible(true); 
+       } 
+    }//GEN-LAST:event_txtCombo_Box_ingredientesItemStateChanged
+
+    private void cancelarPoupopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarPoupopActionPerformed
+        PoupopIngrediente.setVisible(false);    
+    }//GEN-LAST:event_cancelarPoupopActionPerformed
+
+    private void salvarPoupopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarPoupopActionPerformed
+        if(nomeIngred.getText().length()==0){
+            System.out.println(" aqui");
+            avisoSemNome.setVisible(true);
+        } else {
+            Poupop.setSize(400, 200);
+            mensagem_de_alerta.setText("Indriente Salvo, Agora é com Vc Igor");
+             Poupop.setVisible(true);
+        }
+    }//GEN-LAST:event_salvarPoupopActionPerformed
+
     public void carregaIngredientes(){
         String sql = "SELECT * from dbcooktok.tbingrediente";
         try {
@@ -736,19 +894,26 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
     private javax.swing.JPanel PainelNomeReceita;
     private javax.swing.JPanel PainelRodapé;
     private javax.swing.JDialog Poupop;
+    private javax.swing.JDialog PoupopIngrediente;
+    private javax.swing.JLabel avisoSemNome;
     private javax.swing.JButton btAdicionarIngrediente;
     private javax.swing.JButton btAdicionarInstrucao;
     private javax.swing.JButton btExcluirIngrediente;
     private javax.swing.JButton btExcluirInstrucao;
     private javax.swing.JLabel cabecalho_Nome;
+    private javax.swing.JButton cancelarPoupop;
     private javax.swing.JComboBox<String> cbCodIngrediente;
     private javax.swing.JLabel descricao_indgredientes;
     private javax.swing.JLabel descricao_ingredientes_quantidade;
     private javax.swing.JLabel descricao_ingredientes_unidadedemedida;
     private javax.swing.JLabel descricao_nome_receita;
     private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -757,6 +922,8 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
     private javax.swing.JLabel lbInstrucao;
     private javax.swing.JLabel lbTempo;
     private javax.swing.JLabel mensagem_de_alerta;
+    private javax.swing.JTextField nomeIngred;
+    private javax.swing.JButton salvarPoupop;
     private javax.swing.JTable tabela_de_ingredientes;
     private javax.swing.JTable tabela_de_instrucoes;
     private javax.swing.JComboBox<String> txtCombo_Box_ingredientes;
