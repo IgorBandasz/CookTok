@@ -55,6 +55,7 @@ public class Tela_Exec extends javax.swing.JFrame {
         tabela_ingredientes = new javax.swing.JTable();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabela_instrucoes = new javax.swing.JTable();
+        btTeste = new javax.swing.JButton();
         btSair = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
@@ -272,12 +273,14 @@ public class Tela_Exec extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        btSair.setText("Sair");
-        btSair.addActionListener(new java.awt.event.ActionListener() {
+        btTeste.setText("Limpar");
+        btTeste.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btSairActionPerformed(evt);
+                btTesteActionPerformed(evt);
             }
         });
+
+        btSair.setText("Sair");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -292,7 +295,9 @@ public class Tela_Exec extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btSair)
-                .addGap(37, 37, 37))
+                .addGap(18, 18, 18)
+                .addComponent(btTeste)
+                .addGap(39, 39, 39))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -301,9 +306,11 @@ public class Tela_Exec extends javax.swing.JFrame {
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btSair)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btTeste)
+                    .addComponent(btSair))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         jPanel3.setBackground(new java.awt.Color(110, 198, 202));
@@ -477,10 +484,11 @@ public class Tela_Exec extends javax.swing.JFrame {
                 lbNomeReceita.setText(result.getString("nomereceita"));
                 tempo = result.getInt("tempo") ;
             }
-            /*
+            
             DefaultTableModel model = (DefaultTableModel) tabela_ingredientes.getModel();
-            model.removeRow(linha);
-            */        
+            for(int linha=0; linha<tabela_ingredientes.getRowCount();linha++){  
+                model.removeRow(linha);
+            }
             sql = "SELECT i.nomeingre, r.quantidade, r.medida from dbcooktok.tbrelingrerec r inner join tbingrediente i on i.pkcodingre = r.fkcodingre "
                 +" where fkcodreceita = "+codReceita;
             result = stat.executeQuery(sql);
@@ -489,7 +497,7 @@ public class Tela_Exec extends javax.swing.JFrame {
                 quant = result.getString("r.quantidade");
                 med = result.getString("r.medida");
                 
-                DefaultTableModel model = (DefaultTableModel) tabela_ingredientes.getModel();
+                model = (DefaultTableModel) tabela_ingredientes.getModel();
                 Object[] linha = {ingre, quant, med};
                 model.addRow(linha);
             }
@@ -500,7 +508,7 @@ public class Tela_Exec extends javax.swing.JFrame {
             while(result.next()){ 
                 instru = result.getString("nomeinstru");
                 
-                DefaultTableModel model = (DefaultTableModel) tabela_instrucoes.getModel();
+                model = (DefaultTableModel) tabela_instrucoes.getModel();
                 Object[] l = {instru};
                 model.addRow(l);
             }
@@ -522,6 +530,14 @@ public class Tela_Exec extends javax.swing.JFrame {
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
     
     }//GEN-LAST:event_btSairActionPerformed
+
+    private void btTesteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTesteActionPerformed
+         
+            DefaultTableModel model = (DefaultTableModel) tabela_ingredientes.getModel();
+            for(int linha=0; linha<tabela_ingredientes.getRowCount();linha++){  
+                model.removeRow(linha);
+            }
+    }//GEN-LAST:event_btTesteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -554,7 +570,8 @@ public class Tela_Exec extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Tela_Exec().setVisible(true);
+                Tela_Exec tela = new Tela_Exec();
+                tela.setVisible(true);
             }
         });
     }
@@ -564,6 +581,7 @@ public class Tela_Exec extends javax.swing.JFrame {
     private javax.swing.JButton btSair;
     public static javax.swing.JButton btStart;
     public static javax.swing.JButton btStop;
+    private javax.swing.JButton btTeste;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
