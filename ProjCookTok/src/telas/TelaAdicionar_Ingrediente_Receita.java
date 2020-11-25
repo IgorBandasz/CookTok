@@ -71,6 +71,7 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
         btExcluirIngrediente = new javax.swing.JButton();
         PainelRodapé = new javax.swing.JPanel();
         Button_Salvar = new javax.swing.JButton();
+        btSair = new javax.swing.JButton();
         PainelInstrucoes = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         txtNomeInstru = new javax.swing.JTextArea();
@@ -499,6 +500,13 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
             }
         });
 
+        btSair.setText("Sair");
+        btSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSairActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout PainelRodapéLayout = new javax.swing.GroupLayout(PainelRodapé);
         PainelRodapé.setLayout(PainelRodapéLayout);
         PainelRodapéLayout.setHorizontalGroup(
@@ -506,13 +514,17 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelRodapéLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(Button_Salvar, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(68, 68, 68))
+                .addGap(18, 18, 18)
+                .addComponent(btSair)
+                .addGap(14, 14, 14))
         );
         PainelRodapéLayout.setVerticalGroup(
             PainelRodapéLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PainelRodapéLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(Button_Salvar)
+                .addGroup(PainelRodapéLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Button_Salvar)
+                    .addComponent(btSair))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
@@ -846,6 +858,10 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_salvarPoupopActionPerformed
 
+    private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btSairActionPerformed
+
     public void carregaIngredientes(){
         String sql = "SELECT * from dbcooktok.tbingrediente";
         try {
@@ -918,6 +934,7 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
     private javax.swing.JButton btAdicionarInstrucao;
     private javax.swing.JButton btExcluirIngrediente;
     private javax.swing.JButton btExcluirInstrucao;
+    private javax.swing.JButton btSair;
     private javax.swing.JLabel cabecalho_Nome;
     private javax.swing.JButton cancelarPoupop;
     private javax.swing.JComboBox<String> cbCodIngrediente;

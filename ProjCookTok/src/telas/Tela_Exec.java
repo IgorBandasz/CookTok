@@ -7,6 +7,7 @@ package telas;
 
 import conexao.ConexaoFactory;
 import cookTok.Cronometro;
+import java.awt.event.ActionEvent;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,6 +21,7 @@ import javax.swing.table.DefaultTableModel;
 public class Tela_Exec extends javax.swing.JFrame {
     public static int tempo;
     private String codReceita;
+    private int contador = 0;
     /**
      * Creates new form Tela_Inicio
      */
@@ -55,7 +57,6 @@ public class Tela_Exec extends javax.swing.JFrame {
         tabela_ingredientes = new javax.swing.JTable();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabela_instrucoes = new javax.swing.JTable();
-        btTeste = new javax.swing.JButton();
         btSair = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
@@ -63,11 +64,11 @@ public class Tela_Exec extends javax.swing.JFrame {
         jPanel10 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jTextPane2 = new javax.swing.JTextPane();
+        tpInstrucao = new javax.swing.JTextPane();
         btPause = new javax.swing.JButton();
         btStart = new javax.swing.JButton();
         btStop = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btProximo = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -213,14 +214,14 @@ public class Tela_Exec extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Instrução"
+                "Instrução", "Tempo"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class
+                java.lang.String.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false
+                false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -232,6 +233,9 @@ public class Tela_Exec extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(tabela_instrucoes);
+        if (tabela_instrucoes.getColumnModel().getColumnCount() > 0) {
+            tabela_instrucoes.getColumnModel().getColumn(1).setMaxWidth(70);
+        }
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -273,14 +277,12 @@ public class Tela_Exec extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        btTeste.setText("Limpar");
-        btTeste.addActionListener(new java.awt.event.ActionListener() {
+        btSair.setText("Sair");
+        btSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btTesteActionPerformed(evt);
+                btSairActionPerformed(evt);
             }
         });
-
-        btSair.setText("Sair");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -295,9 +297,7 @@ public class Tela_Exec extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btSair)
-                .addGap(18, 18, 18)
-                .addComponent(btTeste)
-                .addGap(39, 39, 39))
+                .addGap(36, 36, 36))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -307,9 +307,7 @@ public class Tela_Exec extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btTeste)
-                    .addComponent(btSair))
+                .addComponent(btSair)
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
@@ -341,14 +339,14 @@ public class Tela_Exec extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("Tempo");
+        jLabel6.setText("Instrução:");
 
-        jTextPane2.setBackground(new java.awt.Color(204, 171, 216));
-        jTextPane2.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
-        jTextPane2.setForeground(new java.awt.Color(255, 255, 255));
-        jTextPane2.setText("Deixe esfriar e faça pequenas bolas com a mão passando a massa no chocolate granulado.\n");
-        jTextPane2.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        jScrollPane5.setViewportView(jTextPane2);
+        tpInstrucao.setBackground(new java.awt.Color(204, 171, 216));
+        tpInstrucao.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        tpInstrucao.setForeground(new java.awt.Color(255, 255, 255));
+        tpInstrucao.setText("Deixe esfriar e faça pequenas bolas com a mão passando a massa no chocolate granulado.\n");
+        tpInstrucao.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        jScrollPane5.setViewportView(tpInstrucao);
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -384,10 +382,10 @@ public class Tela_Exec extends javax.swing.JFrame {
 
         btStop.setText("Stop");
 
-        jButton1.setText("Próximo");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btProximo.setText("Próximo");
+        btProximo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btProximoActionPerformed(evt);
             }
         });
 
@@ -411,7 +409,7 @@ public class Tela_Exec extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(btStop, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(btProximo, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap(57, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -427,7 +425,7 @@ public class Tela_Exec extends javax.swing.JFrame {
                     .addComponent(btPause, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btStart, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(11, 11, 11)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btProximo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27))
         );
 
@@ -486,9 +484,15 @@ public class Tela_Exec extends javax.swing.JFrame {
             }
             
             DefaultTableModel model = (DefaultTableModel) tabela_ingredientes.getModel();
-            for(int linha=0; linha<tabela_ingredientes.getRowCount();linha++){  
-                model.removeRow(linha);
+            for(int linha=tabela_ingredientes.getRowCount(); linha>0;linha--){  
+                model.removeRow(0);
             }
+            
+            model = (DefaultTableModel) tabela_instrucoes.getModel();
+            for(int linha=tabela_instrucoes.getRowCount(); linha>0;linha--){  
+                model.removeRow(0);
+            }
+            
             sql = "SELECT i.nomeingre, r.quantidade, r.medida from dbcooktok.tbrelingrerec r inner join tbingrediente i on i.pkcodingre = r.fkcodingre "
                 +" where fkcodreceita = "+codReceita;
             result = stat.executeQuery(sql);
@@ -502,43 +506,44 @@ public class Tela_Exec extends javax.swing.JFrame {
                 model.addRow(linha);
             }
             
-            sql = "SELECT nomeinstru from dbcooktok.tbinstrucao "
+            sql = "SELECT nomeinstru, tempoinstru from dbcooktok.tbinstrucao "
                 +" where fkcodreceita = "+codReceita;
             result = stat.executeQuery(sql);
+            int tempoInstru;
             while(result.next()){ 
                 instru = result.getString("nomeinstru");
-                
+                tempoInstru = result.getInt("tempoinstru");
                 model = (DefaultTableModel) tabela_instrucoes.getModel();
-                Object[] l = {instru};
+                Object[] l = {instru, tempoInstru};
                 model.addRow(l);
-            }
-            
+            }           
             ConexaoFactory.close(conn,stat);
+            
+            
         } catch (SQLException throwables) {
             System.out.println("Erro ao trazer receita");
         } 
         Cronometro.segundos =tempo;
         
-        
+        proximaInstrucao();
         
     }//GEN-LAST:event_formWindowActivated
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btProximoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btProximoActionPerformed
+        proximaInstrucao();
+    }//GEN-LAST:event_btProximoActionPerformed
 
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
-    
+        this.dispose();
     }//GEN-LAST:event_btSairActionPerformed
-
-    private void btTesteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTesteActionPerformed
-         
-            DefaultTableModel model = (DefaultTableModel) tabela_ingredientes.getModel();
-            for(int linha=0; linha<tabela_ingredientes.getRowCount();linha++){  
-                model.removeRow(linha);
-            }
-    }//GEN-LAST:event_btTesteActionPerformed
-
+    
+    public void proximaInstrucao(){
+        if(tabela_instrucoes.getRowCount() < contador){
+            tpInstrucao.setText((String)tabela_instrucoes.getValueAt(contador, 0));
+            contador++;
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -578,11 +583,10 @@ public class Tela_Exec extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JButton btPause;
+    private javax.swing.JButton btProximo;
     private javax.swing.JButton btSair;
     public static javax.swing.JButton btStart;
     public static javax.swing.JButton btStop;
-    private javax.swing.JButton btTeste;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -602,10 +606,10 @@ public class Tela_Exec extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextPane jTextPane2;
     private javax.swing.JLabel lbNomeReceita;
     public static javax.swing.JLabel lbTempo;
     private javax.swing.JTable tabela_ingredientes;
     private javax.swing.JTable tabela_instrucoes;
+    private javax.swing.JTextPane tpInstrucao;
     // End of variables declaration//GEN-END:variables
 }
