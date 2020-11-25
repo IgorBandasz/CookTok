@@ -401,12 +401,26 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Ingredientes", "Quantidade", "Unidade de Medida"
+                "Cód. Ingre", "Ingrediente", "Quantidade", "Medida"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, true, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tabela_de_ingredientes.setCellSelectionEnabled(true);
         tabela_de_ingredientes.setEditingRow(0);
         jScrollPane2.setViewportView(tabela_de_ingredientes);
+        tabela_de_ingredientes.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        if (tabela_de_ingredientes.getColumnModel().getColumnCount() > 0) {
+            tabela_de_ingredientes.getColumnModel().getColumn(0).setMaxWidth(70);
+            tabela_de_ingredientes.getColumnModel().getColumn(2).setMaxWidth(80);
+            tabela_de_ingredientes.getColumnModel().getColumn(3).setMaxWidth(80);
+        }
 
         btExcluirIngrediente.setBackground(new java.awt.Color(204, 171, 216));
         btExcluirIngrediente.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
@@ -556,6 +570,9 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
         });
         tabela_de_instrucoes.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane4.setViewportView(tabela_de_instrucoes);
+        if (tabela_de_instrucoes.getColumnModel().getColumnCount() > 0) {
+            tabela_de_instrucoes.getColumnModel().getColumn(1).setMaxWidth(85);
+        }
 
         javax.swing.GroupLayout PainelInstrucoesLayout = new javax.swing.GroupLayout(PainelInstrucoes);
         PainelInstrucoes.setLayout(PainelInstrucoesLayout);
@@ -700,9 +717,9 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
                 for(int linha=0; linha<tabela_de_ingredientes.getRowCount();linha++){
                     sql = "INSERT INTO dbcooktok.tbrelingrerec (fkcodreceita, fkcodingre, quantidade, medida)"
                     + "VALUES ('"+codigo 
-                    +"',"+cbCodIngrediente.getSelectedItem()
-                    +","+tabela_de_ingredientes.getModel().getValueAt(linha, 1)
-                    +",'"+tabela_de_ingredientes.getModel().getValueAt(linha, 2)+"')";
+                    +"',"+tabela_de_ingredientes.getModel().getValueAt(linha, 0)
+                    +","+tabela_de_ingredientes.getModel().getValueAt(linha, 2)
+                    +",'"+tabela_de_ingredientes.getModel().getValueAt(linha, 3)+"')";
                     System.out.println(sql);
                     stat.execute(sql);
                 }
@@ -727,6 +744,7 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
 
  
     private void btAdicionarIngredienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdicionarIngredienteActionPerformed
+        String cod = cbCodIngrediente.getSelectedItem().toString();
         String ingre = (String) txtCombo_Box_ingredientes.getSelectedItem();
         int quantidade = Integer.parseInt(txtIngrediente_Quantidade.getText());
         String unidade = (String) jComboBox1.getSelectedItem();
@@ -748,7 +766,7 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
         }else{   
             //tabela_de_ingredientes
             DefaultTableModel model = (DefaultTableModel) tabela_de_ingredientes.getModel();
-            Object[] linha = {ingre, quantidade, unidade};
+            Object[] linha = {cod, ingre, quantidade, unidade};
             model.addRow(linha);
         }
     }//GEN-LAST:event_btAdicionarIngredienteActionPerformed

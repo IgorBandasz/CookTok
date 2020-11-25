@@ -26,9 +26,10 @@ public class Tela_Inicio extends javax.swing.JFrame {
      * Creates new form Tela_Ececucao
      */
     public Tela_Inicio() {
+        telaExec.setDefaultCloseOperation(EXIT_ON_CLOSE);
         initComponents();
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
