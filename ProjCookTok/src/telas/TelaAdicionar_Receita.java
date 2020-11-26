@@ -7,6 +7,12 @@ package telas;
 
 import conexao.ConexaoFactory;
 import cookTok.Ingrediente;
+import cookTok.Instrucao;
+import cookTok.Receita;
+import cookTok.Rel_ReceitaIngrediente;
+import db.TbInstrucao;
+import db.TbReceita;
+import db.TbRelIngreRec;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,12 +23,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author ester
  */
-public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
+public class TelaAdicionar_Receita extends javax.swing.JFrame {
 
     /**
      * Creates new form TelaAdicionar_Ingrediente_Receita
      */
-    public TelaAdicionar_Ingrediente_Receita() {
+    public TelaAdicionar_Receita() {
         initComponents();
     }
 
@@ -372,11 +378,6 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
                 txtCombo_Box_ingredientesFocusLost(evt);
             }
         });
-        txtCombo_Box_ingredientes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCombo_Box_ingredientesActionPerformed(evt);
-            }
-        });
 
         txtIngrediente_Quantidade.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
         txtIngrediente_Quantidade.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -405,9 +406,16 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
                 "Cód. Ingre", "Ingrediente", "Quantidade", "Medida"
             }
         ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class
+            };
             boolean[] canEdit = new boolean [] {
                 false, true, true, true
             };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
@@ -699,6 +707,7 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
             Poupop.setSize(400, 200);
             mensagem_de_alerta.setText("Adicione uma instrução!");
             Poupop.setVisible(true);
+    //  MUDAR ISSO ABAIXO *********************************       
         }else {
             Poupop.setSize(400, 200);
             ingrediente.setNome_Ingred((txtNome_Receita.getText()));
@@ -706,52 +715,38 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
             Poupop.add(mensagem_de_alerta);
             Poupop.setVisible(true);
         }
+    //  MUDAR ISSO ACIMA *****************************
         
         int tempo = 0;
         for(int linha=0; linha<tabela_de_instrucoes.getRowCount();linha++){
             tempo = tempo + (Integer)tabela_de_instrucoes.getModel().getValueAt(linha, 1);
         }
         
-        String sql = "INSERT INTO dbcooktok.tbreceita (nomereceita, tempo)"
-                + "VALUES ('"+txtNome_Receita.getText()
-                +"',"+tempo*60+")";
-        System.out.println(sql);
-        try {
-            Connection conn = ConexaoFactory.getConexao();
-            Statement stat = conn.createStatement();
-            stat.execute(sql);
-            int codigo = 1;
-            sql = "SELECT max(pkcodreceita) as maior from dbcooktok.tbreceita";
-            ResultSet resultado = stat.executeQuery(sql);
-            while(resultado.next()){
-                codigo = resultado.getInt("maior");
-                           
-                for(int linha=0; linha<tabela_de_ingredientes.getRowCount();linha++){
-                    sql = "INSERT INTO dbcooktok.tbrelingrerec (fkcodreceita, fkcodingre, quantidade, medida)"
-                    + "VALUES ('"+codigo 
-                    +"',"+tabela_de_ingredientes.getModel().getValueAt(linha, 0)
-                    +","+tabela_de_ingredientes.getModel().getValueAt(linha, 2)
-                    +",'"+tabela_de_ingredientes.getModel().getValueAt(linha, 3)+"')";
-                    System.out.println(sql);
-                    stat.execute(sql);
-                }
-                
-                for(int linha=0; linha<tabela_de_instrucoes.getRowCount();linha++){
-                 
-                    sql = "INSERT INTO dbcooktok.tbinstrucao (nomeinstru, tempoinstru, fkcodreceita)"
-                    + "VALUES ('"+tabela_de_instrucoes.getModel().getValueAt(linha, 0)
-                    +"',"+60 * (Integer)tabela_de_instrucoes.getModel().getValueAt(linha, 1) 
-                    +","+codigo+")";
-                    
-                    stat.execute(sql);
-                    System.out.println(sql);
-                }
-            }
-            
-            ConexaoFactory.close(conn,stat);
-        } catch (SQLException throwables) {
-            System.out.println("Erro ao inserir Receita");
-        } 
+        Receita receita = new Receita(txtNome_Receita.getText(),tempo);
+        TbReceita tbreceita = new TbReceita();
+        tbreceita.save(receita);
+        
+        int ultimo = tbreceita.ultimo();
+        
+        TbRelIngreRec tbrel = new TbRelIngreRec();
+        Rel_ReceitaIngrediente rel = new Rel_ReceitaIngrediente();
+        for(int linha=0; linha<tabela_de_ingredientes.getRowCount();linha++){
+            rel.setCod_Receita(ultimo);
+            rel.setCod_Ingred(Integer.parseInt((String)tabela_de_ingredientes.getModel().getValueAt(linha, 0)));
+            rel.setQuantidade((Integer)tabela_de_ingredientes.getModel().getValueAt(linha, 2));
+            rel.setUnidade((String)tabela_de_ingredientes.getModel().getValueAt(linha, 3));
+            rel.toString();
+            tbrel.save(rel);
+        }
+        
+        TbInstrucao tbinstru = new TbInstrucao();
+        Instrucao instru = new Instrucao();
+        for(int linha=0; linha<tabela_de_instrucoes.getRowCount();linha++){
+            instru.setCod_Receita(ultimo);
+            instru.setNome_Instru((String)tabela_de_instrucoes.getModel().getValueAt(linha, 0));
+            instru.setTempo_Instru((Integer)tabela_de_instrucoes.getModel().getValueAt(linha, 1));
+            tbinstru.save(instru);
+        }
     }//GEN-LAST:event_Button_SalvarActionPerformed
 
  
@@ -830,10 +825,6 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
        Poupop.setVisible(false);      
     }//GEN-LAST:event_OKActionPerformed
 
-    private void txtCombo_Box_ingredientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCombo_Box_ingredientesActionPerformed
-     
-    }//GEN-LAST:event_txtCombo_Box_ingredientesActionPerformed
-
     private void txtCombo_Box_ingredientesItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_txtCombo_Box_ingredientesItemStateChanged
        String palavra = "Adicionar novo";
        if (txtCombo_Box_ingredientes.getSelectedItem().toString().equals(palavra)){     
@@ -900,20 +891,20 @@ public class TelaAdicionar_Ingrediente_Receita extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaAdicionar_Ingrediente_Receita.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaAdicionar_Receita.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaAdicionar_Ingrediente_Receita.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaAdicionar_Receita.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaAdicionar_Ingrediente_Receita.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaAdicionar_Receita.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaAdicionar_Ingrediente_Receita.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaAdicionar_Receita.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaAdicionar_Ingrediente_Receita().setVisible(true);
+                new TelaAdicionar_Receita().setVisible(true);
             }
         });
     }

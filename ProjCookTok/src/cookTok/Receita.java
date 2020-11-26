@@ -13,6 +13,11 @@ public class Receita {
     private int cod_Receita;
     private String nome_Receita;
     private int tempo_Preparo;
+    
+    public Receita(String nome_Receita, int tempo_Preparo) {
+        this.nome_Receita = nome_Receita;
+        this.tempo_Preparo = tempo_Preparo;
+    }
     public Receita(int cod_Receita, String nome_Receita, int tempo_Preparo) {
         this.cod_Receita = cod_Receita;
         this.nome_Receita = nome_Receita;

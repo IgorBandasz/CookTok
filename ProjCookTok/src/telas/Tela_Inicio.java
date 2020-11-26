@@ -489,7 +489,7 @@ public class Tela_Inicio extends javax.swing.JFrame {
 
     private void btAdicionarReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdicionarReceitaActionPerformed
 
-        new TelaAdicionar_Ingrediente_Receita().setVisible(true);
+        new TelaAdicionar_Receita().setVisible(true);
     }//GEN-LAST:event_btAdicionarReceitaActionPerformed
 
     private void lbReceita0MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbReceita0MouseClicked

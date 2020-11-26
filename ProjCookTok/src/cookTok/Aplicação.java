@@ -5,7 +5,6 @@
  */
 package cookTok;
 
-import telas.TelaAdicionar_Ingrediente_Receita;
 import telas.Tela_Inicio;
 
 /**

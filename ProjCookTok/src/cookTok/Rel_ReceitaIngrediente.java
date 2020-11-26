@@ -19,11 +19,14 @@ public class Rel_ReceitaIngrediente {
     public Rel_ReceitaIngrediente( ) {
        
     }
-    public Rel_ReceitaIngrediente(int cod_Relacao, int cod_Receita, int cod_Ingred) {
-        this.cod_Relacao = cod_Relacao;
+    
+    public Rel_ReceitaIngrediente(int cod_Receita, int cod_Ingred, int quantidade, String unidade) {
         this.cod_Receita = cod_Receita;
         this.cod_Ingred = cod_Ingred;
+        this.quantidade = quantidade;
+        this.unidade =  unidade;
     }
+    
     public Rel_ReceitaIngrediente(int cod_Relacao, int cod_Receita, int cod_Ingred, int quantidade, String unidade) {
         this.cod_Relacao = cod_Relacao;
         this.cod_Receita = cod_Receita;

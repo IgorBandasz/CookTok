@@ -17,7 +17,8 @@ import java.sql.Statement;
  */
 public class TbInstrucao {
    public void save(Instrucao instru){
-        String sql = "INSERT INTO dbcooktok.tbinstrucao (nomeinstru) VALUES ('"+instru.getNome_Instru()+"')";     
+        String sql = "INSERT INTO dbcooktok.tbinstrucao (nomeinstru,fkcodreceita,tempoinstru)"
+                +" VALUES ('"+instru.getNome_Instru()+"',"+instru.getCod_Receita()+","+instru.getTempo_Instru()*60+")";     
         try {
             Connection conn = ConexaoFactory.getConexao();
             Statement stat = conn.createStatement();
