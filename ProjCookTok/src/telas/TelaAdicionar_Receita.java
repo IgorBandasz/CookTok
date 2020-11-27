@@ -10,6 +10,7 @@ import cookTok.Ingrediente;
 import cookTok.Instrucao;
 import cookTok.Receita;
 import cookTok.Rel_ReceitaIngrediente;
+import db.TbIngrediente;
 import db.TbInstrucao;
 import db.TbReceita;
 import db.TbRelIngreRec;
@@ -51,7 +52,7 @@ public class TelaAdicionar_Receita extends javax.swing.JFrame {
         PoupopIngrediente = new javax.swing.JDialog();
         jPanel6 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        nomeIngred = new javax.swing.JTextField();
+        txtNomeIngred = new javax.swing.JTextField();
         salvarPoupop = new javax.swing.JButton();
         cancelarPoupop = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
@@ -231,21 +232,20 @@ public class TelaAdicionar_Receita extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel6Layout.createSequentialGroup()
-                                    .addComponent(cancelarPoupop)
-                                    .addGap(111, 111, 111)
-                                    .addComponent(salvarPoupop, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel6Layout.createSequentialGroup()
-                                    .addGap(57, 57, 57)
-                                    .addComponent(avisoSemNome, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(nomeIngred, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addComponent(cancelarPoupop)
+                                .addGap(111, 111, 111)
+                                .addComponent(salvarPoupop, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtNomeIngred, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 52, Short.MAX_VALUE))))
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(120, 120, 120)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(avisoSemNome, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(93, 93, 93))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -255,7 +255,7 @@ public class TelaAdicionar_Receita extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(nomeIngred, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtNomeIngred, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(avisoSemNome, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23)
@@ -707,7 +707,7 @@ public class TelaAdicionar_Receita extends javax.swing.JFrame {
             Poupop.setSize(400, 200);
             mensagem_de_alerta.setText("Adicione uma instrução!");
             Poupop.setVisible(true);
-    //  MUDAR ISSO ABAIXO *********************************       
+//  MUDAR ISSO ABAIXO *********************************       
         }else {
             Poupop.setSize(400, 200);
             ingrediente.setNome_Ingred((txtNome_Receita.getText()));
@@ -715,7 +715,7 @@ public class TelaAdicionar_Receita extends javax.swing.JFrame {
             Poupop.add(mensagem_de_alerta);
             Poupop.setVisible(true);
         }
-    //  MUDAR ISSO ACIMA *****************************
+//  MUDAR ISSO ACIMA *****************************
         
         int tempo = 0;
         for(int linha=0; linha<tabela_de_instrucoes.getRowCount();linha++){
@@ -747,6 +747,7 @@ public class TelaAdicionar_Receita extends javax.swing.JFrame {
             instru.setTempo_Instru((Integer)tabela_de_instrucoes.getModel().getValueAt(linha, 1));
             tbinstru.save(instru);
         }
+        this.dispose();
     }//GEN-LAST:event_Button_SalvarActionPerformed
 
  
@@ -835,17 +836,25 @@ public class TelaAdicionar_Receita extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCombo_Box_ingredientesItemStateChanged
 
     private void cancelarPoupopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarPoupopActionPerformed
+        txtNomeIngred.setText("");
         PoupopIngrediente.setVisible(false);    
     }//GEN-LAST:event_cancelarPoupopActionPerformed
 
     private void salvarPoupopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarPoupopActionPerformed
-        if(nomeIngred.getText().length()==0){
-            System.out.println(" aqui");
+        if(txtNomeIngred.getText().length()==0){
             avisoSemNome.setVisible(true);
         } else {
+            /*
             Poupop.setSize(400, 200);
             mensagem_de_alerta.setText("Indriente Salvo, Agora é com Vc Igor");
-             Poupop.setVisible(true);
+            Poupop.setVisible(true);
+            */
+            Ingrediente ingre = new Ingrediente(txtNomeIngred.getText());
+            TbIngrediente tbingre = new TbIngrediente();
+            tbingre.save(ingre);
+            txtNomeIngred.setText("");
+            PoupopIngrediente.setVisible(false);
+            carregaIngredientes();
         }
     }//GEN-LAST:event_salvarPoupopActionPerformed
 
@@ -948,12 +957,12 @@ public class TelaAdicionar_Receita extends javax.swing.JFrame {
     private javax.swing.JLabel lbInstrucao;
     private javax.swing.JLabel lbTempo;
     private javax.swing.JLabel mensagem_de_alerta;
-    private javax.swing.JTextField nomeIngred;
     private javax.swing.JButton salvarPoupop;
     private javax.swing.JTable tabela_de_ingredientes;
     private javax.swing.JTable tabela_de_instrucoes;
     private javax.swing.JComboBox<String> txtCombo_Box_ingredientes;
     private javax.swing.JTextField txtIngrediente_Quantidade;
+    private javax.swing.JTextField txtNomeIngred;
     private javax.swing.JTextArea txtNomeInstru;
     private javax.swing.JTextField txtNome_Receita;
     private javax.swing.JTextField txtTempoInstru;
