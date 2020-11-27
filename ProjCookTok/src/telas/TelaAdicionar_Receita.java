@@ -71,7 +71,7 @@ public class TelaAdicionar_Receita extends javax.swing.JFrame {
         descricao_ingredientes_unidadedemedida = new javax.swing.JLabel();
         txtCombo_Box_ingredientes = new javax.swing.JComboBox<>();
         txtIngrediente_Quantidade = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cbMedida = new javax.swing.JComboBox<>();
         btAdicionarIngrediente = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tabela_de_ingredientes = new javax.swing.JTable();
@@ -381,11 +381,11 @@ public class TelaAdicionar_Receita extends javax.swing.JFrame {
 
         txtIngrediente_Quantidade.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
         txtIngrediente_Quantidade.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtIngrediente_Quantidade.setText("0");
+        txtIngrediente_Quantidade.setText("1");
 
-        jComboBox1.setBackground(new java.awt.Color(204, 204, 255));
-        jComboBox1.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Unidade", "kg", "g", "ml ", "l", "uni." }));
+        cbMedida.setBackground(new java.awt.Color(204, 204, 255));
+        cbMedida.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
+        cbMedida.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Medida", "kg", "g", "ml ", "Litro", "unidade", "xícara", "colher de sopa", "colher de chá", "pitada", "copo" }));
 
         btAdicionarIngrediente.setBackground(new java.awt.Color(204, 171, 216));
         btAdicionarIngrediente.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
@@ -407,7 +407,7 @@ public class TelaAdicionar_Receita extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, true, true, true
@@ -428,7 +428,8 @@ public class TelaAdicionar_Receita extends javax.swing.JFrame {
         if (tabela_de_ingredientes.getColumnModel().getColumnCount() > 0) {
             tabela_de_ingredientes.getColumnModel().getColumn(0).setMaxWidth(70);
             tabela_de_ingredientes.getColumnModel().getColumn(2).setMaxWidth(80);
-            tabela_de_ingredientes.getColumnModel().getColumn(3).setMaxWidth(80);
+            tabela_de_ingredientes.getColumnModel().getColumn(3).setMinWidth(100);
+            tabela_de_ingredientes.getColumnModel().getColumn(3).setMaxWidth(100);
         }
 
         btExcluirIngrediente.setBackground(new java.awt.Color(204, 171, 216));
@@ -446,18 +447,7 @@ public class TelaAdicionar_Receita extends javax.swing.JFrame {
             PainelIngredientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PainelIngredientesLayout.createSequentialGroup()
                 .addGap(27, 27, 27)
-                .addGroup(PainelIngredientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PainelIngredientesLayout.createSequentialGroup()
-                        .addGroup(PainelIngredientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(PainelIngredientesLayout.createSequentialGroup()
-                                .addGap(418, 418, 418)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 165, Short.MAX_VALUE)
-                        .addGroup(PainelIngredientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btExcluirIngrediente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btAdicionarIngrediente, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE))
-                        .addGap(70, 70, 70))
+                .addGroup(PainelIngredientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(PainelIngredientesLayout.createSequentialGroup()
                         .addGroup(PainelIngredientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(descricao_indgredientes)
@@ -469,8 +459,15 @@ public class TelaAdicionar_Receita extends javax.swing.JFrame {
                                 .addGap(10, 10, 10)
                                 .addComponent(txtIngrediente_Quantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(28, 28, 28)
-                        .addComponent(descricao_ingredientes_unidadedemedida)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGroup(PainelIngredientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(descricao_ingredientes_unidadedemedida)
+                            .addComponent(cbMedida, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(PainelIngredientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btExcluirIngrediente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btAdicionarIngrediente, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE))
+                .addGap(70, 70, 70))
         );
         PainelIngredientesLayout.setVerticalGroup(
             PainelIngredientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -484,7 +481,7 @@ public class TelaAdicionar_Receita extends javax.swing.JFrame {
                 .addGroup(PainelIngredientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtCombo_Box_ingredientes, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtIngrediente_Quantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbMedida, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btAdicionarIngrediente, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(PainelIngredientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PainelIngredientesLayout.createSequentialGroup()
@@ -553,7 +550,7 @@ public class TelaAdicionar_Receita extends javax.swing.JFrame {
 
         txtTempoInstru.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtTempoInstru.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtTempoInstru.setText("0");
+        txtTempoInstru.setText("1");
 
         btAdicionarInstrucao.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
         btAdicionarInstrucao.setText("Adicionar");
@@ -755,7 +752,7 @@ public class TelaAdicionar_Receita extends javax.swing.JFrame {
         String cod = cbCodIngrediente.getSelectedItem().toString();
         String ingre = (String) txtCombo_Box_ingredientes.getSelectedItem();
         int quantidade = Integer.parseInt(txtIngrediente_Quantidade.getText());
-        String unidade = (String) jComboBox1.getSelectedItem();
+        String unidade = (String) cbMedida.getSelectedItem();
         
         if (ingre.equals("Selecione")) {
             Poupop.setSize(400, 200);
@@ -763,11 +760,11 @@ public class TelaAdicionar_Receita extends javax.swing.JFrame {
             Poupop.setVisible(true);
         } else if (ingre.equals("Adicionar novo")) {
             adicionarNovoIngrediente();
-        } else if (quantidade == 0){
+        } else if (quantidade <= 0){
             Poupop.setSize(400, 200);
             mensagem_de_alerta.setText("Digite um valor para a quantidade!");
             Poupop.setVisible(true);
-        } else if (unidade.equals("Unidade")){
+        } else if (unidade.equals("Medida")){
             Poupop.setSize(400, 200);
             mensagem_de_alerta.setText("Selecione alguma unidade de medida!");
             Poupop.setVisible(true);
@@ -776,6 +773,9 @@ public class TelaAdicionar_Receita extends javax.swing.JFrame {
             DefaultTableModel model = (DefaultTableModel) tabela_de_ingredientes.getModel();
             Object[] linha = {cod, ingre, quantidade, unidade};
             model.addRow(linha);
+            txtCombo_Box_ingredientes.setSelectedIndex(0);
+            txtIngrediente_Quantidade.setText("1");
+            cbMedida.setSelectedIndex(0);
         }
     }//GEN-LAST:event_btAdicionarIngredienteActionPerformed
 
@@ -811,7 +811,9 @@ public class TelaAdicionar_Receita extends javax.swing.JFrame {
             //tabela_de_ingredientes
             DefaultTableModel model = (DefaultTableModel) tabela_de_instrucoes.getModel();
             Object[] linha = {instru, tempo};
-            model.addRow(linha);    
+            model.addRow(linha);
+            txtNomeInstru.setText("");
+            txtTempoInstru.setText("1");
         }
     }//GEN-LAST:event_btAdicionarInstrucaoActionPerformed
 
@@ -837,7 +839,8 @@ public class TelaAdicionar_Receita extends javax.swing.JFrame {
 
     private void cancelarPoupopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarPoupopActionPerformed
         txtNomeIngred.setText("");
-        PoupopIngrediente.setVisible(false);    
+        PoupopIngrediente.setVisible(false); 
+        txtCombo_Box_ingredientes.setSelectedIndex(0);
     }//GEN-LAST:event_cancelarPoupopActionPerformed
 
     private void salvarPoupopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarPoupopActionPerformed
@@ -852,9 +855,10 @@ public class TelaAdicionar_Receita extends javax.swing.JFrame {
             Ingrediente ingre = new Ingrediente(txtNomeIngred.getText());
             TbIngrediente tbingre = new TbIngrediente();
             tbingre.save(ingre);
+            carregaIngredientes(); 
+            txtCombo_Box_ingredientes.setSelectedItem(txtNomeIngred.getText());
             txtNomeIngred.setText("");
             PoupopIngrediente.setVisible(false);
-            carregaIngredientes();
         }
     }//GEN-LAST:event_salvarPoupopActionPerformed
 
@@ -863,7 +867,7 @@ public class TelaAdicionar_Receita extends javax.swing.JFrame {
     }//GEN-LAST:event_btSairActionPerformed
 
     public void carregaIngredientes(){
-        String sql = "SELECT * from dbcooktok.tbingrediente";
+        String sql = "SELECT * from dbcooktok.tbingrediente order by nomeingre";
         try {
             Connection conn = ConexaoFactory.getConexao();
             Statement stat = conn.createStatement();
@@ -938,11 +942,11 @@ public class TelaAdicionar_Receita extends javax.swing.JFrame {
     private javax.swing.JLabel cabecalho_Nome;
     private javax.swing.JButton cancelarPoupop;
     private javax.swing.JComboBox<String> cbCodIngrediente;
+    private javax.swing.JComboBox<String> cbMedida;
     private javax.swing.JLabel descricao_indgredientes;
     private javax.swing.JLabel descricao_ingredientes_quantidade;
     private javax.swing.JLabel descricao_ingredientes_unidadedemedida;
     private javax.swing.JLabel descricao_nome_receita;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
