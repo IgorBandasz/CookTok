@@ -326,6 +326,7 @@ public class Tela_Exec extends javax.swing.JFrame {
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Instrução:");
 
+        tpInstrucao.setEditable(false);
         tpInstrucao.setBackground(new java.awt.Color(204, 171, 216));
         tpInstrucao.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         tpInstrucao.setForeground(new java.awt.Color(255, 255, 255));
@@ -357,6 +358,11 @@ public class Tela_Exec extends javax.swing.JFrame {
         );
 
         btPausar.setText("Pausar");
+        btPausar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btPausarActionPerformed(evt);
+            }
+        });
 
         btIniciar.setText("Iniciar");
         btIniciar.addActionListener(new java.awt.event.ActionListener() {
@@ -366,6 +372,11 @@ public class Tela_Exec extends javax.swing.JFrame {
         });
 
         btParar.setText("Parar");
+        btParar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btPararActionPerformed(evt);
+            }
+        });
 
         btProximo.setText("Próximo");
         btProximo.addActionListener(new java.awt.event.ActionListener() {
@@ -461,7 +472,7 @@ public class Tela_Exec extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btIniciarActionPerformed
-        // TODO add your handling code here:
+        controleBotoes(1);
     }//GEN-LAST:event_btIniciarActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
@@ -527,11 +538,20 @@ public class Tela_Exec extends javax.swing.JFrame {
 
     private void btProximoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btProximoActionPerformed
         proximaInstrucao();
+        controleBotoes(0);
     }//GEN-LAST:event_btProximoActionPerformed
 
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
         this.dispose();
     }//GEN-LAST:event_btSairActionPerformed
+
+    private void btPausarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPausarActionPerformed
+        controleBotoes(2);
+    }//GEN-LAST:event_btPausarActionPerformed
+
+    private void btPararActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPararActionPerformed
+        controleBotoes(3);
+    }//GEN-LAST:event_btPararActionPerformed
     
     public void proximaInstrucao(){
         if(tabela_instrucoes.getRowCount() > contador){
@@ -548,6 +568,39 @@ public class Tela_Exec extends javax.swing.JFrame {
         
     }
     
+    public void controleBotoes(int acao){
+        btProximo.setEnabled(false); 
+        btPausar.setEnabled(false);
+        btParar.setEnabled(false);
+        btIniciar.setEnabled(false);
+        btIniciar.setText("Iniciar");
+        switch (acao) {
+            case 0:
+                //chegou na tela de execução ou passou para a próxima instrução
+                btIniciar.setEnabled(true);
+                btProximo.setEnabled(true);
+                break;
+            case 1:
+                //foi dado inicio no cronometro
+                btPausar.setEnabled(true);
+                btParar.setEnabled(true);
+                break;
+            case 2:
+                //pressionado o Pausar
+                btIniciar.setEnabled(true);
+                btParar.setEnabled(true);
+                btIniciar.setText("Continuar");
+                break;
+            case 3:
+                //Pressionado o Parar
+                btIniciar.setEnabled(true);
+                btProximo.setEnabled(true);
+                btIniciar.setText("Recomeçar");
+                break;
+            default:
+                break;
+        }
+    }
     /**
      * @param args the command line arguments
      */

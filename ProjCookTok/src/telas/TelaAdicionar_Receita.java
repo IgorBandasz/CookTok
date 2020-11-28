@@ -80,8 +80,6 @@ public class TelaAdicionar_Receita extends javax.swing.JFrame {
         Button_Salvar = new javax.swing.JButton();
         btSair = new javax.swing.JButton();
         PainelInstrucoes = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        txtNomeInstru = new javax.swing.JTextArea();
         lbInstrucao = new javax.swing.JLabel();
         lbTempo = new javax.swing.JLabel();
         txtTempoInstru = new javax.swing.JTextField();
@@ -89,6 +87,8 @@ public class TelaAdicionar_Receita extends javax.swing.JFrame {
         btExcluirInstrucao = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         tabela_de_instrucoes = new javax.swing.JTable();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        txtNomeInstru = new javax.swing.JTextPane();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -535,11 +535,6 @@ public class TelaAdicionar_Receita extends javax.swing.JFrame {
 
         PainelInstrucoes.setBackground(new java.awt.Color(204, 171, 216));
 
-        txtNomeInstru.setColumns(20);
-        txtNomeInstru.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        txtNomeInstru.setRows(5);
-        jScrollPane3.setViewportView(txtNomeInstru);
-
         lbInstrucao.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
         lbInstrucao.setForeground(new java.awt.Color(255, 255, 255));
         lbInstrucao.setText("Instrução:");
@@ -591,6 +586,8 @@ public class TelaAdicionar_Receita extends javax.swing.JFrame {
             tabela_de_instrucoes.getColumnModel().getColumn(1).setMaxWidth(85);
         }
 
+        jScrollPane5.setViewportView(txtNomeInstru);
+
         javax.swing.GroupLayout PainelInstrucoesLayout = new javax.swing.GroupLayout(PainelInstrucoes);
         PainelInstrucoes.setLayout(PainelInstrucoesLayout);
         PainelInstrucoesLayout.setHorizontalGroup(
@@ -599,18 +596,18 @@ public class TelaAdicionar_Receita extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addGroup(PainelInstrucoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PainelInstrucoesLayout.createSequentialGroup()
-                        .addGroup(PainelInstrucoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbInstrucao)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
                         .addGroup(PainelInstrucoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(PainelInstrucoesLayout.createSequentialGroup()
-                                .addGap(20, 20, 20)
-                                .addComponent(lbTempo))
+                                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(54, 54, 54)
+                                .addComponent(txtTempoInstru, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(PainelInstrucoesLayout.createSequentialGroup()
-                                .addGap(50, 50, 50)
-                                .addComponent(txtTempoInstru, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(lbInstrucao)
+                                .addGap(284, 284, 284)
+                                .addComponent(lbTempo))))
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 482, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 177, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 201, Short.MAX_VALUE)
                 .addGroup(PainelInstrucoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btExcluirInstrucao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btAdicionarInstrucao, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE))
@@ -619,17 +616,14 @@ public class TelaAdicionar_Receita extends javax.swing.JFrame {
         PainelInstrucoesLayout.setVerticalGroup(
             PainelInstrucoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PainelInstrucoesLayout.createSequentialGroup()
-                .addGroup(PainelInstrucoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PainelInstrucoesLayout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(lbInstrucao))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelInstrucoesLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lbTempo)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(23, 23, 23)
+                .addGroup(PainelInstrucoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbInstrucao)
+                    .addComponent(lbTempo))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(PainelInstrucoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtTempoInstru, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -664,9 +658,9 @@ public class TelaAdicionar_Receita extends javax.swing.JFrame {
                 .addComponent(PainelNomeReceita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(PainelIngredientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(PainelInstrucoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(24, 24, 24)
                 .addComponent(PainelRodapé, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -955,8 +949,8 @@ public class TelaAdicionar_Receita extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel lbInstrucao;
     private javax.swing.JLabel lbTempo;
@@ -967,7 +961,7 @@ public class TelaAdicionar_Receita extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> txtCombo_Box_ingredientes;
     private javax.swing.JTextField txtIngrediente_Quantidade;
     private javax.swing.JTextField txtNomeIngred;
-    private javax.swing.JTextArea txtNomeInstru;
+    private javax.swing.JTextPane txtNomeInstru;
     private javax.swing.JTextField txtNome_Receita;
     private javax.swing.JTextField txtTempoInstru;
     // End of variables declaration//GEN-END:variables
