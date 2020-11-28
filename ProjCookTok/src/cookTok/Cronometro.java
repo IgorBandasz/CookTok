@@ -11,9 +11,9 @@ public class Cronometro {
 	}
 	private void initComponents() {
                 Tela_Exec.lbTempo.setText("00:00:00");
-		Tela_Exec.btStart.addActionListener(new StartListener());
-		Tela_Exec.btPause.addActionListener(new PauseListener());
-		Tela_Exec.btStop.addActionListener(new StopListener());
+		Tela_Exec.btIniciar.addActionListener(new StartListener());
+		Tela_Exec.btPausar.addActionListener(new PauseListener());
+		Tela_Exec.btParar.addActionListener(new StopListener());
 	}
 	private void segundos() {
 		segundos--;
@@ -61,7 +61,7 @@ public class Cronometro {
                                                 Tela_Exec.lbTempo.setText(tempoFormatado());
                                             } else {
                                                 Tela_Exec.lbTempo.setText("Acabou!!"); 
-                                                Tela_Exec.btStart.setText("Reiniciar");
+                                                Tela_Exec.btIniciar.setText("Reiniciar");
                                                 thread = null;
                                                 myThread.stopThread(true);
                                             }
@@ -87,7 +87,7 @@ public class Cronometro {
 				thread = new Thread(myThread);
 				thread.start();
 			}
-			Tela_Exec.btStart.setText("Start");
+			Tela_Exec.btIniciar.setText("Start");
 			myThread.pausedThread(false);
 		}
 	}
@@ -96,7 +96,7 @@ public class Cronometro {
 		public void actionPerformed(ActionEvent e) {
 			myThread.pausedThread(true);
 			if (!myThread.isStopThread()) {
-				Tela_Exec.btStart.setText("Restart");
+				Tela_Exec.btIniciar.setText("Restart");
 			}
 		}
 	}
@@ -108,7 +108,7 @@ public class Cronometro {
 				myThread.stopThread(true);
 			}
 			myThread.beginThread(true);
-			Tela_Exec.btStart.setText("Start");
+			Tela_Exec.btIniciar.setText("Start");
 		}
 	}
 }
