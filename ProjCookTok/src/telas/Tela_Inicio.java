@@ -117,7 +117,7 @@ public class Tela_Inicio extends javax.swing.JFrame {
         jPanel_Menu.setBackground(new java.awt.Color(204, 171, 216));
         jPanel_Menu.setForeground(new java.awt.Color(204, 171, 216));
 
-        cbFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Ingrediente", "Nome", "Tempo" }));
+        cbFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Nome iniciando por", "Tempo(min) maior que", "Tempo(min) menor que", "Ingrediente iniciando por" }));
 
         detalhes_pesquisar.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
         detalhes_pesquisar.setForeground(new java.awt.Color(255, 255, 255));
@@ -299,63 +299,54 @@ public class Tela_Inicio extends javax.swing.JFrame {
         pReceitasLayout.setHorizontalGroup(
             pReceitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pReceitasLayout.createSequentialGroup()
-                .addContainerGap(59, Short.MAX_VALUE)
-                .addGroup(pReceitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pReceitasLayout.createSequentialGroup()
-                        .addComponent(lbReceita0, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lbReceita5, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lbReceita4, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pReceitasLayout.createSequentialGroup()
-                        .addComponent(lbReceita6, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lbReceita3, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lbReceita1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addContainerGap()
                 .addGroup(pReceitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pReceitasLayout.createSequentialGroup()
+                        .addComponent(lbReceita0, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lbReceita1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pReceitasLayout.createSequentialGroup()
+                        .addComponent(lbReceita5, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lbReceita6, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(12, 12, 12)
+                .addGroup(pReceitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pReceitasLayout.createSequentialGroup()
+                        .addComponent(lbReceita7, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(lbReceita8, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
-                        .addComponent(lbReceita9, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pReceitasLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lbReceita9, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(pReceitasLayout.createSequentialGroup()
                         .addComponent(lbReceita2, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12)
-                        .addComponent(lbReceita7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lbReceita3, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lbReceita4, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         pReceitasLayout.setVerticalGroup(
             pReceitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pReceitasLayout.createSequentialGroup()
+                .addContainerGap(20, Short.MAX_VALUE)
                 .addGroup(pReceitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pReceitasLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(pReceitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lbReceita4, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(pReceitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(lbReceita0, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lbReceita5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pReceitasLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(pReceitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbReceita2, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbReceita7, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                    .addComponent(lbReceita2, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbReceita3, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbReceita4, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pReceitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(lbReceita1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
+                        .addComponent(lbReceita0, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 14, Short.MAX_VALUE)
                 .addGroup(pReceitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pReceitasLayout.createSequentialGroup()
-                        .addGroup(pReceitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pReceitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(lbReceita8, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lbReceita9, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(lbReceita3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(115, 115, 115))
-                    .addGroup(pReceitasLayout.createSequentialGroup()
-                        .addGroup(pReceitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbReceita1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbReceita6, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(pReceitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pReceitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lbReceita8, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
+                            .addComponent(lbReceita9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(lbReceita5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lbReceita7, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbReceita6, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -365,13 +356,13 @@ public class Tela_Inicio extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addComponent(pReceitas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(pReceitas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(26, Short.MAX_VALUE)
+                .addComponent(pReceitas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -390,20 +381,17 @@ public class Tela_Inicio extends javax.swing.JFrame {
         jPanel_cabecalho.setLayout(jPanel_cabecalhoLayout);
         jPanel_cabecalhoLayout.setHorizontalGroup(
             jPanel_cabecalhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_cabecalhoLayout.createSequentialGroup()
-                .addGap(61, 61, 61)
-                .addComponent(titulo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btAdicionarReceita, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26))
             .addGroup(jPanel_cabecalhoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel_Menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(jPanel_cabecalhoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(38, 38, 38)
+                .addGroup(jPanel_cabecalhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel_cabecalhoLayout.createSequentialGroup()
+                        .addComponent(titulo)
+                        .addGap(464, 464, 464)
+                        .addComponent(btAdicionarReceita, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel_cabecalhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jPanel_Menu, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         jPanel_cabecalhoLayout.setVerticalGroup(
             jPanel_cabecalhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -414,7 +402,7 @@ public class Tela_Inicio extends javax.swing.JFrame {
                     .addComponent(btAdicionarReceita))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel_Menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -439,30 +427,32 @@ public class Tela_Inicio extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel_cabecalho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 711, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(1429, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(181, 181, 181))
+                        .addGap(5, 5, 5))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(btVoltar)
-                        .addGap(41, 41, 41)
-                        .addComponent(btAvancar)
-                        .addGap(80, 80, 80))))
+                        .addGap(39, 39, 39)))
+                .addComponent(btAvancar)
+                .addGap(95, 95, 95))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jPanel_cabecalho, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel_cabecalho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btAvancar, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btAvancar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(btVoltar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -472,7 +462,7 @@ public class Tela_Inicio extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 23, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -486,7 +476,35 @@ public class Tela_Inicio extends javax.swing.JFrame {
 
     private void btPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPesquisarActionPerformed
         //Pegar filtro do COmboBox e do campo de texto
-        String sql = "SELECT * from dbcooktok.tbreceita order by nomereceita";
+        String sql = "SELECT * from dbcooktok.tbreceita r " +
+                     " inner join tbrelingrerec rel on r.pkcodreceita = rel.fkcodreceita " +
+                     " inner join tbingrediente i on i.pkcodingre = rel.fkcodingre ";
+        String condicao;
+        condicao = txtPesquisar.getText();
+        int cond;
+        if(condicao != ""){
+            switch(cbFiltro.getSelectedIndex()){
+                case 0:
+                    break;
+                case 1:
+                    sql = sql+" where upper(r.nomereceita) like upper('"+condicao+"%')";
+                    break;
+                case 2:
+                    cond = Integer.parseInt(condicao);
+                    sql = sql+" where r.tempo >"+cond*60;
+                    break;
+                case 3:
+                    cond = Integer.parseInt(condicao);
+                    sql = sql+" where r.tempo <"+cond*60;
+                    break;
+                case 4:
+                    sql = sql+" where upper(i.nomeingre) like upper('"+condicao+"%')";
+                    break;
+            }
+        }
+        
+        sql = sql + " group by r.pkcodreceita order by r.nomereceita";
+        
         pagina = 0;
         btVoltar.setEnabled(false);
         carregaReceitas(sql);
@@ -619,69 +637,59 @@ public class Tela_Inicio extends javax.swing.JFrame {
         int cont = (pagina*10);
         Receita rec = new Receita();
         limpaVetor();
+
         try{
-        for(int i=0; i<pReceitas.getComponentCount(); i++){
-            if(pReceitas.getComponent(i) instanceof JLabel){
-                rec = lista.get(cont);
-                JLabel label =(JLabel)pReceitas.getComponent(i);               
-                label.setText(rec.getNome_Receita()+" Tempo: "+formataTempo(rec.getTempo_Preparo()));
-                vetorCodigo[i] = rec.getCod_Receita();
-                cont++;
-            }
-        }
+            rec = lista.get(cont);
+            lbReceita0.setText(rec.getNome_Receita()+" Tempo: "+formataTempo(rec.getTempo_Preparo()));
+            vetorCodigo[0] = rec.getCod_Receita();
+            cont++;
+
+            rec = lista.get(cont);
+            lbReceita1.setText(rec.getNome_Receita()+" Tempo: "+formataTempo(rec.getTempo_Preparo()));
+            vetorCodigo[1] = rec.getCod_Receita();
+            cont++;
+
+            rec = lista.get(cont);
+            lbReceita2.setText(rec.getNome_Receita()+" Tempo: "+formataTempo(rec.getTempo_Preparo()));
+            vetorCodigo[2] = rec.getCod_Receita();
+            cont++;
+
+            rec = lista.get(cont);
+            lbReceita3.setText(rec.getNome_Receita()+" Tempo: "+formataTempo(rec.getTempo_Preparo()));
+            vetorCodigo[3] = rec.getCod_Receita();
+            cont++;
+
+            rec = lista.get(cont);
+            lbReceita4.setText(rec.getNome_Receita()+" Tempo: "+formataTempo(rec.getTempo_Preparo()));
+            vetorCodigo[4] = rec.getCod_Receita();
+            cont++;
+
+            rec = lista.get(cont);
+            lbReceita5.setText(rec.getNome_Receita()+" Tempo: "+formataTempo(rec.getTempo_Preparo()));
+            vetorCodigo[5] = rec.getCod_Receita();
+            cont++;
+
+            rec = lista.get(cont);
+            lbReceita6.setText(rec.getNome_Receita()+" Tempo: "+formataTempo(rec.getTempo_Preparo()));
+            vetorCodigo[6] = rec.getCod_Receita();
+            cont++;
+
+            rec = lista.get(cont);
+            lbReceita7.setText(rec.getNome_Receita()+" Tempo: "+formataTempo(rec.getTempo_Preparo()));
+            vetorCodigo[7] = rec.getCod_Receita();
+            cont++;
+
+            rec = lista.get(cont);
+            lbReceita8.setText(rec.getNome_Receita()+" Tempo: "+formataTempo(rec.getTempo_Preparo()));
+            vetorCodigo[8] = rec.getCod_Receita();
+            cont++;
+
+            rec = lista.get(cont);
+            lbReceita9.setText(rec.getNome_Receita()+" Tempo: "+formataTempo(rec.getTempo_Preparo()));
+            vetorCodigo[9] = rec.getCod_Receita(); 
         }catch(IndexOutOfBoundsException e){
             btAvancar.setEnabled(false);
         }
-        /*
-        rec = lista.get(cont);
-        lbReceita0.setText(rec.getNome_Receita()+" Tempo: "+formataTempo(rec.getTempo_Preparo()));
-        vetorCodigo[0] = rec.getCod_Receita();
-        cont++;
-        
-        rec = lista.get(cont);
-        lbReceita1.setText(rec.getNome_Receita()+" Tempo: "+formataTempo(rec.getTempo_Preparo()));
-        vetorCodigo[1] = rec.getCod_Receita();
-        cont++;
-        
-        rec = lista.get(cont);
-        lbReceita2.setText(rec.getNome_Receita()+" Tempo: "+formataTempo(rec.getTempo_Preparo()));
-        vetorCodigo[2] = rec.getCod_Receita();
-        cont++;
-        
-        rec = lista.get(cont);
-        lbReceita3.setText(rec.getNome_Receita()+" Tempo: "+formataTempo(rec.getTempo_Preparo()));
-        vetorCodigo[3] = rec.getCod_Receita();
-        cont++;
-        
-        rec = lista.get(cont);
-        lbReceita4.setText(rec.getNome_Receita()+" Tempo: "+formataTempo(rec.getTempo_Preparo()));
-        vetorCodigo[4] = rec.getCod_Receita();
-        cont++;
-        
-        rec = lista.get(cont);
-        lbReceita5.setText(rec.getNome_Receita()+" Tempo: "+formataTempo(rec.getTempo_Preparo()));
-        vetorCodigo[5] = rec.getCod_Receita();
-        cont++;
-        
-        rec = lista.get(cont);
-        lbReceita6.setText(rec.getNome_Receita()+" Tempo: "+formataTempo(rec.getTempo_Preparo()));
-        vetorCodigo[6] = rec.getCod_Receita();
-        cont++;
-        
-        rec = lista.get(cont);
-        lbReceita7.setText(rec.getNome_Receita()+" Tempo: "+formataTempo(rec.getTempo_Preparo()));
-        vetorCodigo[7] = rec.getCod_Receita();
-        cont++;
-        
-        rec = lista.get(cont);
-        lbReceita8.setText(rec.getNome_Receita()+" Tempo: "+formataTempo(rec.getTempo_Preparo()));
-        vetorCodigo[8] = rec.getCod_Receita();
-        cont++;
-        
-        rec = lista.get(cont);
-        lbReceita9.setText(rec.getNome_Receita()+" Tempo: "+formataTempo(rec.getTempo_Preparo()));
-        vetorCodigo[9] = rec.getCod_Receita(); 
-        */
     }
     
     public String formataTempo(int t){

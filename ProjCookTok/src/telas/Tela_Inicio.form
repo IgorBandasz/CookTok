@@ -84,7 +84,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="23" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -108,24 +108,24 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <Component id="jPanel_cabecalho" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="711" max="32767" attributes="0"/>
-              </Group>
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace pref="1429" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <Component id="canvas1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="181" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <Component id="btVoltar" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-                          <Component id="btAvancar" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                       </Group>
                   </Group>
+                  <Component id="btAvancar" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="95" max="-2" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <Component id="jPanel_cabecalho" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -134,11 +134,14 @@
               <Group type="102" attributes="0">
                   <Component id="jPanel_cabecalho" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="btAvancar" pref="44" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Component id="btAvancar" min="-2" pref="44" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
                       <Component id="btVoltar" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="45" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="canvas1" min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -158,22 +161,20 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
-                      <Component id="titulo" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="btAdicionarReceita" min="-2" pref="143" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                  </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jPanel_Menu" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jPanel3" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="titulo" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="464" max="-2" attributes="0"/>
+                              <Component id="btAdicionarReceita" min="-2" pref="143" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="jPanel_Menu" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jPanel3" alignment="0" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace pref="22" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -187,7 +188,7 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jPanel_Menu" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="17" max="32767" attributes="0"/>
+                      <EmptySpace pref="58" max="32767" attributes="0"/>
                       <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -258,11 +259,12 @@
                 <Component class="javax.swing.JComboBox" name="cbFiltro">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="4">
+                      <StringArray count="5">
                         <StringItem index="0" value="Todos"/>
-                        <StringItem index="1" value="Ingrediente"/>
-                        <StringItem index="2" value="Nome"/>
-                        <StringItem index="3" value="Tempo"/>
+                        <StringItem index="1" value="Nome iniciando por"/>
+                        <StringItem index="2" value="Tempo(min) maior que"/>
+                        <StringItem index="3" value="Tempo(min) menor que"/>
+                        <StringItem index="4" value="Ingrediente iniciando por"/>
                       </StringArray>
                     </Property>
                   </Properties>
@@ -309,15 +311,15 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                           <Component id="pReceitas" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="16" max="32767" attributes="0"/>
+                          <EmptySpace pref="30" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="pReceitas" max="32767" attributes="0"/>
+                          <EmptySpace pref="26" max="32767" attributes="0"/>
+                          <Component id="pReceitas" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -335,83 +337,67 @@
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <EmptySpace pref="59" max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="lbReceita0" min="-2" pref="149" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="lbReceita5" min="-2" pref="149" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="lbReceita4" min="-2" pref="149" max="-2" attributes="0"/>
+                                      <Component id="lbReceita1" min="-2" pref="143" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="lbReceita6" min="-2" pref="149" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="lbReceita3" min="-2" pref="149" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="lbReceita1" max="32767" attributes="0"/>
+                                      <Component id="lbReceita5" min="-2" pref="149" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="lbReceita6" min="-2" pref="143" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
+                                      <Component id="lbReceita7" min="-2" pref="149" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="lbReceita8" min="-2" pref="149" max="-2" attributes="0"/>
-                                      <EmptySpace pref="8" max="32767" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="lbReceita9" min="-2" pref="149" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
                                   </Group>
-                                  <Group type="102" alignment="1" attributes="0">
+                                  <Group type="102" attributes="0">
                                       <Component id="lbReceita2" min="-2" pref="149" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                                      <Component id="lbReceita7" max="32767" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="lbReceita3" min="-2" pref="149" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="lbReceita4" min="-2" pref="149" max="-2" attributes="0"/>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
+                              <EmptySpace pref="20" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="lbReceita4" min="-2" pref="93" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="1" attributes="0">
-                                              <Component id="lbReceita0" alignment="0" min="-2" pref="93" max="-2" attributes="0"/>
-                                              <Component id="lbReceita5" alignment="0" min="-2" pref="94" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="lbReceita2" min="-2" pref="93" max="-2" attributes="0"/>
-                                          <Component id="lbReceita7" min="-2" pref="94" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="lbReceita2" min="-2" pref="93" max="-2" attributes="0"/>
+                                  <Component id="lbReceita3" min="-2" pref="94" max="-2" attributes="0"/>
+                                  <Component id="lbReceita4" alignment="0" min="-2" pref="93" max="-2" attributes="0"/>
+                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="lbReceita1" alignment="0" pref="93" max="32767" attributes="0"/>
+                                      <Component id="lbReceita0" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
+                              <EmptySpace type="unrelated" pref="14" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="lbReceita8" alignment="3" min="-2" pref="93" max="-2" attributes="0"/>
-                                              <Component id="lbReceita9" alignment="3" min="-2" pref="94" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Component id="lbReceita3" alignment="1" max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="lbReceita8" pref="94" max="32767" attributes="0"/>
+                                          <Component id="lbReceita9" alignment="0" max="32767" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="-2" pref="115" max="-2" attributes="0"/>
+                                      <Component id="lbReceita5" alignment="1" min="-2" pref="94" max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="lbReceita1" alignment="0" min="-2" pref="93" max="-2" attributes="0"/>
-                                          <Component id="lbReceita6" alignment="0" min="-2" pref="93" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                  </Group>
+                                  <Component id="lbReceita7" min="-2" pref="95" max="-2" attributes="0"/>
+                                  <Component id="lbReceita6" min="-2" pref="94" max="-2" attributes="0"/>
                               </Group>
+                              <EmptySpace pref="24" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
