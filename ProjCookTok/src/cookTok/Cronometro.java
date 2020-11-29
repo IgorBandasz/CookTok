@@ -3,12 +3,20 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import telas.Tela_Exec;
 public class Cronometro {
-	public static int segundos;
+	private int segundos;
+        private int segundosFixo;
 	private AtualizaLabel myThread;
 	private Thread thread;
+        
 	public Cronometro() {
 		initComponents();
 	}
+        
+        public void setSegundos(int seg){
+            segundos = seg;
+            segundosFixo = seg; 
+        }
+        
 	private void initComponents() {
                 Tela_Exec.lbTempo.setText("00:00:00");
 		Tela_Exec.btIniciar.addActionListener(new StartListener());
@@ -60,8 +68,8 @@ public class Cronometro {
                                             if (segundos != 00){                                   
                                                 Tela_Exec.lbTempo.setText(tempoFormatado());
                                             } else {
-                                                Tela_Exec.lbTempo.setText("Acabou!!"); 
-                                                /*Tela_Exec.btIniciar.setText("Reiniciar");*/
+                                                Tela_Exec.lbTempo.setText("--:--:--");  
+                                                Tela_Exec.controleBotoes(3);
                                                 thread = null;
                                                 myThread.stopThread(true);
                                             }
@@ -75,19 +83,18 @@ public class Cronometro {
 					e.printStackTrace();
 				}
 			}
-			segundos = Tela_Exec.tempo;
+			segundos = segundosFixo;
                     }       
 	}
 	private class StartListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			if (thread == null) {
-                                // segundos = 3;
 				myThread = new AtualizaLabel();
 				thread = new Thread(myThread);
 				thread.start();
 			}
-			/*Tela_Exec.btIniciar.setText("Start");*/
+			
 			myThread.pausedThread(false);
 		}
 	}
@@ -95,9 +102,6 @@ public class Cronometro {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			myThread.pausedThread(true);
-			/*if (!myThread.isStopThread()) {
-				Tela_Exec.btIniciar.setText("Restart");
-			}*/
 		}
 	}
 	private class StopListener implements ActionListener {
@@ -106,9 +110,10 @@ public class Cronometro {
 			if (!myThread.isStopThread()) {
 				thread = null;
 				myThread.stopThread(true);
+                                // aqui embaixo
+                                Tela_Exec.lbTempo.setText(tempoFormatado());
 			}
 			myThread.beginThread(true);
-			/*Tela_Exec.btIniciar.setText("Start");*/
 		}
 	}
 }

@@ -17,14 +17,16 @@ import javax.swing.table.DefaultTableModel;
  * @author ester
  */
 public class Tela_Exec extends javax.swing.JFrame {
-    public static int tempo;
+    private int tempo = 0;
     private String codReceita;
     private int contador = 0;
+    private Cronometro tok;
     /**
      * Creates new form Tela_Inicio
      */
     public Tela_Exec() {
         initComponents();
+        this.tok = new Cronometro();
     }
     public void setCodReceita(String cod){
         codReceita = cod;
@@ -476,7 +478,6 @@ public class Tela_Exec extends javax.swing.JFrame {
     }//GEN-LAST:event_btIniciarActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        Cronometro tok = new Cronometro();
         String ingre, quant, med, instru; 
        
         String sql = "SELECT nomereceita, tempo from dbcooktok.tbreceita where pkcodreceita = "+codReceita;
@@ -486,8 +487,7 @@ public class Tela_Exec extends javax.swing.JFrame {
             
             ResultSet result = stat.executeQuery(sql);
             while(result.next()){
-                lbNomeReceita.setText(result.getString("nomereceita"));
-                tempo = result.getInt("tempo") ;
+                lbNomeReceita.setText(result.getString("nomereceita")+"   Tempo: "+result.getInt("tempo")/60);
             }
             
             DefaultTableModel model = (DefaultTableModel) tabela_ingredientes.getModel();
@@ -529,19 +529,21 @@ public class Tela_Exec extends javax.swing.JFrame {
             
         } catch (SQLException throwables) {
             System.out.println("Erro ao trazer receita");
-        } 
-        //Cronometro.segundos =tempo;
+        }
         
+        controleBotoes(0);
         proximaInstrucao();
-        
     }//GEN-LAST:event_formWindowActivated
 
     private void btProximoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btProximoActionPerformed
-        proximaInstrucao();
         controleBotoes(0);
+        proximaInstrucao();
+   
     }//GEN-LAST:event_btProximoActionPerformed
 
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
+        btPararActionPerformed(evt);
+        contador = 0;
         this.dispose();
     }//GEN-LAST:event_btSairActionPerformed
 
@@ -551,24 +553,24 @@ public class Tela_Exec extends javax.swing.JFrame {
 
     private void btPararActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPararActionPerformed
         controleBotoes(3);
+        formatarTempo();
     }//GEN-LAST:event_btPararActionPerformed
     
     public void proximaInstrucao(){
-        if(tabela_instrucoes.getRowCount() > contador){
+        if(contador < tabela_instrucoes.getRowCount()){
             tpInstrucao.setText((String)tabela_instrucoes.getValueAt(contador, 0));
-            contador++;
-            Cronometro.segundos =(Integer)tabela_instrucoes.getValueAt(contador,1) * 60;
+            tok.setSegundos((Integer)tabela_instrucoes.getValueAt(contador,1) * 60);
+            tempo = (Integer)tabela_instrucoes.getValueAt(contador,1) * 60;
+            formatarTempo();
+            contador++;    
         }else if(tabela_instrucoes.getRowCount() == contador){
-            btProximo.setEnabled(false);
-            btIniciar.setEnabled(false);
-            btPausar.setEnabled(false);
-            btParar.setEnabled(false);
-            tpInstrucao.setText("Receita Finalizada!");
-        } 
-        
+            controleBotoes(4);
+            tpInstrucao.setText("RECEITA FINALIZADA!");
+            lbTempo.setText("FIM");
+        }  
     }
     
-    public void controleBotoes(int acao){
+    public static void controleBotoes(int acao){
         btProximo.setEnabled(false); 
         btPausar.setEnabled(false);
         btParar.setEnabled(false);
@@ -597,9 +599,19 @@ public class Tela_Exec extends javax.swing.JFrame {
                 btProximo.setEnabled(true);
                 btIniciar.setText("Recomeçar");
                 break;
+            case 4:
+                //acabaram as instruções
+                break;
             default:
                 break;
         }
+    }
+    
+    public void formatarTempo(){
+        int segundo = (tempo % 60);
+        int minuto = ((tempo % 3600) / 60);
+	int hora = (tempo / 3600);
+	lbTempo.setText(String.format("%02d:%02d:%02d", hora, minuto, segundo));
     }
     /**
      * @param args the command line arguments
@@ -642,7 +654,7 @@ public class Tela_Exec extends javax.swing.JFrame {
     public static javax.swing.JButton btIniciar;
     public static javax.swing.JButton btParar;
     public static javax.swing.JButton btPausar;
-    private javax.swing.JButton btProximo;
+    public static javax.swing.JButton btProximo;
     private javax.swing.JButton btSair;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
