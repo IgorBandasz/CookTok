@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.JLabel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -18,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Tela_Exec extends javax.swing.JFrame {
     private int tempo = 0;
-    private String codReceita;
+    private int codReceita;
     private int contador = 0;
     private Cronometro tok;
     /**
@@ -28,7 +29,7 @@ public class Tela_Exec extends javax.swing.JFrame {
         initComponents();
         this.tok = new Cronometro();
     }
-    public void setCodReceita(String cod){
+    public void setCodReceita(int cod){
         codReceita = cod;
     }
     /**

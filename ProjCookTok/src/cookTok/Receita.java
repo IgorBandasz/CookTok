@@ -14,6 +14,10 @@ public class Receita {
     private String nome_Receita;
     private int tempo_Preparo;
     
+    public Receita(){
+        
+    }
+    
     public Receita(String nome_Receita, int tempo_Preparo) {
         this.nome_Receita = nome_Receita;
         this.tempo_Preparo = tempo_Preparo;

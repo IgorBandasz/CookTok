@@ -6,25 +6,31 @@
 package telas;
 
 import conexao.ConexaoFactory;
+import cookTok.Receita;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 
 /**
  *
  * @author ester
  */
 public class Tela_Inicio extends javax.swing.JFrame {
-    private String[] vetorNome = new String[10];
-    private String[] vetorCodigo = new String[10];
-    private String fim;
-    private Tela_Exec telaExec = new Tela_Exec();
+    private int[] vetorCodigo = new int[10];
+    private Tela_Exec telaExec;
+    private int pagina = 0; 
+    private ArrayList<Receita> lista;
     /**
      * Creates new form Tela_Ececucao
      */
     public Tela_Inicio() {
         initComponents();
+        this.telaExec = new Tela_Exec();
+        this.lista = new ArrayList<>();
     }
     
     /**
@@ -46,9 +52,9 @@ public class Tela_Inicio extends javax.swing.JFrame {
         cbFiltro = new javax.swing.JComboBox<>();
         detalhes_pesquisar = new javax.swing.JLabel();
         txtPesquisar = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        btPesquisar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        jPanel6 = new javax.swing.JPanel();
+        pReceitas = new javax.swing.JPanel();
         lbReceita2 = new javax.swing.JLabel();
         lbReceita3 = new javax.swing.JLabel();
         lbReceita4 = new javax.swing.JLabel();
@@ -56,12 +62,13 @@ public class Tela_Inicio extends javax.swing.JFrame {
         lbReceita7 = new javax.swing.JLabel();
         lbReceita8 = new javax.swing.JLabel();
         lbReceita9 = new javax.swing.JLabel();
-        lbReceita1 = new javax.swing.JLabel();
         lbReceita0 = new javax.swing.JLabel();
         lbReceita5 = new javax.swing.JLabel();
+        lbReceita1 = new javax.swing.JLabel();
         btAdicionarReceita = new javax.swing.JButton();
         canvas1 = new java.awt.Canvas();
         btAvancar = new javax.swing.JButton();
+        btVoltar = new javax.swing.JButton();
 
         jLabel13.setBackground(new java.awt.Color(110, 198, 202));
         jLabel13.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
@@ -91,13 +98,6 @@ public class Tela_Inicio extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setName("Tela_Exec"); // NOI18N
-        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
-            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
-                formWindowGainedFocus(evt);
-            }
-            public void windowLostFocus(java.awt.event.WindowEvent evt) {
-            }
-        });
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
@@ -123,10 +123,10 @@ public class Tela_Inicio extends javax.swing.JFrame {
         detalhes_pesquisar.setForeground(new java.awt.Color(255, 255, 255));
         detalhes_pesquisar.setText("Pesquisar");
 
-        jButton2.setText("Pesquisar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btPesquisar.setText("Pesquisar");
+        btPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btPesquisarActionPerformed(evt);
             }
         });
 
@@ -142,7 +142,7 @@ public class Tela_Inicio extends javax.swing.JFrame {
                     .addGroup(jPanel_MenuLayout.createSequentialGroup()
                         .addComponent(txtPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(77, 77, 77)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(detalhes_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -155,20 +155,19 @@ public class Tela_Inicio extends javax.swing.JFrame {
                 .addGroup(jPanel_MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21))
         );
 
         jPanel3.setBackground(new java.awt.Color(204, 171, 216));
         jPanel3.setForeground(new java.awt.Color(204, 171, 216));
 
-        jPanel6.setBackground(new java.awt.Color(110, 198, 202));
+        pReceitas.setBackground(new java.awt.Color(110, 198, 202));
 
         lbReceita2.setBackground(new java.awt.Color(110, 198, 202));
         lbReceita2.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
         lbReceita2.setForeground(new java.awt.Color(255, 255, 255));
         lbReceita2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbReceita2.setText("Receita 1");
         lbReceita2.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(8, 151, 157)));
         lbReceita2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lbReceita2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -182,7 +181,6 @@ public class Tela_Inicio extends javax.swing.JFrame {
         lbReceita3.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
         lbReceita3.setForeground(new java.awt.Color(255, 255, 255));
         lbReceita3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbReceita3.setText("Receita 1");
         lbReceita3.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(8, 151, 157)));
         lbReceita3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lbReceita3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -196,7 +194,6 @@ public class Tela_Inicio extends javax.swing.JFrame {
         lbReceita4.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
         lbReceita4.setForeground(new java.awt.Color(255, 255, 255));
         lbReceita4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbReceita4.setText("Receita 1");
         lbReceita4.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(8, 151, 157)));
         lbReceita4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lbReceita4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -210,7 +207,6 @@ public class Tela_Inicio extends javax.swing.JFrame {
         lbReceita6.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
         lbReceita6.setForeground(new java.awt.Color(255, 255, 255));
         lbReceita6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbReceita6.setText("Receita 1");
         lbReceita6.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(8, 151, 157)));
         lbReceita6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lbReceita6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -224,7 +220,6 @@ public class Tela_Inicio extends javax.swing.JFrame {
         lbReceita7.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
         lbReceita7.setForeground(new java.awt.Color(255, 255, 255));
         lbReceita7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbReceita7.setText("Receita 1");
         lbReceita7.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(8, 151, 157)));
         lbReceita7.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lbReceita7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -238,7 +233,6 @@ public class Tela_Inicio extends javax.swing.JFrame {
         lbReceita8.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
         lbReceita8.setForeground(new java.awt.Color(255, 255, 255));
         lbReceita8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbReceita8.setText("Receita 1");
         lbReceita8.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(8, 151, 157)));
         lbReceita8.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lbReceita8.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -252,7 +246,6 @@ public class Tela_Inicio extends javax.swing.JFrame {
         lbReceita9.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
         lbReceita9.setForeground(new java.awt.Color(255, 255, 255));
         lbReceita9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbReceita9.setText("+");
         lbReceita9.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(8, 151, 157)));
         lbReceita9.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lbReceita9.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -262,25 +255,10 @@ public class Tela_Inicio extends javax.swing.JFrame {
             }
         });
 
-        lbReceita1.setBackground(new java.awt.Color(110, 198, 202));
-        lbReceita1.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
-        lbReceita1.setForeground(new java.awt.Color(255, 255, 255));
-        lbReceita1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbReceita1.setText("Receita 2");
-        lbReceita1.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(8, 151, 157)));
-        lbReceita1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        lbReceita1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        lbReceita1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lbReceita1MouseClicked(evt);
-            }
-        });
-
         lbReceita0.setBackground(new java.awt.Color(110, 198, 202));
         lbReceita0.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
         lbReceita0.setForeground(new java.awt.Color(255, 255, 255));
         lbReceita0.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbReceita0.setText("Receita 1");
         lbReceita0.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(8, 151, 157)));
         lbReceita0.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lbReceita0.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -288,16 +266,12 @@ public class Tela_Inicio extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lbReceita0MouseClicked(evt);
             }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                lbReceita0MouseEntered(evt);
-            }
         });
 
         lbReceita5.setBackground(new java.awt.Color(110, 198, 202));
         lbReceita5.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
         lbReceita5.setForeground(new java.awt.Color(255, 255, 255));
         lbReceita5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbReceita5.setText("Receita 1");
         lbReceita5.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(8, 151, 157)));
         lbReceita5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lbReceita5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -307,62 +281,81 @@ public class Tela_Inicio extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lbReceita0, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbReceita5, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(50, 50, 50)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbReceita6, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbReceita1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbReceita2, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbReceita7, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(54, 54, 54)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbReceita3, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbReceita8, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(56, 56, 56)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lbReceita4, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbReceita9, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25))
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbReceita3, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbReceita4, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+        lbReceita1.setBackground(new java.awt.Color(110, 198, 202));
+        lbReceita1.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
+        lbReceita1.setForeground(new java.awt.Color(255, 255, 255));
+        lbReceita1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbReceita1.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(8, 151, 157)));
+        lbReceita1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        lbReceita1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lbReceita1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbReceita1MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pReceitasLayout = new javax.swing.GroupLayout(pReceitas);
+        pReceitas.setLayout(pReceitasLayout);
+        pReceitasLayout.setHorizontalGroup(
+            pReceitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pReceitasLayout.createSequentialGroup()
+                .addContainerGap(59, Short.MAX_VALUE)
+                .addGroup(pReceitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pReceitasLayout.createSequentialGroup()
+                        .addComponent(lbReceita0, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbReceita8, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbReceita9, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(jPanel6Layout.createSequentialGroup()
-                            .addComponent(lbReceita2, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(lbReceita7, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addGap(163, 163, 163)
-                                .addComponent(lbReceita6, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(lbReceita0, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lbReceita1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lbReceita5, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addComponent(lbReceita5, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbReceita4, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pReceitasLayout.createSequentialGroup()
+                        .addComponent(lbReceita6, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbReceita3, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbReceita1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pReceitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pReceitasLayout.createSequentialGroup()
+                        .addComponent(lbReceita8, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                        .addComponent(lbReceita9, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pReceitasLayout.createSequentialGroup()
+                        .addComponent(lbReceita2, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(lbReceita7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
+        );
+        pReceitasLayout.setVerticalGroup(
+            pReceitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pReceitasLayout.createSequentialGroup()
+                .addGroup(pReceitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pReceitasLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(pReceitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lbReceita4, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(pReceitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(lbReceita0, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lbReceita5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pReceitasLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(pReceitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbReceita2, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbReceita7, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addGroup(pReceitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pReceitasLayout.createSequentialGroup()
+                        .addGroup(pReceitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pReceitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lbReceita8, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lbReceita9, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lbReceita3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(115, 115, 115))
+                    .addGroup(pReceitasLayout.createSequentialGroup()
+                        .addGroup(pReceitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbReceita1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbReceita6, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -370,15 +363,15 @@ public class Tela_Inicio extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addComponent(pReceitas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(16, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(pReceitas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -434,20 +427,30 @@ public class Tela_Inicio extends javax.swing.JFrame {
             }
         });
 
+        btVoltar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btVoltar.setText("<");
+        btVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btVoltarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel_cabecalho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 11, Short.MAX_VALUE))
+                .addGap(0, 711, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(1429, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(181, 181, 181))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(btVoltar)
+                        .addGap(41, 41, 41)
                         .addComponent(btAvancar)
                         .addGap(80, 80, 80))))
         );
@@ -456,8 +459,10 @@ public class Tela_Inicio extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel_cabecalho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btAvancar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btAvancar, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
+                    .addComponent(btVoltar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -467,7 +472,7 @@ public class Tela_Inicio extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 11, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -479,140 +484,215 @@ public class Tela_Inicio extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void lbReceita0MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbReceita0MouseEntered
-       
-    }//GEN-LAST:event_lbReceita0MouseEntered
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void btPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPesquisarActionPerformed
+        //Pegar filtro do COmboBox e do campo de texto
+        String sql = "SELECT * from dbcooktok.tbreceita order by nomereceita";
+        pagina = 0;
+        btVoltar.setEnabled(false);
+        carregaReceitas(sql);
+        exibeLista();
+    }//GEN-LAST:event_btPesquisarActionPerformed
 
     private void btAdicionarReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdicionarReceitaActionPerformed
-
         new TelaAdicionar_Receita().setVisible(true);
     }//GEN-LAST:event_btAdicionarReceitaActionPerformed
 
     private void lbReceita0MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbReceita0MouseClicked
-        if (vetorCodigo[0] != ""){
+        if (vetorCodigo[0] != -1){
             telaExec.setCodReceita(vetorCodigo[0]);
             telaExec.setVisible(true);
         }
     }//GEN-LAST:event_lbReceita0MouseClicked
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        carregaReceita("0");
+        btVoltar.setEnabled(false);
+        String sql = "SELECT * from dbcooktok.tbreceita order by nomereceita";
+        carregaReceitas(sql);
+        exibeLista();
     }//GEN-LAST:event_formWindowActivated
 
     private void btAvancarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAvancarActionPerformed
-        carregaReceita(fim);
+        pagina++;
+        btVoltar.setEnabled(true);
+        exibeLista();
     }//GEN-LAST:event_btAvancarActionPerformed
 
     private void lbReceita1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbReceita1MouseClicked
-        if (vetorCodigo[1] != ""){
+        if (vetorCodigo[1] != -1){
             telaExec.setCodReceita(vetorCodigo[1]);
             telaExec.setVisible(true);
         }
     }//GEN-LAST:event_lbReceita1MouseClicked
 
     private void lbReceita2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbReceita2MouseClicked
-        if (vetorCodigo[2] != ""){
+        if (vetorCodigo[2] != -1){
             telaExec.setCodReceita(vetorCodigo[2]);
             telaExec.setVisible(true);
         }
     }//GEN-LAST:event_lbReceita2MouseClicked
 
     private void lbReceita3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbReceita3MouseClicked
-        if (vetorCodigo[3] != ""){
+        if (vetorCodigo[3] != -1){
             telaExec.setCodReceita(vetorCodigo[3]);
             telaExec.setVisible(true);
         }
     }//GEN-LAST:event_lbReceita3MouseClicked
 
     private void lbReceita4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbReceita4MouseClicked
-        if (vetorCodigo[4] != ""){
+        if (vetorCodigo[4] != -1){
             telaExec.setCodReceita(vetorCodigo[4]);
             telaExec.setVisible(true);
         }
     }//GEN-LAST:event_lbReceita4MouseClicked
 
     private void lbReceita5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbReceita5MouseClicked
-        if (vetorCodigo[5] != ""){
+        if (vetorCodigo[5] != -1){
             telaExec.setCodReceita(vetorCodigo[5]);
             telaExec.setVisible(true);
         }
     }//GEN-LAST:event_lbReceita5MouseClicked
 
     private void lbReceita6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbReceita6MouseClicked
-        if (vetorCodigo[6] != ""){
+        if (vetorCodigo[6] != -1){
             telaExec.setCodReceita(vetorCodigo[6]);
             telaExec.setVisible(true);
         }
     }//GEN-LAST:event_lbReceita6MouseClicked
 
     private void lbReceita7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbReceita7MouseClicked
-        if (vetorCodigo[7] != ""){
+        if (vetorCodigo[7] != -1){
             telaExec.setCodReceita(vetorCodigo[7]);
             telaExec.setVisible(true);
         }
     }//GEN-LAST:event_lbReceita7MouseClicked
 
     private void lbReceita8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbReceita8MouseClicked
-        if (vetorCodigo[8] != ""){
+        if (vetorCodigo[8] != -1){
             telaExec.setCodReceita(vetorCodigo[8]);
             telaExec.setVisible(true);
         }
     }//GEN-LAST:event_lbReceita8MouseClicked
 
     private void lbReceita9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbReceita9MouseClicked
-        if (vetorCodigo[9] != ""){
+        if (vetorCodigo[9] != -1){
             telaExec.setCodReceita(vetorCodigo[9]);
             telaExec.setVisible(true);
         }
     }//GEN-LAST:event_lbReceita9MouseClicked
 
-    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
-    
-    }//GEN-LAST:event_formWindowGainedFocus
-    
-    public void carregaReceita(String começo){
-        
-        for(int i = 0; i<10; i++){
-            vetorNome[i]="";
-            vetorCodigo[i]="";
+    private void btVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoltarActionPerformed
+        btAvancar.setEnabled(true);
+        pagina--;
+        if(pagina == 0){
+            btVoltar.setEnabled(false);
         }
-        String sql = "SELECT * from dbcooktok.tbreceita where pkcodreceita >"+começo+" limit 10";
+        exibeLista();
+    }//GEN-LAST:event_btVoltarActionPerformed
+    
+    public void carregaReceitas(String sql){   
+        lista.clear();  
         try {
             Connection conn = ConexaoFactory.getConexao();
             Statement stat = conn.createStatement();
             
             ResultSet result = stat.executeQuery(sql);
             
-            int i=0;
+            
             while(result.next()){
-                vetorNome[i] = result.getString("nomereceita") ;
-                vetorCodigo[i] = result.getString("pkcodreceita");
-                i++;
-            }
-            
-            if (vetorCodigo[9] != ""){
-                fim = vetorCodigo[9];
-            }else{
-                fim = "0";
-            }
-            lbReceita0.setText(vetorNome[0]);
-            lbReceita1.setText(vetorNome[1]);
-            lbReceita2.setText(vetorNome[2]);
-            lbReceita3.setText(vetorNome[3]);
-            lbReceita4.setText(vetorNome[4]);
-            lbReceita5.setText(vetorNome[5]);
-            lbReceita6.setText(vetorNome[6]);
-            lbReceita7.setText(vetorNome[7]);
-            lbReceita8.setText(vetorNome[8]);
-            lbReceita9.setText(vetorNome[9]);
-            
+                Receita rec = new Receita(result.getInt("pkcodreceita"), result.getString("nomereceita"), result.getInt("tempo"));
+                lista.add(rec);
+            }           
             ConexaoFactory.close(conn,stat);
         } catch (SQLException throwables) {
-            System.out.println("Erro ao exibir Receitas");
+            System.out.println("Erro ao carregar Receitas");
+        }
+    }
+    
+    public void exibeLista(){        
+        //Limpa os Labels
+        for(int i=0; i<pReceitas.getComponentCount(); i++){
+            if(pReceitas.getComponent(i) instanceof JLabel){        
+                JLabel label =(JLabel)pReceitas.getComponent(i);               
+                label.setText("");               
+            }
+        }
+        int cont = (pagina*10);
+        Receita rec = new Receita();
+        limpaVetor();
+        try{
+        for(int i=0; i<pReceitas.getComponentCount(); i++){
+            if(pReceitas.getComponent(i) instanceof JLabel){
+                rec = lista.get(cont);
+                JLabel label =(JLabel)pReceitas.getComponent(i);               
+                label.setText(rec.getNome_Receita()+" Tempo: "+formataTempo(rec.getTempo_Preparo()));
+                vetorCodigo[i] = rec.getCod_Receita();
+                cont++;
+            }
+        }
+        }catch(IndexOutOfBoundsException e){
+            btAvancar.setEnabled(false);
+        }
+        /*
+        rec = lista.get(cont);
+        lbReceita0.setText(rec.getNome_Receita()+" Tempo: "+formataTempo(rec.getTempo_Preparo()));
+        vetorCodigo[0] = rec.getCod_Receita();
+        cont++;
+        
+        rec = lista.get(cont);
+        lbReceita1.setText(rec.getNome_Receita()+" Tempo: "+formataTempo(rec.getTempo_Preparo()));
+        vetorCodigo[1] = rec.getCod_Receita();
+        cont++;
+        
+        rec = lista.get(cont);
+        lbReceita2.setText(rec.getNome_Receita()+" Tempo: "+formataTempo(rec.getTempo_Preparo()));
+        vetorCodigo[2] = rec.getCod_Receita();
+        cont++;
+        
+        rec = lista.get(cont);
+        lbReceita3.setText(rec.getNome_Receita()+" Tempo: "+formataTempo(rec.getTempo_Preparo()));
+        vetorCodigo[3] = rec.getCod_Receita();
+        cont++;
+        
+        rec = lista.get(cont);
+        lbReceita4.setText(rec.getNome_Receita()+" Tempo: "+formataTempo(rec.getTempo_Preparo()));
+        vetorCodigo[4] = rec.getCod_Receita();
+        cont++;
+        
+        rec = lista.get(cont);
+        lbReceita5.setText(rec.getNome_Receita()+" Tempo: "+formataTempo(rec.getTempo_Preparo()));
+        vetorCodigo[5] = rec.getCod_Receita();
+        cont++;
+        
+        rec = lista.get(cont);
+        lbReceita6.setText(rec.getNome_Receita()+" Tempo: "+formataTempo(rec.getTempo_Preparo()));
+        vetorCodigo[6] = rec.getCod_Receita();
+        cont++;
+        
+        rec = lista.get(cont);
+        lbReceita7.setText(rec.getNome_Receita()+" Tempo: "+formataTempo(rec.getTempo_Preparo()));
+        vetorCodigo[7] = rec.getCod_Receita();
+        cont++;
+        
+        rec = lista.get(cont);
+        lbReceita8.setText(rec.getNome_Receita()+" Tempo: "+formataTempo(rec.getTempo_Preparo()));
+        vetorCodigo[8] = rec.getCod_Receita();
+        cont++;
+        
+        rec = lista.get(cont);
+        lbReceita9.setText(rec.getNome_Receita()+" Tempo: "+formataTempo(rec.getTempo_Preparo()));
+        vetorCodigo[9] = rec.getCod_Receita(); 
+        */
+    }
+    
+    public String formataTempo(int t){
+        int minuto = ((t % 3600) / 60);
+        int hora = (t / 3600);
+        return String.format("%02dh%02dmin", hora, minuto);
+    }
+    
+    public void limpaVetor(){
+        for(int i=0; i < vetorCodigo.length; i++){
+            vetorCodigo[i]= -1;
         }
     }
     
@@ -657,14 +737,14 @@ public class Tela_Inicio extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAdicionarReceita;
     private javax.swing.JButton btAvancar;
+    private javax.swing.JButton btPesquisar;
+    private javax.swing.JButton btVoltar;
     private java.awt.Canvas canvas1;
     private javax.swing.JComboBox<String> cbFiltro;
     private javax.swing.JLabel detalhes_pesquisar;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel_Menu;
     private javax.swing.JPanel jPanel_cabecalho;
     private javax.swing.JLabel lbReceita0;
@@ -678,6 +758,7 @@ public class Tela_Inicio extends javax.swing.JFrame {
     private javax.swing.JLabel lbReceita8;
     private javax.swing.JLabel lbReceita9;
     private javax.swing.JLabel mensagem;
+    private javax.swing.JPanel pReceitas;
     private javax.swing.JDialog popup;
     private javax.swing.JLabel titulo;
     private javax.swing.JTextField txtPesquisar;
