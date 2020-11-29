@@ -110,8 +110,6 @@ public class Cronometro {
 			if (!myThread.isStopThread()) {
 				thread = null;
 				myThread.stopThread(true);
-                                // aqui embaixo
-                                Tela_Exec.lbTempo.setText(tempoFormatado());
 			}
 			myThread.beginThread(true);
 		}
