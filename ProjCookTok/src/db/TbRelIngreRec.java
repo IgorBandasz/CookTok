@@ -10,6 +10,7 @@ import cookTok.Rel_ReceitaIngrediente;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
+import telas.TelaAdicionar_Receita;
 
 /**
  *
@@ -27,6 +28,9 @@ public class TbRelIngreRec {
             System.out.println("Relação IngreRec inserido com sucesso");
         } catch (SQLException throwables) {
             System.out.println("Erro ao inserir Relação IngreRec");
+            TelaAdicionar_Receita.Poupop.setSize(400, 200);
+            TelaAdicionar_Receita.mensagem_de_alerta.setText("Erro ao salvar Ingredientes");
+            TelaAdicionar_Receita.Poupop.setVisible(true);
         }
     }
 }

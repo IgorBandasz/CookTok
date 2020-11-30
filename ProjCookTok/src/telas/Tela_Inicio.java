@@ -53,6 +53,7 @@ public class Tela_Inicio extends javax.swing.JFrame {
         detalhes_pesquisar = new javax.swing.JLabel();
         txtPesquisar = new javax.swing.JTextField();
         btPesquisar = new javax.swing.JButton();
+        cbOrdem = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         pReceitas = new javax.swing.JPanel();
         lbReceita2 = new javax.swing.JLabel();
@@ -118,6 +119,11 @@ public class Tela_Inicio extends javax.swing.JFrame {
         jPanel_Menu.setForeground(new java.awt.Color(204, 171, 216));
 
         cbFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Nome iniciando por", "Tempo(min) maior que", "Tempo(min) menor que", "Ingrediente iniciando por" }));
+        cbFiltro.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbFiltroItemStateChanged(evt);
+            }
+        });
 
         detalhes_pesquisar.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
         detalhes_pesquisar.setForeground(new java.awt.Color(255, 255, 255));
@@ -130,21 +136,30 @@ public class Tela_Inicio extends javax.swing.JFrame {
             }
         });
 
+        cbOrdem.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A-Z", "Z-A", "Maior tempo", "Menor tempo" }));
+        cbOrdem.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbOrdemItemStateChanged(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel_MenuLayout = new javax.swing.GroupLayout(jPanel_Menu);
         jPanel_Menu.setLayout(jPanel_MenuLayout);
         jPanel_MenuLayout.setHorizontalGroup(
             jPanel_MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_MenuLayout.createSequentialGroup()
-                .addGap(110, 110, 110)
+                .addGap(36, 36, 36)
+                .addComponent(cbOrdem, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(cbFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(78, 78, 78)
+                .addGap(34, 34, 34)
                 .addGroup(jPanel_MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel_MenuLayout.createSequentialGroup()
                         .addComponent(txtPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(77, 77, 77)
+                        .addGap(50, 50, 50)
                         .addComponent(btPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(detalhes_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(31, 31, 31))
         );
         jPanel_MenuLayout.setVerticalGroup(
             jPanel_MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -155,7 +170,8 @@ public class Tela_Inicio extends javax.swing.JFrame {
                 .addGroup(jPanel_MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbOrdem, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21))
         );
 
@@ -503,7 +519,22 @@ public class Tela_Inicio extends javax.swing.JFrame {
             }
         }
         
-        sql = sql + " group by r.pkcodreceita order by r.nomereceita";
+        sql = sql + " group by r.pkcodreceita";
+        
+        switch(cbOrdem.getSelectedIndex()){
+                case 0:
+                    sql = sql+" order by r.nomereceita";
+                    break;
+                case 1:
+                    sql = sql+" order by r.nomereceita desc";
+                    break;
+                case 2:
+                    sql = sql+" order by r.tempo desc";
+                    break;
+                case 3:
+                    sql = sql+" order by r.tempo";
+                    break;
+            }
         
         pagina = 0;
         btVoltar.setEnabled(false);
@@ -606,6 +637,14 @@ public class Tela_Inicio extends javax.swing.JFrame {
         }
         exibeLista();
     }//GEN-LAST:event_btVoltarActionPerformed
+
+    private void cbFiltroItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbFiltroItemStateChanged
+        txtPesquisar.setText("");
+    }//GEN-LAST:event_cbFiltroItemStateChanged
+
+    private void cbOrdemItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbOrdemItemStateChanged
+        
+    }//GEN-LAST:event_cbOrdemItemStateChanged
     
     public void carregaReceitas(String sql){   
         lista.clear();  
@@ -749,6 +788,7 @@ public class Tela_Inicio extends javax.swing.JFrame {
     private javax.swing.JButton btVoltar;
     private java.awt.Canvas canvas1;
     private javax.swing.JComboBox<String> cbFiltro;
+    private javax.swing.JComboBox<String> cbOrdem;
     private javax.swing.JLabel detalhes_pesquisar;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JPanel jPanel1;

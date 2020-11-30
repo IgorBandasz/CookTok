@@ -137,18 +137,18 @@ public class TelaAdicionar_Receita extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(172, 172, 172)
+                .addGap(160, 160, 160)
                 .addComponent(OK, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(160, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(60, Short.MAX_VALUE)
-                .addComponent(mensagem_de_alerta, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(mensagem_de_alerta, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(37, Short.MAX_VALUE)
+                .addContainerGap(49, Short.MAX_VALUE)
                 .addComponent(mensagem_de_alerta, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(OK)
@@ -160,16 +160,14 @@ public class TelaAdicionar_Receita extends javax.swing.JFrame {
         PoupopLayout.setHorizontalGroup(
             PoupopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PoupopLayout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 9, Short.MAX_VALUE))
         );
         PoupopLayout.setVerticalGroup(
             PoupopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PoupopLayout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 12, Short.MAX_VALUE))
         );
 
         jPanel6.setBackground(new java.awt.Color(110, 198, 202));
@@ -463,7 +461,7 @@ public class TelaAdicionar_Receita extends javax.swing.JFrame {
                             .addComponent(descricao_ingredientes_unidadedemedida)
                             .addComponent(cbMedida, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jScrollPane2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 191, Short.MAX_VALUE)
                 .addGroup(PainelIngredientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btExcluirIngrediente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btAdicionarIngrediente, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE))
@@ -593,10 +591,9 @@ public class TelaAdicionar_Receita extends javax.swing.JFrame {
         PainelInstrucoesLayout.setHorizontalGroup(
             PainelInstrucoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PainelInstrucoesLayout.createSequentialGroup()
-                .addGap(26, 26, 26)
                 .addGroup(PainelInstrucoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PainelInstrucoesLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
+                        .addGap(44, 44, 44)
                         .addGroup(PainelInstrucoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(PainelInstrucoesLayout.createSequentialGroup()
                                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -606,8 +603,10 @@ public class TelaAdicionar_Receita extends javax.swing.JFrame {
                                 .addComponent(lbInstrucao)
                                 .addGap(284, 284, 284)
                                 .addComponent(lbTempo))))
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 482, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 201, Short.MAX_VALUE)
+                    .addGroup(PainelInstrucoesLayout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(PainelInstrucoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btExcluirInstrucao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btAdicionarInstrucao, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE))
@@ -685,28 +684,27 @@ public class TelaAdicionar_Receita extends javax.swing.JFrame {
 
 
     private void Button_SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_SalvarActionPerformed
-        Ingrediente ingrediente = new Ingrediente();
         if (txtNome_Receita.getText().isEmpty()) {
             Poupop.setSize(400, 200);
             mensagem_de_alerta.setText("Digite nome da receita!");
             Poupop.setVisible(true);
+            return;
         } else if (tabela_de_ingredientes.getRowCount()==0){
             Poupop.setSize(400, 200);
             mensagem_de_alerta.setText("Adicione uma ingrediente!");
             Poupop.setVisible(true);
+            return;
         } else if (tabela_de_instrucoes.getRowCount()==0){
             Poupop.setSize(400, 200);
             mensagem_de_alerta.setText("Adicione uma instrução!");
             Poupop.setVisible(true);
-//  MUDAR ISSO ABAIXO *********************************       
-        }else {
-            Poupop.setSize(400, 200);
-            ingrediente.setNome_Ingred((txtNome_Receita.getText()));
-            mensagem_de_alerta.setText(ingrediente.getNome_Ingred());
-            Poupop.add(mensagem_de_alerta);
-            Poupop.setVisible(true);
+            return;     
         }
-//  MUDAR ISSO ACIMA *****************************
+        
+        Poupop.setSize(400, 200);
+        mensagem_de_alerta.setText("Salvo com Sucesso");
+        Poupop.setVisible(true);
+        
         
         int tempo = 0;
         for(int linha=0; linha<tabela_de_instrucoes.getRowCount();linha++){
@@ -925,7 +923,7 @@ public class TelaAdicionar_Receita extends javax.swing.JFrame {
     private javax.swing.JPanel PainelInstrucoes;
     private javax.swing.JPanel PainelNomeReceita;
     private javax.swing.JPanel PainelRodapé;
-    private javax.swing.JDialog Poupop;
+    public static javax.swing.JDialog Poupop;
     private javax.swing.JDialog PoupopIngrediente;
     private javax.swing.JLabel avisoSemNome;
     private javax.swing.JButton btAdicionarIngrediente;
@@ -954,7 +952,7 @@ public class TelaAdicionar_Receita extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel lbInstrucao;
     private javax.swing.JLabel lbTempo;
-    private javax.swing.JLabel mensagem_de_alerta;
+    public static javax.swing.JLabel mensagem_de_alerta;
     private javax.swing.JButton salvarPoupop;
     private javax.swing.JTable tabela_de_ingredientes;
     private javax.swing.JTable tabela_de_instrucoes;

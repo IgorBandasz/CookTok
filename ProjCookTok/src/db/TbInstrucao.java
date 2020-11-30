@@ -10,6 +10,7 @@ import cookTok.Instrucao;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
+import telas.TelaAdicionar_Receita;
 
 /**
  *
@@ -27,38 +28,9 @@ public class TbInstrucao {
             System.out.println("Instrução inserida com sucesso");
         } catch (SQLException throwables) {
             System.out.println("Erro ao inserir");
+            TelaAdicionar_Receita.Poupop.setSize(400, 200);
+            TelaAdicionar_Receita.mensagem_de_alerta.setText("Erro ao salvar Instruções");
+            TelaAdicionar_Receita.Poupop.setVisible(true);
         }
     }
-    public void update(Instrucao instru, String alteracao){
-        if(instru == null || instru.getCod_Instru() == -1){
-            System.out.println("Não foi possível alterar a instrução");
-            return;
-        }
-        String sql = "UPDATE dbcooktok.tbinstrucao set nomeinstru ='"+alteracao+"' where pkcodinstru ="+instru.getCod_Instru()+";";       
-        try {
-            Connection conn = ConexaoFactory.getConexao();
-            Statement stat = conn.createStatement();
-            System.out.println(stat.executeUpdate(sql)); //executeUpdate faz comandos DDL
-            ConexaoFactory.close(conn,stat);
-            System.out.println("Instrução alterada com sucesso");
-        } catch (SQLException throwables) {
-            System.out.println("Erro ao alterar Instrução");
-        }
-    }
-    public void delete(Instrucao instru){
-        if(instru == null || instru.getCod_Instru() == -1){
-            System.out.println("Não foi possível deletar a instrução");
-            return;
-        }
-        String sql = "DELETE FROM dbcooktok.tbinstrucao where pkcodinstru ="+instru.getCod_Instru()+";";
-        try {
-            Connection conn = ConexaoFactory.getConexao();
-            Statement stat = conn.createStatement();
-            System.out.println(stat.executeUpdate(sql)); //executeUpdate faz comandos DDL
-            ConexaoFactory.close(conn,stat);
-            System.out.println("Instrução deletada com sucesso");
-        } catch (SQLException throwables) {
-            System.out.println("Erro ao deletar Instrução");
-        }
-    } 
 }

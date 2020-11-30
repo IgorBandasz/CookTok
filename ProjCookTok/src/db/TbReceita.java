@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import telas.TelaAdicionar_Receita;
 
 /**
  *
@@ -27,6 +28,9 @@ public class TbReceita {
             System.out.println("Ingrediente inserido com sucesso");
         } catch (SQLException throwables) {
             System.out.println("Erro ao inserir Ingrediente");
+            TelaAdicionar_Receita.Poupop.setSize(400, 200);
+            TelaAdicionar_Receita.mensagem_de_alerta.setText("Erro ao salvar Receita");
+            TelaAdicionar_Receita.Poupop.setVisible(true);
         }
     }
     
