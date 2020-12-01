@@ -750,8 +750,6 @@ public class TelaAdicionar_Receita extends javax.swing.JFrame {
             Poupop.setSize(400, 200);
             mensagem_de_alerta.setText("Selecione algum ingrediente!");
             Poupop.setVisible(true);
-        } else if (ingre.equals("Adicionar novo")) {
-            adicionarNovoIngrediente();
         } else if (quantidade <= 0){
             Poupop.setSize(400, 200);
             mensagem_de_alerta.setText("Digite um valor para a quantidade!");
@@ -773,7 +771,6 @@ public class TelaAdicionar_Receita extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         carregaIngredientes();
-        Poupop.add(mensagem_de_alerta);
     }//GEN-LAST:event_formWindowOpened
 
     private void txtCombo_Box_ingredientesFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCombo_Box_ingredientesFocusLost
@@ -874,12 +871,6 @@ public class TelaAdicionar_Receita extends javax.swing.JFrame {
             System.out.println("Erro ao exibir Ingrediente");
         } 
     }    
-    
-    public void adicionarNovoIngrediente(){
-        Poupop.setSize(400, 200);
-        mensagem_de_alerta.setText("Ainda NÃO foi programado, chame o Igor");
-        Poupop.setVisible(true);
-    }
     
     public static void main(String args[]) {
 
