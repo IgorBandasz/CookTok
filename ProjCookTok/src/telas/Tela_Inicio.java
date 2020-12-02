@@ -12,7 +12,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 
 /**
@@ -137,11 +136,6 @@ public class Tela_Inicio extends javax.swing.JFrame {
         });
 
         cbOrdem.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A-Z", "Z-A", "Maior tempo", "Menor tempo" }));
-        cbOrdem.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cbOrdemItemStateChanged(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel_MenuLayout = new javax.swing.GroupLayout(jPanel_Menu);
         jPanel_Menu.setLayout(jPanel_MenuLayout);
@@ -639,10 +633,6 @@ public class Tela_Inicio extends javax.swing.JFrame {
     private void cbFiltroItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbFiltroItemStateChanged
         txtPesquisar.setText("");
     }//GEN-LAST:event_cbFiltroItemStateChanged
-
-    private void cbOrdemItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbOrdemItemStateChanged
-        
-    }//GEN-LAST:event_cbOrdemItemStateChanged
     
     public void carregaReceitas(String sql){   
         lista.clear();  
